@@ -5,9 +5,10 @@
   --color-tech-card: #131c31;
   --color-tech-cyan: #00f0ff;
   --color-tech-purple: #9d4edd;
+
+  --z-index-modal: 9999;
 }
 
-/* Aproveita e mantém o scrollbar tech bacana */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -20,4 +21,42 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #00f0ff;
+}
+
+/* ================= DIVISOR CONTÍNUO INTER-SEÇÕES ================= */
+.section-divider-marquee {
+  @apply w-full overflow-hidden bg-slate-950/40 border-y border-slate-900/80 py-5 my-10 relative flex items-center select-none;
+  transform: rotate(-1deg); /* Inclinação sutil elegante para quebrar as linhas retas */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+.divider-marquee-track {
+  @apply flex w-max gap-8 items-center;
+}
+
+.divider-marquee-group {
+  @apply flex shrink-0 items-center justify-around gap-8 w-max;
+  animation: scroll-divider 30s linear infinite;
+}
+
+.ticker-item {
+  @apply text-sm md:text-base font-mono font-black tracking-widest text-slate-500 transition-colors duration-300;
+}
+
+.section-divider-marquee:hover .ticker-item {
+  @apply text-slate-400;
+}
+
+.ticker-separator {
+  @apply text-tech-cyan text-xs font-mono font-bold opacity-60;
+}
+
+/* Animação contínua nativa de alta performance */
+@keyframes scroll-divider {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }

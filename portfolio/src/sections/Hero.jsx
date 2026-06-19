@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FaWhatsapp, FaEnvelope, FaTimes, FaFileDownload, FaEye } from 'react-icons/fa'
 import memojiImg from '../assets/memoji.png'
-import './Hero.css' // Importação do seu arquivo CSS dedicado
+import './Hero.css' 
 
 export default function Hero() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -46,7 +46,7 @@ export default function Hero() {
 
           <motion.div variants={itemVariants} className="flex flex-col gap-4 items-start">
             <div className="flex flex-wrap gap-4 items-center">
-              <a href="#projects" className="btn-primary">
+              <a href="#projects" className="group btn-primary">
                 VER PROJETOS_
               </a>
 
@@ -65,7 +65,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="hero-image-container"
+          className="group hero-image-container"
         >
           <div className="hero-glow-effect"></div>
 
@@ -91,7 +91,7 @@ export default function Hero() {
       {/* MODAL DE CONTATO */}
       <AnimatePresence>
         {isContactModalOpen && (
-          <div className="modal-overlay-fixed z-[99999]">
+          <div className="modal-overlay-fixed z-modal">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -140,7 +140,7 @@ export default function Hero() {
       {/* MODAL DO CURRÍCULO */}
       <AnimatePresence>
         {isCvModalOpen && (
-          <div className="fixed inset-0 w-screen h-screen z-[99999] flex items-center justify-center p-4 md:p-6">
+          <div className="fixed inset-0 w-screen h-screen z-99999 flex items-center justify-center p-4 md:p-6">
             <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -161,10 +161,11 @@ export default function Hero() {
                 </h3>
                 
                 <div className="flex items-center gap-4">
+                  {/* AJUSTE AQUI: Inserido o 'group' para o link de download */}
                   <a 
                     href="/curriculo.pdf" 
                     download="Eduardo_Guilherme_Curriculo.pdf" 
-                    className="btn-cv-download"
+                    className="group btn-cv-download"
                   >
                     BAIXAR O PDF <FaFileDownload size={14} />
                   </a>

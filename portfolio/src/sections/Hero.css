@@ -1,5 +1,5 @@
 /* Hero Container e Grid */
-@reference "../index.css";
+@reference "../styles/global.css";
 
 .hero-section {
   @apply min-h-screen flex flex-col justify-center pt-24 lg:pt-0 relative;
@@ -24,7 +24,7 @@
 
 /* Botões do Painel Principal */
 .btn-primary {
-  @apply group relative px-7 py-4 font-mono text-sm text-tech-cyan border border-tech-cyan rounded hover:bg-tech-cyan/10 transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.1)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] cursor-pointer;
+  @apply relative px-7 py-4 font-mono text-sm text-tech-cyan border border-tech-cyan rounded hover:bg-tech-cyan/10 transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.1)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] cursor-pointer;
 }
 
 .btn-secondary {
@@ -37,7 +37,7 @@
 
 /* Área da Imagem / Memoji */
 .hero-image-container {
-  @apply lg:col-span-5 flex justify-center relative group;
+  @apply lg:col-span-5 flex justify-center relative;
 }
 
 .hero-glow-effect {
@@ -92,7 +92,7 @@
 }
 
 .btn-cv-download {
-  @apply group relative px-5 py-2.5 font-mono text-xs md:text-sm text-tech-cyan border border-tech-cyan/50 rounded hover:bg-tech-cyan hover:text-slate-950 transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold shadow-[0_0_10px_rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)];
+  @apply relative px-5 py-2.5 font-mono text-xs md:text-sm text-tech-cyan border border-tech-cyan/50 rounded hover:bg-tech-cyan hover:text-slate-950 transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold shadow-[0_0_10px_rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)];
 }
 
 .iframe-wrapper {

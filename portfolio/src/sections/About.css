@@ -1,0 +1,165 @@
+@reference "../styles/global.css";
+
+.about-split-section {
+  /* Fundo alterado para transparente para herdar o background global da página */
+  @apply py-24 w-full min-h-screen bg-transparent text-slate-100 flex justify-center items-center relative overflow-hidden;
+}
+
+.about-split-container {
+  @apply w-full max-w-6xl mx-auto px-6 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start;
+}
+
+/* ================= COLUNA ESQUERDA ================= */
+.about-left-col {
+  @apply lg:col-span-6 flex flex-col items-start text-left overflow-hidden;
+}
+
+.about-main-title {
+  @apply text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[0.95] text-slate-100 uppercase;
+}
+
+.about-description {
+  @apply text-slate-400 text-sm sm:text-base leading-relaxed mt-6 max-w-xl font-sans;
+}
+
+.about-manifesto {
+  @apply mt-6 border-l-2 border-tech-cyan/40 pl-4 py-1 text-slate-300 text-sm sm:text-base italic font-sans leading-relaxed text-left max-w-xl bg-slate-900/10 rounded-r-lg;
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.02);
+}
+
+/* ================= ESTRUTURA DO MARQUEE FLUIDO CONTÍNUO ================= */
+.about-capabilities-marquee {
+  @apply mt-10 relative flex overflow-x-hidden w-full max-w-xl rounded-xl border border-slate-800/30 bg-slate-900/10 py-4;
+  /* Máscaras de opacidade para criar o efeito fade-in e fade-out nas pontas */
+  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+}
+
+.marquee-track {
+  @apply flex w-max gap-3;
+}
+
+.marquee-group {
+  @apply flex shrink-0 items-center justify-around gap-3 w-max;
+  animation: scroll-marquee 25s linear infinite;
+}
+
+/* Pausa suave ao passar o mouse */
+.about-capabilities-marquee:hover .marquee-group {
+  animation-play-state: paused;
+}
+
+.cap-tag {
+  @apply text-xs font-mono font-medium text-slate-400 bg-slate-900/40 border border-slate-800/60 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap;
+}
+
+.cap-tag:hover {
+  @apply border-tech-cyan/40 text-slate-100 bg-slate-900/80;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.04);
+}
+
+/* Keyframes nativos de alta performance */
+@keyframes scroll-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(calc(-50% - 6px)); }
+}
+
+/* ================= COLUNA DIREITA (SLIDER INTERATIVO) ================= */
+.about-right-col {
+  @apply lg:col-span-6 flex flex-col gap-14 w-full relative pt-6 lg:pt-0;
+}
+
+.project-slider-container {
+  @apply w-full flex flex-col items-center gap-6;
+}
+
+.slider-window {
+  @apply relative w-full h-[260px] max-w-[420px] flex justify-center items-center;
+}
+
+.slider-card {
+  @apply absolute rounded-xl border border-slate-800 bg-[#0b111e] overflow-hidden transition-all duration-500 ease-in-out shadow-2xl flex flex-col;
+}
+
+.system-screenshot {
+  @apply w-full h-[85%] object-cover bg-slate-950;
+}
+
+.slider-card-badge {
+  @apply w-full h-[15%] bg-[#080d17] border-t border-slate-900 px-4 flex items-center text-[10px] text-slate-400 tracking-wide uppercase;
+}
+
+.slider-card-active {
+  @apply w-full h-full z-30 opacity-100 transform translate-x-0 rotate-0 scale-100 border-tech-cyan/30;
+  box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.15);
+}
+
+.slider-card-next {
+  @apply w-[92%] h-[92%] z-20 opacity-40 transform translate-x-6 translate-y-4 rotate-[4deg] pointer-events-none;
+}
+
+.slider-card-hidden {
+  @apply w-[85%] h-[85%] z-10 opacity-0 transform -translate-x-6 translate-y-2 rotate-[-4deg] pointer-events-none;
+}
+
+.slider-controls {
+  @apply flex items-center gap-6 bg-[#090f1a] border border-slate-900 rounded-full px-4 py-2;
+}
+
+.slider-arrow-btn {
+  @apply text-slate-400 hover:text-tech-cyan text-sm transition-colors duration-200 cursor-pointer bg-transparent border-0 flex items-center justify-center p-1;
+}
+
+/* ================= LINHA DO TEMPO EDITORIAL ================= */
+.editorial-timeline {
+  @apply relative border-l border-slate-900/80 ml-4 flex flex-col gap-10 text-left w-full;
+}
+
+.timeline-item {
+  @apply relative pl-8;
+}
+
+.timeline-node {
+  @apply absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full bg-slate-800 transform -translate-x-[5.5px] border-2 border-slate-950 transition-colors duration-300;
+}
+
+.timeline-item.active-node .timeline-node {
+  @apply bg-tech-cyan;
+}
+
+.animate-blue-glow {
+  box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.5);
+  animation: blue-glow 2s infinite;
+}
+
+@keyframes blue-glow {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(0, 240, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+.timeline-date {
+  @apply text-xs font-bold text-slate-500 tracking-wider block mb-1;
+}
+
+.timeline-title {
+  @apply text-base font-bold text-slate-100 tracking-tight uppercase;
+}
+
+.timeline-role {
+  @apply text-xs text-tech-cyan font-semibold tracking-wide block mt-0.5 font-mono;
+}
+
+.timeline-text {
+  @apply text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 max-w-lg font-sans;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+@media (max-width: 1024px) {
+  .about-split-container {
+    @apply flex flex-col gap-16;
+  }
+  .slider-window {
+    @apply h-[220px] max-w-[340px];
+  }
+}

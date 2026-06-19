@@ -4,8 +4,15 @@ import Hero from './sections/Hero'
 import About from './sections/About'
 import Projects from './sections/Projects'
 import Contact from './sections/Contact'
+import "./styles/global.css"; // Caminho corrigido relativo à pasta src
 
 function App() {
+  // Lista de tecnologias e palavras-chave que vão rodar no divisor contínuo
+  const techTicker = [
+    "REACT", "JAVASCRIPT", "TYPESCRIPT", "ANGULAR", "TAILWIND CSS", 
+    "NEXT.JS", "NODE.JS", "UI/UX DESIGN", "CLEAN CODE", "REST API"
+  ]
+
   return (
     <div className="bg-tech-bg text-slate-100 font-sans min-h-screen relative overflow-hidden selection:bg-tech-cyan selection:text-tech-bg">
       
@@ -19,8 +26,37 @@ function App() {
       {/* Menu Fixo */}
       <Navbar />
       
+      {/* SEÇÃO HERO: Mantida dentro do container estrutural */}
       <main className="max-w-6xl mx-auto px-6 relative z-10">
         <Hero />
+      </main>
+
+      {/* TRANSICÃO HUD MARQUEE: Posicionada fora do container central para ocupar 100% da largura de ponta a ponta */}
+      <div className="section-divider-marquee">
+        <div className="divider-marquee-track">
+          {/* Bloco 1 */}
+          <div className="divider-marquee-group">
+            {techTicker.map((tech, idx) => (
+              <React.Fragment key={`t1-${idx}`}>
+                <span className="ticker-item">{tech}</span>
+                <span className="ticker-separator">//</span>
+              </React.Fragment>
+            ))}
+          </div>
+          {/* Bloco 2 (Duplicado para efeito infinito contínuo) */}
+          <div className="divider-marquee-group" aria-hidden="true">
+            {techTicker.map((tech, idx) => (
+              <React.Fragment key={`t2-${idx}`}>
+                <span className="ticker-item">{tech}</span>
+                <span className="ticker-separator">//</span>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* RESTANTE DAS SEÇÕES: Retomando o fluxo principal do layout */}
+      <main className="max-w-6xl mx-auto px-6 relative z-10">
         <About />
         <Projects />
         <Contact />
