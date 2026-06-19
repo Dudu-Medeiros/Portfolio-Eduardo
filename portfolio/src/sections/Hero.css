@@ -1,0 +1,100 @@
+/* Hero Container e Grid */
+@reference "../index.css";
+
+.hero-section {
+  @apply min-h-screen flex flex-col justify-center pt-24 lg:pt-0 relative;
+}
+
+.hero-grid {
+  @apply grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full;
+}
+
+/* Tipografia Principal */
+.hero-subtitle {
+  @apply text-tech-cyan font-mono mb-5 text-sm md:text-base tracking-[0.2em];
+}
+
+.hero-title {
+  @apply text-5xl md:text-7xl font-black mb-4 tracking-tighter;
+}
+
+.hero-description {
+  @apply max-w-xl text-slate-400 text-base md:text-lg mb-10 leading-relaxed;
+}
+
+/* Botões do Painel Principal */
+.btn-primary {
+  @apply group relative px-7 py-4 font-mono text-sm text-tech-cyan border border-tech-cyan rounded hover:bg-tech-cyan/10 transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.1)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] cursor-pointer;
+}
+
+.btn-secondary {
+  @apply flex items-center gap-2 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer;
+}
+
+.btn-cv {
+  @apply flex items-center gap-3 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer;
+}
+
+/* Área da Imagem / Memoji */
+.hero-image-container {
+  @apply lg:col-span-5 flex justify-center relative group;
+}
+
+.hero-glow-effect {
+  @apply absolute inset-0 bg-tech-cyan/20 rounded-full blur-[100px] transform scale-75 group-hover:scale-110 group-hover:bg-tech-cyan/30 transition-all duration-500 pointer-events-none;
+}
+
+.hero-avatar-wrapper {
+  @apply relative w-80 h-80 lg:w-[460px] lg:h-[460px] flex items-center justify-center select-none;
+}
+
+.hero-avatar-img {
+  @apply w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,240,255,0.15)] group-hover:drop-shadow-[0_0_35px_rgba(0,240,255,0.35)] transition-all duration-500;
+}
+
+/* Modais Estrutura Geral */
+.modal-overlay-fixed {
+  @apply fixed inset-0 w-screen h-screen flex items-center justify-center p-4;
+}
+
+.modal-backdrop-dark {
+  @apply absolute inset-0 bg-slate-950/60 backdrop-blur-xl;
+}
+
+.modal-backdrop-blur {
+  @apply absolute inset-0 bg-slate-950/40 backdrop-blur-xl;
+}
+
+/* Modal de Contato */
+.modal-contact-card {
+  @apply bg-slate-900 border border-tech-cyan/20 rounded-2xl p-6 w-full max-w-sm relative z-10 shadow-2xl;
+}
+
+.btn-close-modal {
+  @apply absolute top-4 right-4 text-slate-400 hover:text-tech-cyan transition-colors cursor-pointer;
+}
+
+.btn-modal-whatsapp {
+  @apply flex items-center justify-center gap-3 w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-sm rounded-xl transition-all cursor-pointer font-bold;
+}
+
+.btn-modal-gmail {
+  @apply flex items-center justify-center gap-3 w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-mono text-sm rounded-xl border border-slate-700 transition-all cursor-pointer font-bold;
+}
+
+/* Modal do Currículo */
+.modal-cv-container {
+  @apply relative w-full max-w-4xl h-[80vh] bg-[#0b1221] flex flex-col overflow-hidden shadow-2xl rounded-2xl border border-tech-cyan/20 mt-16 lg:mt-0;
+}
+
+.modal-cv-header {
+  @apply w-full bg-[#0f172a] px-6 py-5 flex items-center justify-between border-b border-tech-cyan/10;
+}
+
+.btn-cv-download {
+  @apply group relative px-5 py-2.5 font-mono text-xs md:text-sm text-tech-cyan border border-tech-cyan/50 rounded hover:bg-tech-cyan hover:text-slate-950 transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold shadow-[0_0_10px_rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)];
+}
+
+.iframe-wrapper {
+  @apply flex-1 w-full bg-[#0b1221] overflow-hidden;
+}

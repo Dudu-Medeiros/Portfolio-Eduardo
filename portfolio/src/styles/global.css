@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-tech-bg: #0a0f1d;
+  --color-tech-card: #131c31;
+  --color-tech-cyan: #00f0ff;
+  --color-tech-purple: #9d4edd;
+}
+
+/* Aproveita e mantém o scrollbar tech bacana */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0f1d;
+}
+::-webkit-scrollbar-thumb {
+  background: #131c31;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f0ff;
+}
