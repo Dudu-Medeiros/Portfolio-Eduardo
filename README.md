@@ -1,2 +1,2 @@
-# Portf-lio-Eduardo
+# Portfólio-Eduardo
 Meu Portifólio Profissional
