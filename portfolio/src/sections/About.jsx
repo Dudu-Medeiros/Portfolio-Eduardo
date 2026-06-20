@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import './About.css'
+import fluxoDashboard from "../assets/fluxoDashboard.png"
+import ADL from "../assets/ADL.png"
+import seakalmDashboard from "../assets/seakalmDashboard.png"
 
 export default function About() {
   // Estado para controlar qual imagem de projeto está ativa no slider
@@ -9,9 +12,9 @@ export default function About() {
 
   // Array com as telas dos seus sistemas (substitua pelos caminhos reais das suas imagens)
   const projectScreens = [
-    { id: 1, src: '/images/fluxo-dashboard.png', alt: 'Dashboard Módulo Fluxo' },
-    { id: 2, src: '/images/fluxo-terminal.png', alt: 'Terminal SEC-AUTH' },
-    { id: 3, src: '/images/physicolog-diary.png', alt: 'Interface PhysicoLog' },
+    { id: 1, src: fluxoDashboard, alt: 'Dashboard Módulo Fluxo' },
+    { id: 2, src: ADL, alt: 'Dashboard aventura das letras' },
+    { id: 3, src: seakalmDashboard, alt: 'Dashboard SeaKalm' },
   ]
 
   const nextSlide = () => {

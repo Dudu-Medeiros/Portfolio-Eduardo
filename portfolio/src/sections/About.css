@@ -81,8 +81,9 @@
   @apply absolute rounded-xl border border-slate-800 bg-[#0b111e] overflow-hidden transition-all duration-500 ease-in-out shadow-2xl flex flex-col;
 }
 
+/* CORREÇÃO DO CORTE DA IMAGEM: alterado para object-contain e adicionado p-2 para respiro visual */
 .system-screenshot {
-  @apply w-full h-[85%] object-cover bg-slate-950;
+  @apply w-full h-[85%] object-contain bg-slate-950 p-2;
 }
 
 .slider-card-badge {
