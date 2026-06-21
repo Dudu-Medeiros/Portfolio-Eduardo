@@ -2,7 +2,7 @@
 @reference "../styles/global.css";
 
 .hero-section {
-  @apply min-h-screen flex flex-col justify-center pt-24 lg:pt-0 relative;
+  @apply min-h-screen flex flex-col justify-center pt-24 lg:pt-0 relative transition-colors duration-500;
 }
 
 .hero-grid {
@@ -15,11 +15,15 @@
 }
 
 .hero-title {
-  @apply text-5xl md:text-7xl font-black mb-4 tracking-tighter;
+  @apply text-5xl md:text-7xl font-black mb-4 tracking-tighter text-slate-100 transition-colors duration-500;
+}
+
+.hero-heading {
+  @apply text-2xl md:text-5xl font-bold text-slate-400 mb-6 leading-tight transition-colors duration-500;
 }
 
 .hero-description {
-  @apply max-w-xl text-slate-400 text-base md:text-lg mb-10 leading-relaxed;
+  @apply max-w-xl text-slate-400 text-base md:text-lg mb-10 leading-relaxed transition-colors duration-500;
 }
 
 /* Botões do Painel Principal */
@@ -28,11 +32,11 @@
 }
 
 .btn-secondary {
-  @apply flex items-center gap-2 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer;
+  @apply flex items-center gap-2 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer transition-colors;
 }
 
 .btn-cv {
-  @apply flex items-center gap-3 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer;
+  @apply flex items-center gap-3 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer transition-colors;
 }
 
 /* Área da Imagem / Memoji */
@@ -67,7 +71,11 @@
 
 /* Modal de Contato */
 .modal-contact-card {
-  @apply bg-slate-900 border border-tech-cyan/20 rounded-2xl p-6 w-full max-w-sm relative z-10 shadow-2xl;
+  @apply bg-slate-900 border border-tech-cyan/20 rounded-2xl p-6 w-full max-w-sm relative z-10 shadow-2xl transition-colors duration-500;
+}
+
+.modal-contact-title {
+  @apply text-xl font-bold text-slate-100 mb-2 transition-colors duration-500;
 }
 
 .btn-close-modal {
@@ -79,22 +87,80 @@
 }
 
 .btn-modal-gmail {
-  @apply flex items-center justify-center gap-3 w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-mono text-sm rounded-xl border border-slate-700 transition-all cursor-pointer font-bold;
+  @apply flex items-center justify-center gap-3 w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-mono text-sm rounded-xl border border-slate-700 transition-all cursor-pointer font-bold transition-colors;
 }
 
 /* Modal do Currículo */
 .modal-cv-container {
-  @apply relative w-full max-w-4xl h-[80vh] bg-[#0b1221] flex flex-col overflow-hidden shadow-2xl rounded-2xl border border-tech-cyan/20 mt-16 lg:mt-0;
+  @apply relative w-full max-w-4xl h-[80vh] bg-[#0b1221] flex flex-col overflow-hidden shadow-2xl rounded-2xl border border-tech-cyan/20 mt-16 lg:mt-0 transition-colors duration-500;
 }
 
 .modal-cv-header {
-  @apply w-full bg-[#0f172a] px-6 py-5 flex items-center justify-between border-b border-tech-cyan/10;
+  @apply w-full bg-[#0f172a] px-6 py-5 flex items-center justify-between border-b border-tech-cyan/10 transition-colors duration-500;
 }
 
 .btn-cv-download {
   @apply relative px-5 py-2.5 font-mono text-xs md:text-sm text-tech-cyan border border-tech-cyan/50 rounded hover:bg-tech-cyan hover:text-slate-950 transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold shadow-[0_0_10px_rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)];
 }
 
+.btn-close-cv-modal {
+  @apply text-slate-400 hover:text-tech-cyan transition-colors cursor-pointer;
+}
+
 .iframe-wrapper {
-  @apply flex-1 w-full bg-[#0b1221] overflow-hidden;
+  @apply flex-1 w-full bg-[#0b1221] overflow-hidden transition-colors duration-500;
+}
+
+
+/* ==========================================================================
+   MODO LIGHT REFINADO (HERO INDUSTRIAL PALETTE)
+   ========================================================================== */
+.hero-section.light-mode .hero-title {
+  @apply text-slate-900;
+}
+
+.hero-section.light-mode .hero-heading {
+  @apply text-slate-500;
+}
+
+.hero-section.light-mode .hero-description {
+  @apply text-slate-600;
+}
+
+/* Botões Invertidos no Modo Claro para Alto Contraste */
+.hero-section.light-mode .btn-secondary {
+  @apply bg-slate-200 text-slate-800 border-slate-300/80 hover:bg-slate-300/60;
+}
+
+.hero-section.light-mode .btn-cv {
+  @apply bg-slate-200 text-slate-800 border-slate-300/80 hover:bg-slate-300/60;
+}
+
+/* Modais Claros */
+.hero-section.light-mode .modal-contact-card {
+  @apply bg-white border-slate-200 shadow-2xl;
+}
+
+.hero-section.light-mode .modal-contact-title {
+  @apply text-slate-900;
+}
+
+.hero-section.light-mode .btn-modal-gmail {
+  @apply bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-200;
+}
+
+.hero-section.light-mode .modal-cv-container {
+  @apply bg-slate-50 border-slate-200;
+}
+
+.hero-section.light-mode .modal-cv-header {
+  @apply bg-white border-slate-200;
+}
+
+.hero-section.light-mode .iframe-wrapper {
+  @apply bg-slate-200;
+}
+
+.hero-section.light-mode .hero-glow-effect {
+  @apply bg-tech-cyan/10 blur-[130px]; /* Brilho mais sutil no fundo claro */
 }

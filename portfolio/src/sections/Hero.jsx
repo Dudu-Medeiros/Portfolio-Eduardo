@@ -4,7 +4,7 @@ import { FaWhatsapp, FaEnvelope, FaTimes, FaFileDownload, FaEye } from 'react-ic
 import memojiImg from '../assets/memoji.png'
 import './Hero.css' 
 
-export default function Hero() {
+export default function Hero({ theme, language }) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isCvModalOpen, setIsCvModalOpen] = useState(false)
 
@@ -13,8 +13,23 @@ export default function Hero() {
     visible: { opacity: 1, y: 0 }
   }
 
+  // Dicionário de Traduções da Hero
+  const texts = {
+    role: language === 'pt' ? '<DESENVOLVEDOR FRONT-END />' : '<FRONT-END DEVELOPER />',
+    heading: language === 'pt' ? 'Construindo o futuro da web.' : 'Building the future of the web.',
+    description: language === 'pt' 
+      ? 'Especialista em interfaces de alta performance e experiências digitais interativas. Focado em transformar conceitos complexos em código limpo.'
+      : 'Specialist in high-performance interfaces and interactive digital experiences. Focused on turning complex concepts into clean code.',
+    btnProjects: language === 'pt' ? 'VER PROJETOS_' : 'VIEW PROJECTS_',
+    btnContact: language === 'pt' ? 'ENTRAR EM CONTATO' : 'GET IN TOUCH',
+    btnCv: language === 'pt' ? 'VER CURRÍCULO' : 'VIEW RESUME',
+    modalContactTitle: language === 'pt' ? 'DESEJA CONTATO? SELECIONE A MELHOR OPÇÃO!' : 'WANT TO CONNECT? CHOOSE AN OPTION!',
+    modalCvTitle: language === 'pt' ? 'CURRICULO' : 'RESUME',
+    btnDownload: language === 'pt' ? 'BAIXAR O PDF' : 'DOWNLOAD PDF'
+  }
+
   return (
-    <section id="home" className="hero-section">
+    <section id="home" className={`hero-section ${theme === 'light' ? 'light-mode' : ''}`}>
       
       <div className="hero-grid">
         
@@ -25,7 +40,7 @@ export default function Hero() {
           className="lg:col-span-7"
         >
           <motion.p variants={itemVariants} className="hero-subtitle">
-            &lt;DESENVOLVEDOR FRONT-END /&gt;
+            {texts.role}
           </motion.p>
 
           <motion.h1 variants={itemVariants} className="hero-title">
@@ -34,29 +49,28 @@ export default function Hero() {
 
           <motion.h2 
             variants={itemVariants} 
-            className="text-2xl md:text-5xl font-bold text-slate-400 mb-6 leading-tight"
+            className="hero-heading"
           >
-            Construindo o futuro da web.
+            {texts.heading}
           </motion.h2>
 
           <motion.p variants={itemVariants} className="hero-description">
-            Especialista em interfaces de alta performance e experiências digitais interativas. 
-            Focado em transformar conceitos complexos em código limpo.
+            {texts.description}
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-col gap-4 items-start">
             <div className="flex flex-wrap gap-4 items-center">
               <a href="#projects" className="group btn-primary">
-                VER PROJETOS_
+                {texts.btnProjects}
               </a>
 
               <button onClick={() => setIsContactModalOpen(true)} className="btn-secondary">
-                <FaEnvelope /> ENTRAR EM CONTATO
+                <FaEnvelope /> {texts.btnContact}
               </button>
             </div>
 
             <button onClick={() => setIsCvModalOpen(true)} className="btn-cv">
-              <FaEye /> VER CURRÍCULO
+              <FaEye /> {texts.btnCv}
             </button>
           </motion.div>
         </motion.div>
@@ -109,8 +123,8 @@ export default function Hero() {
                 <FaTimes size={18} />
               </button>
               
-              <h3 className="text-xl font-bold text-slate-100 mb-2 font-mono tracking-tighter">
-                DESEJA CONTATO? SELECIONE A MELHOR OPÇÃO!
+              <h3 className="modal-contact-title font-mono tracking-tighter">
+                {texts.modalContactTitle}
               </h3>
               
               <div className="flex flex-col gap-3 mt-6">
@@ -157,19 +171,18 @@ export default function Hero() {
             >
               <div className="modal-cv-header">
                 <h3 className="text-tech-cyan font-mono font-black tracking-[0.15em] text-base md:text-lg">
-                  CURRICULO
+                  {texts.modalCvTitle}
                 </h3>
                 
                 <div className="flex items-center gap-4">
-                  {/* AJUSTE AQUI: Inserido o 'group' para o link de download */}
                   <a 
                     href="/curriculo.pdf" 
                     download="Eduardo_Guilherme_Curriculo.pdf" 
                     className="group btn-cv-download"
                   >
-                    BAIXAR O PDF <FaFileDownload size={14} />
+                    {texts.btnDownload} <FaFileDownload size={14} />
                   </a>
-                  <button onClick={() => setIsCvModalOpen(false)} className="text-slate-400 hover:text-tech-cyan transition-colors cursor-pointer">
+                  <button onClick={() => setIsCvModalOpen(false)} className="btn-close-cv-modal">
                     <FaTimes size={24} />
                   </button>
                 </div>

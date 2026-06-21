@@ -1,8 +1,7 @@
 @reference "../styles/global.css";
 
 .about-split-section {
-  /* Fundo alterado para transparente para herdar o background global da página */
-  @apply py-24 w-full min-h-screen bg-transparent text-slate-100 flex justify-center items-center relative overflow-hidden;
+  @apply py-24 w-full min-h-screen bg-transparent text-slate-100 flex justify-center items-center relative overflow-hidden transition-colors duration-500;
 }
 
 .about-split-container {
@@ -15,22 +14,21 @@
 }
 
 .about-main-title {
-  @apply text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[0.95] text-slate-100 uppercase;
+  @apply text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[0.95] text-slate-100 uppercase transition-colors duration-500;
 }
 
 .about-description {
-  @apply text-slate-400 text-sm sm:text-base leading-relaxed mt-6 max-w-xl font-sans;
+  @apply text-slate-400 text-sm sm:text-base leading-relaxed mt-6 max-w-xl font-sans transition-colors duration-500;
 }
 
 .about-manifesto {
-  @apply mt-6 border-l-2 border-tech-cyan/40 pl-4 py-1 text-slate-300 text-sm sm:text-base italic font-sans leading-relaxed text-left max-w-xl bg-slate-900/10 rounded-r-lg;
+  @apply mt-6 border-l-2 border-tech-cyan/40 pl-4 py-1 text-slate-300 text-sm sm:text-base italic font-sans leading-relaxed text-left max-w-xl bg-slate-900/10 rounded-r-lg transition-colors duration-500;
   text-shadow: 0 0 30px rgba(0, 240, 255, 0.02);
 }
 
-/* ================= ESTRUTURA DO MARQUEE FLUIDO CONTÍNUO ================= */
+/* ================= MARQUEE FLUIDO ================= */
 .about-capabilities-marquee {
-  @apply mt-10 relative flex overflow-x-hidden w-full max-w-xl rounded-xl border border-slate-800/30 bg-slate-900/10 py-4;
-  /* Máscaras de opacidade para criar o efeito fade-in e fade-out nas pontas */
+  @apply mt-10 relative flex overflow-x-hidden w-full max-w-xl rounded-xl border border-slate-800/30 bg-slate-900/10 py-4 transition-colors duration-500;
   mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
 }
@@ -44,7 +42,6 @@
   animation: scroll-marquee 25s linear infinite;
 }
 
-/* Pausa suave ao passar o mouse */
 .about-capabilities-marquee:hover .marquee-group {
   animation-play-state: paused;
 }
@@ -58,13 +55,12 @@
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.04);
 }
 
-/* Keyframes nativos de alta performance */
 @keyframes scroll-marquee {
   0% { transform: translateX(0%); }
   100% { transform: translateX(calc(-50% - 6px)); }
 }
 
-/* ================= COLUNA DIREITA (SLIDER INTERATIVO) ================= */
+/* ================= COLUNA DIREITA (SLIDER) ================= */
 .about-right-col {
   @apply lg:col-span-6 flex flex-col gap-14 w-full relative pt-6 lg:pt-0;
 }
@@ -81,13 +77,12 @@
   @apply absolute rounded-xl border border-slate-800 bg-[#0b111e] overflow-hidden transition-all duration-500 ease-in-out shadow-2xl flex flex-col;
 }
 
-/* CORREÇÃO DO CORTE DA IMAGEM: alterado para object-contain e adicionado p-2 para respiro visual */
 .system-screenshot {
-  @apply w-full h-[85%] object-contain bg-slate-950 p-2;
+  @apply w-full h-[85%] object-contain bg-slate-950 p-2 transition-colors duration-500;
 }
 
 .slider-card-badge {
-  @apply w-full h-[15%] bg-[#080d17] border-t border-slate-900 px-4 flex items-center text-[10px] text-slate-400 tracking-wide uppercase;
+  @apply w-full h-[15%] bg-[#080d17] border-t border-slate-900 px-4 flex items-center text-[10px] text-slate-400 tracking-wide uppercase transition-colors duration-500;
 }
 
 .slider-card-active {
@@ -104,16 +99,20 @@
 }
 
 .slider-controls {
-  @apply flex items-center gap-6 bg-[#090f1a] border border-slate-900 rounded-full px-4 py-2;
+  @apply flex items-center gap-6 bg-[#090f1a] border border-slate-900 rounded-full px-4 py-2 transition-colors duration-500;
 }
 
 .slider-arrow-btn {
   @apply text-slate-400 hover:text-tech-cyan text-sm transition-colors duration-200 cursor-pointer bg-transparent border-0 flex items-center justify-center p-1;
 }
 
+.label-counter {
+  @apply text-slate-500;
+}
+
 /* ================= LINHA DO TEMPO EDITORIAL ================= */
 .editorial-timeline {
-  @apply relative border-l border-slate-900/80 ml-4 flex flex-col gap-10 text-left w-full;
+  @apply relative border-l border-slate-900/80 ml-4 flex flex-col gap-10 text-left w-full transition-colors duration-500;
 }
 
 .timeline-item {
@@ -144,7 +143,7 @@
 }
 
 .timeline-title {
-  @apply text-base font-bold text-slate-100 tracking-tight uppercase;
+  @apply text-base font-bold text-slate-100 tracking-tight uppercase transition-colors duration-500;
 }
 
 .timeline-role {
@@ -152,7 +151,89 @@
 }
 
 .timeline-text {
-  @apply text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 max-w-lg font-sans;
+  @apply text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 max-w-lg font-sans transition-colors duration-500;
+}
+
+/* ==========================================================================
+   MODO LIGHT REFINADO (ESTILO LABORATÓRIO INDUSTRIAL)
+   ========================================================================== */
+.about-split-section.light-mode {
+  @apply text-slate-800;
+}
+
+.about-split-section.light-mode .about-main-title {
+  @apply text-slate-900;
+}
+
+.about-split-section.light-mode .about-description {
+  @apply text-slate-600;
+}
+
+.about-split-section.light-mode .about-manifesto {
+  @apply bg-slate-200/50 text-slate-700 border-tech-cyan/60;
+}
+
+/* Marquee Claro */
+.about-split-section.light-mode .about-capabilities-marquee {
+  @apply bg-slate-200/40 border-slate-300/80;
+}
+
+.about-split-section.light-mode .cap-tag {
+  @apply bg-white border-slate-200/80 text-slate-600;
+}
+
+.about-split-section.light-mode .cap-tag:hover {
+  @apply bg-slate-50 text-tech-cyan border-tech-cyan/40 shadow-sm;
+}
+
+/* Slider Claro */
+.about-split-section.light-mode .slider-card {
+  @apply border-slate-200 bg-white shadow-xl;
+}
+
+.about-split-section.light-mode .system-screenshot {
+  @apply bg-slate-100;
+}
+
+.about-split-section.light-mode .slider-card-badge {
+  @apply bg-slate-50 border-slate-100 text-slate-500;
+}
+
+.about-split-section.light-mode .slider-controls {
+  @apply bg-white border-slate-200 shadow-sm;
+}
+
+.about-split-section.light-mode .slider-arrow-btn {
+  @apply text-slate-400 hover:text-tech-cyan;
+}
+
+.about-split-section.light-mode .label-counter {
+  @apply text-slate-400;
+}
+
+/* Timeline Clara */
+.about-split-section.light-mode .editorial-timeline {
+  @apply border-slate-200;
+}
+
+.about-split-section.light-mode .timeline-node {
+  @apply bg-slate-200 border-white;
+}
+
+.about-split-section.light-mode .timeline-item.active-node .timeline-node {
+  @apply bg-tech-cyan;
+}
+
+.about-split-section.light-mode .timeline-title {
+  @apply text-slate-800;
+}
+
+.about-split-section.light-mode .timeline-title.text-tech-cyan {
+  @apply text-tech-cyan; /* Mantém o destaque ciano */
+}
+
+.about-split-section.light-mode .timeline-text {
+  @apply text-slate-500;
 }
 
 /* ================= RESPONSIVIDADE ================= */
