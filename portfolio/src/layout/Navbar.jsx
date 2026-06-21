@@ -10,6 +10,20 @@ export default function Navbar() {
     { name: 'Contato', href: '#contact' },
   ]
 
+  // Função para controlar a rolagem fluida de forma manual
+  const handleScroll = (e, href) => {
+    e.preventDefault()
+    const targetId = href.replace('#', '')
+    const element = document.getElementById(targetId)
+    
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Alinha o topo da seção com o topo da tela
+      })
+    }
+  }
+
   return (
     <motion.header 
       initial={{ y: -50, opacity: 0 }}
@@ -19,8 +33,11 @@ export default function Navbar() {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         
-        <a href="#home" className="flex items-center gap-2.5 font-mono font-medium text-base tracking-tight group cursor-pointer">
-          
+        <a 
+          href="#home" 
+          onClick={(e) => handleScroll(e, '#home')}
+          className="flex items-center gap-2.5 font-mono font-medium text-base tracking-tight group cursor-pointer"
+        >
           <FaTerminal className="text-tech-cyan group-hover:rotate-6 transition-transform duration-500 ease-out text-sm" />
           
           <motion.span 
@@ -47,6 +64,7 @@ export default function Navbar() {
             <motion.a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleScroll(e, link.href)} // Intercepta o clique para rodar a rolagem suave
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: i * 0.08 + 0.2, duration: 0.4 }}
