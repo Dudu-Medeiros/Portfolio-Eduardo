@@ -112,7 +112,7 @@ function App() {
         toggleLanguage={toggleLanguage}
       />
       
-      <main className="max-w-6xl mx-auto px-6 relative z-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <Hero language={language} theme={theme} />
       </main>
 
@@ -137,11 +137,11 @@ function App() {
         </div>
       </div>
 
-      <main className="max-w-6xl mx-auto px-6 relative z-10">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         <About language={language} theme={theme} />
         
-        {/* ================= SEÇÃO DE MÉTRICAS HUD CIBERNÉTICAS ================= */}
-        <div className={`py-24 my-12 border-y grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative ${
+        {/* ================= SEÇÃO DE MÉTRICAS HUD CIBERNÉTICAS REVISADA ================= */}
+        <div className={`py-16 md:py-24 my-6 md:my-12 border-y grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative ${
           theme === 'light' ? 'border-slate-200' : 'border-slate-900/60'
         }`}>
           {stats.map((stat, idx) => (
@@ -149,9 +149,9 @@ function App() {
               key={idx} 
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.4, delay: idx * 0.15, ease: "easeOut" }}
-              className={`relative border rounded-lg p-5 flex flex-col justify-between items-start group hover:border-tech-cyan/30 transition-all duration-500 overflow-hidden ${
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: idx * 0.1, ease: "easeOut" }}
+              className={`relative border rounded-lg p-5 flex flex-col justify-between items-start group hover:border-tech-cyan/30 transition-all duration-500 overflow-hidden w-full ${
                 theme === 'light' ? 'bg-white border-slate-200 shadow-sm' : 'bg-[#070b14]/80 border-slate-900'
               }`}
             >
@@ -172,7 +172,7 @@ function App() {
               </div>
 
               {/* Número / Valor Principal */}
-              <div className={`text-4xl md:text-5xl font-mono font-black tracking-tight transition-colors ${
+              <div className={`text-3xl sm:text-4xl md:text-5xl font-mono font-black tracking-tight transition-colors ${
                 theme === 'light' ? 'text-slate-800 group-hover:text-slate-900' : 'text-slate-200 group-hover:text-slate-100'
               }`}>
                 {isNaN(parseInt(stat.number)) ? (
@@ -182,15 +182,15 @@ function App() {
                 ) : (
                   <div className="flex items-baseline">
                     <CyberCounter value={stat.number} />
-                    <span className="text-tech-cyan text-2xl font-sans ml-0.5 group-hover:animate-ping duration-1000">
+                    <span className="text-tech-cyan text-xl sm:text-2xl font-sans ml-0.5 group-hover:animate-ping duration-1000">
                       {stat.number.includes('+') ? '+' : ''}
                     </span>
                   </div>
                 )}
               </div>
 
-              {/* Label de Descrição com Efeito Matrix */}
-              <div className={`text-xs font-mono tracking-wide uppercase mt-4 border-t pt-3 w-full text-left group-hover:text-slate-400 transition-colors ${
+              {/* Label de Descrição com Efeito Matrix e quebra de palavra segura */}
+              <div className={`text-[11px] sm:text-xs font-mono tracking-wide uppercase mt-4 border-t pt-3 w-full text-left group-hover:text-slate-400 transition-colors break-words ${
                 theme === 'light' ? 'text-slate-400 border-slate-100' : 'text-slate-500 border-slate-900/60'
               }`}>
                 <DecryptText text={stat.label} />
@@ -203,14 +203,14 @@ function App() {
         <Contact language={language} theme={theme} />
       </main>
 
-      {/* ================= FOOTER HUD AVANÇADO CONTROLA TEMA ================= */}
+      {/* ================= FOOTER HUD AVANÇADO CONTROLA TEMA REVISADO ================= */}
       <footer className={`w-full border-t py-8 mt-24 font-mono text-xs relative z-10 transition-colors duration-500 ${
         theme === 'light' ? 'bg-slate-200/50 border-slate-300/60 text-slate-500' : 'w-full border-t border-slate-900/60 bg-[#04070e]/80 text-slate-500'
       }`}>
-        <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           
           {/* Lado Esquerdo: Status do Core do Sistema */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-center md:justify-start">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -221,15 +221,15 @@ function App() {
           </div>
 
           {/* Centro: Direitos e Nome */}
-          <div className="text-center md:text-left tracking-wide">
+          <div className="tracking-wide">
             <p>© {new Date().getFullYear()} — <span className={theme === 'light' ? 'text-slate-800 font-bold' : 'text-slate-300 font-bold'}>EDUARDO GUILHERME</span> // {language === 'pt' ? 'PROJETANDO O FUTURO' : 'ENGINEERING THE FUTURE'}</p>
           </div>
 
           {/* Lado Direito: Ação Ancora de Voltar ao Topo */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-center w-full md:w-auto">
             <button 
               onClick={scrollToTop}
-              className={`transition-colors duration-300 uppercase tracking-widest border px-3 py-1.5 rounded text-[10px] ${
+              className={`transition-colors duration-300 uppercase tracking-widest border px-3 py-1.5 rounded text-[10px] w-full md:w-auto ${
                 theme === 'light' 
                 ? 'bg-white border-slate-300 text-slate-600 hover:text-tech-cyan hover:border-tech-cyan/40' 
                 : 'bg-slate-950/40 border-slate-900 text-slate-500 hover:text-tech-cyan'

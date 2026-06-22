@@ -1,36 +1,36 @@
 @reference "../styles/global.css";
 
 .about-split-section {
-  @apply py-24 w-full min-h-screen bg-transparent text-slate-100 flex justify-center items-center relative overflow-hidden transition-colors duration-500;
+  @apply py-16 md:py-24 lg:py-28 w-full min-h-screen bg-transparent text-slate-100 flex justify-center items-center relative overflow-hidden transition-colors duration-500;
 }
 
 .about-split-container {
-  @apply w-full max-w-6xl mx-auto px-6 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start;
+  @apply w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start;
 }
 
 /* ================= COLUNA ESQUERDA ================= */
 .about-left-col {
-  @apply lg:col-span-6 flex flex-col items-start text-left overflow-hidden;
+  @apply lg:col-span-6 flex flex-col items-start text-left overflow-hidden w-full;
 }
 
 .about-main-title {
-  @apply text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-[0.95] text-slate-100 uppercase transition-colors duration-500;
+  @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1] md:leading-[0.95] text-slate-100 uppercase transition-colors duration-500;
 }
 
 .about-description {
-  @apply text-slate-400 text-sm sm:text-base leading-relaxed mt-6 max-w-xl font-sans transition-colors duration-500;
+  @apply text-slate-400 text-xs sm:text-sm md:text-base leading-relaxed mt-6 max-w-xl font-sans transition-colors duration-500 text-justify sm:text-left;
 }
 
 .about-manifesto {
-  @apply mt-6 border-l-2 border-tech-cyan/40 pl-4 py-1 text-slate-300 text-sm sm:text-base italic font-sans leading-relaxed text-left max-w-xl bg-slate-900/10 rounded-r-lg transition-colors duration-500;
+  @apply mt-6 border-l-2 border-tech-cyan/40 pl-4 py-1.5 text-slate-300 text-xs sm:text-sm md:text-base italic font-sans leading-relaxed text-left max-w-xl bg-slate-900/10 rounded-r-lg transition-colors duration-500;
   text-shadow: 0 0 30px rgba(0, 240, 255, 0.02);
 }
 
 /* ================= MARQUEE FLUIDO ================= */
 .about-capabilities-marquee {
   @apply mt-10 relative flex overflow-x-hidden w-full max-w-xl rounded-xl border border-slate-800/30 bg-slate-900/10 py-4 transition-colors duration-500;
-  mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%, #000 85%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
 }
 
 .marquee-track {
@@ -47,7 +47,7 @@
 }
 
 .cap-tag {
-  @apply text-xs font-mono font-medium text-slate-400 bg-slate-900/40 border border-slate-800/60 px-4 py-2 rounded-lg transition-all duration-300 whitespace-nowrap;
+  @apply text-[11px] sm:text-xs font-mono font-medium text-slate-400 bg-slate-900/40 border border-slate-800/60 px-3.5 py-2 rounded-lg transition-all duration-300 whitespace-nowrap;
 }
 
 .cap-tag:hover {
@@ -62,7 +62,7 @@
 
 /* ================= COLUNA DIREITA (SLIDER) ================= */
 .about-right-col {
-  @apply lg:col-span-6 flex flex-col gap-14 w-full relative pt-6 lg:pt-0;
+  @apply lg:col-span-6 flex flex-col gap-12 sm:gap-14 w-full relative pt-4 lg:pt-0;
 }
 
 .project-slider-container {
@@ -70,7 +70,7 @@
 }
 
 .slider-window {
-  @apply relative w-full h-[260px] max-w-[420px] flex justify-center items-center;
+  @apply relative w-full h-[180px] sm:h-[220px] md:h-[260px] max-w-[420px] flex justify-center items-center mx-auto;
 }
 
 .slider-card {
@@ -78,49 +78,49 @@
 }
 
 .system-screenshot {
-  @apply w-full h-[85%] object-contain bg-slate-950 p-2 transition-colors duration-500;
+  @apply w-full h-[83%] object-contain bg-slate-950 p-2 transition-colors duration-500;
 }
 
 .slider-card-badge {
-  @apply w-full h-[15%] bg-[#080d17] border-t border-slate-900 px-4 flex items-center text-[10px] text-slate-400 tracking-wide uppercase transition-colors duration-500;
+  @apply w-full h-[17%] bg-[#080d17] border-t border-slate-900 px-4 flex items-center text-[9px] sm:text-[10px] text-slate-400 tracking-wide uppercase transition-colors duration-500 truncate;
 }
 
 .slider-card-active {
   @apply w-full h-full z-30 opacity-100 transform translate-x-0 rotate-0 scale-100 border-tech-cyan/30;
-  box-shadow: 0 20px 40px -15px rgba(0, 240, 255, 0.15);
+  box-shadow: 0 15px 35px -10px rgba(0, 240, 255, 0.15);
 }
 
 .slider-card-next {
-  @apply w-[92%] h-[92%] z-20 opacity-40 transform translate-x-6 translate-y-4 rotate-[4deg] pointer-events-none;
+  @apply w-[92%] h-[92%] z-20 opacity-30 sm:opacity-40 transform translate-x-4 sm:translate-x-6 translate-y-3 sm:translate-y-4 rotate-[3deg] sm:rotate-[4deg] pointer-events-none;
 }
 
 .slider-card-hidden {
-  @apply w-[85%] h-[85%] z-10 opacity-0 transform -translate-x-6 translate-y-2 rotate-[-4deg] pointer-events-none;
+  @apply w-[85%] h-[85%] z-10 opacity-0 transform -translate-x-4 sm:-translate-x-6 translate-y-2 rotate-[-3deg] sm:rotate-[-4deg] pointer-events-none;
 }
 
 .slider-controls {
-  @apply flex items-center gap-6 bg-[#090f1a] border border-slate-900 rounded-full px-4 py-2 transition-colors duration-500;
+  @apply flex items-center gap-6 bg-[#090f1a] border border-slate-900 rounded-full px-4 py-1.5 sm:py-2 transition-colors duration-500;
 }
 
 .slider-arrow-btn {
-  @apply text-slate-400 hover:text-tech-cyan text-sm transition-colors duration-200 cursor-pointer bg-transparent border-0 flex items-center justify-center p-1;
+  @apply text-slate-400 hover:text-tech-cyan text-xs sm:text-sm transition-colors duration-200 cursor-pointer bg-transparent border-0 flex items-center justify-center p-1;
 }
 
 .label-counter {
-  @apply text-slate-500;
+  @apply text-slate-500 tracking-wider;
 }
 
 /* ================= LINHA DO TEMPO EDITORIAL ================= */
 .editorial-timeline {
-  @apply relative border-l border-slate-900/80 ml-4 flex flex-col gap-10 text-left w-full transition-colors duration-500;
+  @apply relative border-l border-slate-900/80 ml-2 sm:ml-4 flex flex-col gap-10 text-left w-full transition-colors duration-500;
 }
 
 .timeline-item {
-  @apply relative pl-8;
+  @apply relative pl-6 sm:pl-8;
 }
 
 .timeline-node {
-  @apply absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full bg-slate-800 transform -translate-x-[5.5px] border-2 border-slate-950 transition-colors duration-300;
+  @apply absolute left-0 top-1.5 w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-slate-800 transform -translate-x-[4.5px] sm:-translate-x-[5.5px] border-2 border-slate-950 transition-colors duration-300;
 }
 
 .timeline-item.active-node .timeline-node {
@@ -139,19 +139,19 @@
 }
 
 .timeline-date {
-  @apply text-xs font-bold text-slate-500 tracking-wider block mb-1;
+  @apply text-[10px] sm:text-xs font-bold text-slate-500 tracking-wider block mb-1;
 }
 
 .timeline-title {
-  @apply text-base font-bold text-slate-100 tracking-tight uppercase transition-colors duration-500;
+  @apply text-sm sm:text-base font-bold text-slate-100 tracking-tight uppercase transition-colors duration-500;
 }
 
 .timeline-role {
-  @apply text-xs text-tech-cyan font-semibold tracking-wide block mt-0.5 font-mono;
+  @apply text-[11px] sm:text-xs text-tech-cyan font-semibold tracking-wide block mt-0.5 font-mono;
 }
 
 .timeline-text {
-  @apply text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 max-w-lg font-sans transition-colors duration-500;
+  @apply text-slate-400 text-xs sm:text-sm leading-relaxed mt-2 max-w-lg font-sans transition-colors duration-500 text-justify sm:text-left;
 }
 
 /* ==========================================================================
@@ -173,7 +173,6 @@
   @apply bg-slate-200/50 text-slate-700 border-tech-cyan/60;
 }
 
-/* Marquee Claro */
 .about-split-section.light-mode .about-capabilities-marquee {
   @apply bg-slate-200/40 border-slate-300/80;
 }
@@ -186,7 +185,6 @@
   @apply bg-slate-50 text-tech-cyan border-tech-cyan/40 shadow-sm;
 }
 
-/* Slider Claro */
 .about-split-section.light-mode .slider-card {
   @apply border-slate-200 bg-white shadow-xl;
 }
@@ -211,7 +209,6 @@
   @apply text-slate-400;
 }
 
-/* Timeline Clara */
 .about-split-section.light-mode .editorial-timeline {
   @apply border-slate-200;
 }
@@ -229,19 +226,50 @@
 }
 
 .about-split-section.light-mode .timeline-title.text-tech-cyan {
-  @apply text-tech-cyan; /* Mantém o destaque ciano */
+  @apply text-tech-cyan;
 }
 
 .about-split-section.light-mode .timeline-text {
   @apply text-slate-500;
 }
 
-/* ================= RESPONSIVIDADE ================= */
-@media (max-width: 1024px) {
+/* ==========================================================================
+   BREAKPOINTS DE RESPONSIVIDADE E ADAPTAÇÃO DE TELAS
+   ========================================================================== */
+
+/* Telas de Celulares Médios a Grandes (414px até 639px) */
+@media (max-width: 639px) {
+  .slider-window {
+    @apply h-[190px] max-w-[320px];
+  }
+}
+
+/* Telas Intermediárias / Tablets (640px até 1023px) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .slider-window {
+    @apply h-[240px] max-w-[380px];
+  }
+}
+
+/* Ajuste Geral para Dispositivos Abaixo de Desktop (Mobile e Tablet) */
+@media (max-width: 1023px) {
   .about-split-container {
-    @apply flex flex-col gap-16;
+    @apply flex flex-col gap-14;
+  }
+  .about-right-col {
+    @apply gap-12;
+  }
+}
+
+/* Resoluções de Notebooks a Monitores Standard (1024px até 1440px) */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .about-split-container {
+    @apply max-w-5xl gap-10;
   }
   .slider-window {
-    @apply h-[220px] max-w-[340px];
+    @apply h-[220px] max-w-[350px];
+  }
+  .about-right-col {
+    @apply gap-10;
   }
 }

@@ -9,38 +9,44 @@
   --z-index-modal: 9999;
 }
 
+/* Scrollbar adaptável de acordo com a preferência do sistema/tema básico */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0f1d;
+  background: transparent; /* Remove a cor escura fixa para casar com qualquer modo */
 }
 ::-webkit-scrollbar-thumb {
-  background: #131c31;
+  background: #131c3140;
   border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb, 
+body:not(.light-mode) ::-webkit-scrollbar-thumb {
+  background: #131c31;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #00f0ff;
 }
 
-/* ================= DIVISOR CONTÍNUO INTER-SEÇÕES ================= */
+/* ================= DIVISOR CONTÍNUO INTER-SEÇÕES REVISADO ================= */
 .section-divider-marquee {
-  @apply w-full overflow-hidden bg-slate-950/40 border-y border-slate-900/80 py-5 my-10 relative flex items-center select-none;
-  transform: rotate(-1deg); /* Inclinação sutil elegante para quebrar as linhas retas */
+  /* scale-105 adicionado para expandir as pontas rotacionadas e não quebrar a lateral da tela */
+  @apply w-full overflow-hidden bg-slate-950/40 border-y border-slate-900/80 py-4 md:py-5 my-8 md:my-10 relative flex items-center select-none scale-105;
+  transform: rotate(-1deg);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .divider-marquee-track {
-  @apply flex w-max gap-8 items-center;
+  @apply flex w-max gap-6 md:gap-8 items-center;
 }
 
 .divider-marquee-group {
-  @apply flex shrink-0 items-center justify-around gap-8 w-max;
+  @apply flex shrink-0 items-center justify-around gap-6 md:gap-8 w-max;
   animation: scroll-divider 30s linear infinite;
 }
 
 .ticker-item {
-  @apply text-sm md:text-base font-mono font-black tracking-widest text-slate-500 transition-colors duration-300;
+  @apply text-xs md:text-sm lg:text-base font-mono font-black tracking-widest text-slate-500 transition-colors duration-300;
 }
 
 .section-divider-marquee:hover .ticker-item {
@@ -51,7 +57,6 @@
   @apply text-tech-cyan text-xs font-mono font-bold opacity-60;
 }
 
-/* Animação contínua nativa de alta performance */
 @keyframes scroll-divider {
   0% {
     transform: translateX(0%);

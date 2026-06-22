@@ -50,30 +50,30 @@ export default function Projects({ theme, language }) {
     hidden: { opacity: 0 },
     whileInView: {
       opacity: 1,
-      transition: { staggerChildren: 0.3 }
+      transition: { staggerChildren: 0.2 }
     }
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 0, y: 40 },
     whileInView: { 
       opacity: 1, 
       y: 0,
-      transition: { duration: 0.7, ease: "easeOut" }
+      transition: { duration: 0.6, ease: "easeOut" }
     }
   }
 
   const isLight = theme === 'light';
 
   return (
-    <section id="projects" className={`py-28 border-t relative transition-colors duration-500 ${isLight ? 'border-slate-200' : 'border-slate-900/60'}`}>
+    <section id="projects" className={`py-16 md:py-24 lg:py-28 border-t relative transition-colors duration-500 ${isLight ? 'border-slate-200' : 'border-slate-900/60'}`}>
       
       {/* Cabeçalho Técnico HUD */}
-      <div className={`mb-20 text-left relative pl-4 border-l transition-colors duration-500 ${isLight ? 'border-tech-cyan/60' : 'border-tech-cyan/30'}`}>
-        <span className="text-tech-cyan font-mono text-xs tracking-[0.25em] uppercase block mb-2">
+      <div className={`mb-12 md:mb-16 lg:mb-20 text-left relative pl-4 border-l transition-colors duration-500 ${isLight ? 'border-tech-cyan/60' : 'border-tech-cyan/30'}`}>
+        <span className="text-tech-cyan font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase block mb-2">
           // MAIN_REPOSITORY_LOG
         </span>
-        <h2 className={`text-4xl md:text-5xl font-black tracking-tight uppercase transition-colors duration-500 ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
+        <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase transition-colors duration-500 ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
           {language === 'pt' ? 'PROJETOS ' : 'EXECUTED '}
           <span className={`font-light transition-colors duration-500 ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>
             {language === 'pt' ? 'EXECUTADOS' : 'PROJECTS'}
@@ -83,17 +83,17 @@ export default function Projects({ theme, language }) {
 
       {/* Container Principal */}
       <motion.div 
-        className="flex flex-col gap-12 w-full"
+        className="flex flex-col gap-6 md:gap-10 lg:gap-12 w-full"
         variants={containerVariants}
         initial="hidden"
         whileInView="whileInView"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true, margin: "-80px" }}
       >
         {projectsData.map((project) => (
           <motion.div
             key={project.id}
             variants={cardVariants}
-            className={`relative rounded-xl p-6 md:p-8 flex flex-col justify-between group transition-all duration-500 overflow-hidden border ${
+            className={`relative rounded-xl p-5 sm:p-6 md:p-8 flex flex-col justify-between group transition-all duration-500 overflow-hidden border ${
               isLight 
                 ? 'bg-white border-slate-200 shadow-md hover:border-tech-cyan/50 hover:shadow-lg' 
                 : 'bg-[#070b14]/90 border-slate-900 hover:border-tech-cyan/30'
@@ -109,12 +109,12 @@ export default function Projects({ theme, language }) {
             <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_95%,rgba(0,240,255,0.03)_98%,transparent)] bg-[size:100%_400%] animate-[scan_6s_linear_infinite] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="w-full">
-              {/* Metadados Superiores e Botão de Ação */}
-              <div className={`flex justify-between items-center mb-6 border-b pb-4 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/60'}`}>
-                <div className="flex items-center gap-3 font-mono text-[10px] tracking-wider">
+              {/* Metadados Superiores e Botão de Ação - Responsivo para Mobile */}
+              <div className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 border-b pb-4 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/60'}`}>
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-[10px] tracking-wider">
                   <span className={isLight ? 'text-slate-400' : 'text-slate-600'}>ID: 00{project.id}</span>
                   <span className={isLight ? 'text-slate-300' : 'text-slate-700'}>//</span>
-                  <span className={`px-2 py-0.5 rounded border ${isLight ? 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/20 font-medium' : 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/10'}`}>
+                  <span className={`px-2 py-0.5 rounded border whitespace-nowrap ${isLight ? 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/20 font-medium' : 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/10'}`}>
                     STATUS: {project.status}
                   </span>
                 </div>
@@ -124,7 +124,7 @@ export default function Projects({ theme, language }) {
                   href={project.githubLink} 
                   target="_blank" 
                   rel="noreferrer"
-                  className={`flex items-center gap-2 px-4 py-1.5 rounded-md border font-mono text-xs transition-all duration-300 shadow-sm ${
+                  className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-1.5 rounded-md border font-mono text-xs transition-all duration-300 shadow-sm w-full sm:w-auto ${
                     isLight 
                       ? 'border-slate-200 bg-slate-50 text-slate-500 group-hover:text-tech-cyan group-hover:border-tech-cyan/40 hover:bg-tech-cyan/5' 
                       : 'border-slate-800 bg-slate-950/40 text-slate-400 group-hover:text-tech-cyan group-hover:border-tech-cyan/40 hover:bg-tech-cyan/5'
@@ -140,32 +140,34 @@ export default function Projects({ theme, language }) {
               </div>
 
               {/* Título e escopo descritivo */}
-              <h3 className={`text-xl md:text-2xl font-mono font-black tracking-wide group-hover:text-tech-cyan transition-colors duration-300 uppercase ${isLight ? 'text-slate-800' : 'text-slate-200'}`}>
+              <h3 className={`text-lg sm:text-xl md:text-2xl font-mono font-black tracking-wide group-hover:text-tech-cyan transition-colors duration-300 uppercase ${isLight ? 'text-slate-800' : 'text-slate-200'}`}>
                 {project.title}
               </h3>
               
-              <p className={`text-sm leading-relaxed mt-4 font-sans font-light max-w-4xl text-justify transition-colors duration-500 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
+              <p className={`text-xs sm:text-sm leading-relaxed mt-4 font-sans font-light max-w-4xl text-justify sm:text-left transition-colors duration-500 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
                 {project.description}
               </p>
             </div>
 
             {/* Rodapé: Arquitetura e Stack Utilizada */}
-            <div className={`mt-8 pt-4 border-t flex flex-wrap items-center gap-2 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/40'}`}>
-              <span className={`font-mono text-[10px] mr-2 uppercase tracking-widest ${isLight ? 'text-slate-400' : 'text-slate-600'}`}>
+            <div className={`mt-6 sm:mt-8 pt-4 border-t flex flex-wrap items-center gap-2 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/40'}`}>
+              <span className={`font-mono text-[10px] mr-1 sm:mr-2 uppercase tracking-widest block w-full sm:w-auto mb-1 sm:mb-0 ${isLight ? 'text-slate-400' : 'text-slate-600'}`}>
                 {language === 'pt' ? 'ARQUITETURA:' : 'STACK:'}
               </span>
-              {project.tags.map((tag, idx) => (
-                <span 
-                  key={idx} 
-                  className={`text-[10px] font-mono border px-2.5 py-1 rounded transition-all duration-300 ${
-                    isLight
-                      ? 'text-slate-500 bg-slate-50 border-slate-200 group-hover:border-slate-300 group-hover:text-slate-700'
-                      : 'text-slate-500 bg-slate-950/50 border-slate-900/80 group-hover:border-slate-800 group-hover:text-slate-400'
-                  }`}
-                >
-                  {tag}
-                </span>
-              ))}
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {project.tags.map((tag, idx) => (
+                  <span 
+                    key={idx} 
+                    className={`text-[9px] sm:text-[10px] font-mono border px-2 py-0.5 sm:px-2.5 sm:py-1 rounded transition-all duration-300 ${
+                      isLight
+                        ? 'text-slate-500 bg-slate-50 border-slate-200 group-hover:border-slate-300 group-hover:text-slate-700'
+                        : 'text-slate-500 bg-slate-950/50 border-slate-900/80 group-hover:border-slate-800 group-hover:text-slate-400'
+                    }`}
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
 
           </motion.div>

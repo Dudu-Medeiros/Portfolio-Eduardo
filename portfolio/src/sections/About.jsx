@@ -30,7 +30,6 @@ export default function About({ theme, language }) {
     transition: { duration: 0.6, ease: "easeOut" }
   }
 
-  // Traduções das capacidades do Marquee
   const capabilities = language === 'pt' ? [
     "Módulo de Autenticação e Segurança",
     "Gestão de Transações",
@@ -45,16 +44,15 @@ export default function About({ theme, language }) {
     "Financial Control Flows"
   ]
 
-  // Textos Gerais da Seção
   const texts = {
     title1: language === 'pt' ? 'TRANSFORME' : 'TRANSFORM',
     title2: language === 'pt' ? 'IDEIA' : 'IDEAS',
     title3: language === 'pt' ? 'EM CÓDIGO' : 'INTO CODE',
-    desc: language === 'pt' 
+    desc: language === 'pt'
       ? 'Desenvolvedor Front-End com trajetória sólida no desenvolvimento de aplicações escaláveis e sistemas complexos nas áreas financeira e de educação. Especialista na evolução e manutenção de arquiteturas SPA utilizando o ecossistema JavaScript (React, Angular), com histórico na entrega de módulos funcionais críticos.'
       : 'Front-End Developer with a solid track record in creating scalable applications and complex systems in the financial and education fields. Expert in evolving and maintaining SPA architectures using the JavaScript ecosystem (React, Angular), with a history of delivering critical core modules.',
     manifesto: language === 'pt'
-      ? '“Acredito que um bom software vai além de funcionar corretamente: ele precisa ser intuitivo, eficiente e proporcionar uma excelente experiência ao usuário. Por isso, combino atenção aos detalhes, boas práticas de desenvolvimento e aprendizado contínuo para criar soluções modernas, scaláveis e de alta qualidade.”'
+      ? '“Acredito que um bom software vai além de funcionar corretamente: ele precisa ser intuitivo, eficiente e proporcionar uma excelente experiência ao usuário. Por isso, combino atenção aos detalhes, boas práticas de desenvolvimento e aprendizado contínuo para criar soluções modernas, escaláveis e de alta qualidade.”'
       : '“I believe that good software goes beyond working correctly: it needs to be intuitive, efficient, and provide an excellent user experience. Therefore, I combine attention to detail, development best practices, and continuous learning to create modern, scalable, and high-quality solutions.”',
     nextSquadTitle: language === 'pt' ? 'COLOQUE SUA EMPRESA NESSA LISTA_' : 'PLACE YOUR COMPANY ON THIS LIST_',
     nextSquadDesc: language === 'pt'
@@ -111,7 +109,7 @@ export default function About({ theme, language }) {
         <div className="about-right-col">
           
           {/* SLIDER INTERATIVO */}
-          <motion.div 
+          <motion.div
             className="project-slider-container"
             {...scrollAnimation}
             transition={{ ...scrollAnimation.transition, delay: 0.2 }}
@@ -150,7 +148,7 @@ export default function About({ theme, language }) {
           <div className="editorial-timeline">
             
             {/* TRAJETÓRIA 1 */}
-            <motion.div 
+            <motion.div
               className="timeline-item active-node"
               {...scrollAnimation}
               transition={{ ...scrollAnimation.transition, delay: 0.3 }}
@@ -168,7 +166,7 @@ export default function About({ theme, language }) {
             </motion.div>
 
             {/* TRAJETÓRIA 2 */}
-            <motion.div 
+            <motion.div
               className="timeline-item"
               {...scrollAnimation}
               transition={{ ...scrollAnimation.transition, delay: 0.4 }}
@@ -185,7 +183,7 @@ export default function About({ theme, language }) {
             </motion.div>
 
             {/* TRAJETÓRIA 3 */}
-            <motion.div 
+            <motion.div
               className="timeline-item"
               {...scrollAnimation}
               transition={{ ...scrollAnimation.transition, delay: 0.5 }}
