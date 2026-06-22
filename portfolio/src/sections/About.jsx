@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import './About.css'
-import fluxoDashboard from "../assets/fluxoDashboard.png"
-import ADL from "../assets/ADL.png"
-import seakalmDashboard from "../assets/seakalmDashboard.png"
+import fluxoDashboard from "../assets/fluxoDashboard.PNG"
+import ADL from "../assets/ADL.PNG"
+import seakalmDashboard from "../assets/seakalmDashboard.PNG"
 
 export default function About({ theme, language }) {
   const [currentSlide, setCurrentSlide] = useState(0)
