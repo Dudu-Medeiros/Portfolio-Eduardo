@@ -2,7 +2,7 @@
 
 > Portfólio profissional desenvolvido para apresentar minha trajetória na área de tecnologia, projetos, conhecimentos e evolução como desenvolvedor.
 
-🌐 **[Acesse o portfólio online](https://portfolio-eduardo-iota.vercel.app/)**
+🌐 **[Acesse o portfólio online]([https://portfolio-eduardo-iota.vercel.app/](https://eduardoguilherme.vercel.app/))**
 
 ---
 
