@@ -91,9 +91,9 @@ Tenho buscado evoluir continuamente através de projetos práticos, estudos e ex
 
 ## 📫 Contato
 
-* 💼 **LinkedIn:** [Eduardo Guilherme](https://www.linkedin.com/)
+* 💼 **LinkedIn:** [Eduardo Guilherme]([https://www.linkedin.com/](https://www.linkedin.com/in/eduardo-guilherme-5b41a9266/))
 * 🐙 **GitHub:** [Dudu-Medeiros](https://github.com/Dudu-Medeiros)
-* 🌐 **Portfólio:** [portfolio-eduardo-iota.vercel.app](https://portfolio-eduardo-iota.vercel.app/)
+* 🌐 **Portfólio:** [portfolio-eduardo-iota.vercel.app]([https://portfolio-eduardo-iota.vercel.app/](https://eduardoguilherme.vercel.app/))
 
 ---
 
