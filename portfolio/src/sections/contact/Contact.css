@@ -1,0 +1,368 @@
+@reference "../../styles/global.css";
+
+.contact-section {
+  @apply w-full py-16 md:py-24 lg:py-28 border-t border-slate-900/60 transition-colors duration-500;
+}
+
+.contact-container {
+  @apply w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8;
+}
+
+.contact-header {
+  @apply flex gap-4 md:gap-5 mb-12 md:mb-16 lg:mb-20;
+}
+
+.contact-header__line {
+  @apply w-px bg-tech-cyan/30 shrink-0;
+}
+
+.contact-header__eyebrow {
+  @apply block text-tech-cyan font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-2;
+}
+
+.contact-header__title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase text-slate-100 transition-colors duration-500;
+}
+
+.contact-header__title span {
+  @apply text-slate-500 font-light transition-colors duration-500;
+}
+
+.contact-header__description {
+  @apply max-w-2xl mt-4 text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed transition-colors duration-500;
+}
+
+.contact-grid {
+  @apply grid grid-cols-1 lg:grid-cols-12 gap-7 md:gap-10 lg:gap-12 items-start;
+}
+
+.contact-sidebar {
+  @apply lg:col-span-5;
+}
+
+.contact-form-wrapper {
+  @apply lg:col-span-7;
+}
+
+.contact-panel,
+.contact-form {
+  @apply relative rounded-2xl border border-slate-900 bg-[#070b14]/90 transition-all duration-500;
+}
+
+.contact-panel {
+  @apply p-5 sm:p-6 md:p-7 overflow-hidden;
+}
+
+.contact-panel:hover,
+.contact-form:hover {
+  @apply border-tech-cyan/20;
+  box-shadow: 0 18px 50px rgba(0, 240, 255, 0.04);
+}
+
+.contact-panel__corner {
+  @apply absolute w-4 h-4 pointer-events-none border-slate-800 transition-colors duration-500;
+}
+
+.contact-panel__corner--top-left {
+  @apply top-0 left-0 border-t border-l;
+}
+
+.contact-panel__corner--bottom-right {
+  @apply right-0 bottom-0 border-r border-b;
+}
+
+.contact-panel:hover .contact-panel__corner {
+  @apply border-tech-cyan/60;
+}
+
+.contact-panel__label {
+  @apply block font-mono text-[9px] sm:text-[10px] tracking-[0.2em] text-slate-600 uppercase;
+}
+
+.contact-panel__intro {
+  @apply mt-3 mb-6 text-xs sm:text-sm leading-relaxed text-slate-400 max-w-md;
+}
+
+.contact-channels {
+  @apply flex flex-col gap-2.5;
+}
+
+.contact-channel {
+  @apply flex items-center justify-between gap-4 p-3.5 sm:p-4 rounded-lg border border-slate-900/80 bg-slate-950/30 transition-all duration-300;
+}
+
+.contact-channel:hover {
+  @apply border-tech-cyan/30 bg-tech-cyan/[0.02];
+  transform: translateX(3px);
+}
+
+.contact-channel__identity {
+  @apply flex items-center gap-3 min-w-0;
+}
+
+.contact-channel__icon {
+  @apply flex items-center justify-center w-8 h-8 rounded-md border border-slate-900 bg-slate-950 text-slate-500 transition-colors duration-300;
+}
+
+.contact-channel:hover .contact-channel__icon {
+  @apply text-tech-cyan border-tech-cyan/20;
+}
+
+.contact-channel__name {
+  @apply font-mono text-[10px] sm:text-xs tracking-wider text-slate-400 transition-colors duration-300;
+}
+
+.contact-channel:hover .contact-channel__name {
+  @apply text-slate-200;
+}
+
+.contact-channel__action {
+  @apply flex items-center gap-2 shrink-0 font-mono text-[9px] tracking-wider text-slate-600 transition-colors duration-300;
+}
+
+.contact-channel:hover .contact-channel__action {
+  @apply text-tech-cyan;
+}
+
+.contact-channel__action svg {
+  @apply text-[8px];
+}
+
+.contact-panel__status {
+  @apply mt-6 pt-4 border-t border-slate-900/80 flex items-center gap-2 font-mono text-[9px] tracking-[0.18em] text-slate-600;
+}
+
+.contact-panel__status-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse;
+}
+
+.contact-form {
+  @apply p-5 sm:p-6 md:p-8;
+}
+
+.contact-form__header {
+  @apply flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 pb-5 border-b border-slate-900/80;
+}
+
+.contact-form__code {
+  @apply block font-mono text-[9px] tracking-[0.2em] text-tech-cyan mb-1;
+}
+
+.contact-form__title {
+  @apply text-lg sm:text-xl font-black tracking-wide uppercase text-slate-200;
+}
+
+.contact-form__indicator {
+  @apply inline-flex items-center self-start rounded border border-tech-cyan/10 bg-tech-cyan/5 px-2 py-1 font-mono text-[8px] tracking-[0.18em] text-tech-cyan;
+}
+
+.contact-form__fields {
+  @apply flex flex-col gap-5 mt-6;
+}
+
+.contact-form__fields--split {
+  @apply grid grid-cols-1 sm:grid-cols-2 gap-5;
+}
+
+.contact-field {
+  @apply flex flex-col gap-2;
+}
+
+.contact-field label {
+  @apply font-mono text-[10px] sm:text-[11px] tracking-wider uppercase text-slate-500;
+}
+
+.contact-field input,
+.contact-field textarea {
+  @apply w-full rounded-lg border border-slate-900 bg-slate-950/60 px-4 py-3 text-xs sm:text-sm font-mono text-slate-200 outline-none transition-all duration-300;
+}
+
+.contact-field input {
+  @apply h-12;
+}
+
+.contact-field textarea {
+  @apply min-h-[150px] resize-y leading-relaxed;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  @apply text-slate-700;
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  @apply border-tech-cyan/40 bg-slate-950;
+  box-shadow: 0 0 0 3px rgba(0, 240, 255, 0.04);
+}
+
+.contact-status {
+  @apply mt-5 flex items-center gap-3 rounded-lg border px-4 py-3 font-mono text-[10px] leading-relaxed;
+}
+
+.contact-status--success {
+  @apply border-emerald-500/20 bg-emerald-500/[0.04] text-emerald-400;
+}
+
+.contact-status--error {
+  @apply border-rose-500/20 bg-rose-500/[0.04] text-rose-400;
+}
+
+.contact-status__indicator {
+  @apply w-1.5 h-1.5 rounded-full shrink-0;
+}
+
+.contact-status--success .contact-status__indicator {
+  @apply bg-emerald-400;
+}
+
+.contact-status--error .contact-status__indicator {
+  @apply bg-rose-400;
+}
+
+.contact-form__footer {
+  @apply mt-6 pt-5 border-t border-slate-900/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4;
+}
+
+.contact-form__hint {
+  @apply font-mono text-[8px] sm:text-[9px] tracking-[0.16em] text-slate-600 uppercase;
+}
+
+.contact-submit {
+  @apply inline-flex items-center justify-center gap-3 w-full sm:w-auto px-5 py-3 rounded-lg border border-slate-800 bg-slate-950/40 text-slate-400 font-mono text-[10px] sm:text-xs font-bold tracking-wider transition-all duration-300;
+}
+
+.contact-submit:hover:not(:disabled) {
+  @apply border-tech-cyan/40 bg-tech-cyan/5 text-tech-cyan;
+}
+
+.contact-submit:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.contact-submit__indicator {
+  @apply w-1.5 h-1.5 rounded-full bg-tech-cyan animate-pulse;
+}
+
+.contact-submit__indicator.is-loading {
+  @apply bg-amber-400 animate-ping;
+}
+
+.contact-section.light-mode {
+  @apply border-slate-200;
+}
+
+.contact-section.light-mode .contact-header__title {
+  @apply text-slate-900;
+}
+
+.contact-section.light-mode .contact-header__title span {
+  @apply text-slate-400;
+}
+
+.contact-section.light-mode .contact-header__description {
+  @apply text-slate-500;
+}
+
+.contact-section.light-mode .contact-panel,
+.contact-section.light-mode .contact-form {
+  @apply bg-white border-slate-200;
+}
+
+.contact-section.light-mode .contact-panel:hover,
+.contact-section.light-mode .contact-form:hover {
+  @apply border-tech-cyan/30;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.07);
+}
+
+.contact-section.light-mode .contact-panel__corner {
+  @apply border-slate-300;
+}
+
+.contact-section.light-mode .contact-panel:hover .contact-panel__corner {
+  @apply border-tech-cyan/60;
+}
+
+.contact-section.light-mode .contact-panel__intro {
+  @apply text-slate-500;
+}
+
+.contact-section.light-mode .contact-channel {
+  @apply bg-slate-50 border-slate-200;
+}
+
+.contact-section.light-mode .contact-channel:hover {
+  @apply bg-tech-cyan/[0.02] border-tech-cyan/30;
+}
+
+.contact-section.light-mode .contact-channel__icon {
+  @apply bg-white border-slate-200 text-slate-400;
+}
+
+.contact-section.light-mode .contact-channel:hover .contact-channel__icon {
+  @apply text-tech-cyan border-tech-cyan/20;
+}
+
+.contact-section.light-mode .contact-channel__name {
+  @apply text-slate-600;
+}
+
+.contact-section.light-mode .contact-channel:hover .contact-channel__name {
+  @apply text-slate-800;
+}
+
+.contact-section.light-mode .contact-channel__action {
+  @apply text-slate-400;
+}
+
+.contact-section.light-mode .contact-panel__status,
+.contact-section.light-mode .contact-form__header,
+.contact-section.light-mode .contact-form__footer {
+  @apply border-slate-200;
+}
+
+.contact-section.light-mode .contact-form__title {
+  @apply text-slate-800;
+}
+
+.contact-section.light-mode .contact-field label {
+  @apply text-slate-500;
+}
+
+.contact-section.light-mode .contact-field input,
+.contact-section.light-mode .contact-field textarea {
+  @apply bg-slate-50 border-slate-200 text-slate-800;
+}
+
+.contact-section.light-mode .contact-field input::placeholder,
+.contact-section.light-mode .contact-field textarea::placeholder {
+  @apply text-slate-300;
+}
+
+.contact-section.light-mode .contact-field input:focus,
+.contact-section.light-mode .contact-field textarea:focus {
+  @apply bg-white border-tech-cyan/50;
+}
+
+.contact-section.light-mode .contact-submit {
+  @apply bg-slate-50 border-slate-200 text-slate-500;
+}
+
+.contact-section.light-mode .contact-submit:hover:not(:disabled) {
+  @apply bg-tech-cyan/5 border-tech-cyan/40 text-tech-cyan;
+}
+
+@media (max-width: 639px) {
+  .contact-section {
+    @apply py-16;
+  }
+
+  .contact-panel,
+  .contact-form {
+    @apply rounded-xl;
+  }
+
+  .contact-form__title {
+    @apply text-base;
+  }
+}

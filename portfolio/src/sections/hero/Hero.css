@@ -1,166 +1,592 @@
-/* Hero Container e Grid */
-@reference "../styles/global.css";
-
 .hero-section {
-  @apply min-h-screen flex flex-col justify-center pt-24 lg:pt-0 relative transition-colors duration-500;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 6vw 80px;
 }
 
 .hero-grid {
-  @apply grid grid-cols-1 lg:grid-cols-12 gap-8 items-center w-full;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(320px, 5fr);
+  align-items: center;
+  gap: 50px;
 }
 
-/* Tipografia Principal */
+.hero-content {
+  max-width: 760px;
+}
+
 .hero-subtitle {
-  @apply text-tech-cyan font-mono mb-5 text-sm md:text-base tracking-[0.2em];
+  margin: 0 0 20px;
+
+  color: #00e5ff;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
 }
 
 .hero-title {
-  @apply text-5xl md:text-7xl font-black mb-4 tracking-tighter text-slate-100 transition-colors duration-500;
+  margin: 0 0 20px;
+
+  color: #f1f5f9;
+
+  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+}
+
+.hero-title span {
+  color: #00e5ff;
 }
 
 .hero-heading {
-  @apply text-2xl md:text-5xl font-bold text-slate-400 mb-6 leading-tight transition-colors duration-500;
+  max-width: 700px;
+  margin: 0 0 24px;
+
+  color: #94a3b8;
+
+  font-size: clamp(1.7rem, 3.5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
 }
 
 .hero-description {
-  @apply max-w-xl text-slate-400 text-base md:text-lg mb-10 leading-relaxed transition-colors duration-500;
+  max-width: 650px;
+  margin: 0 0 40px;
+
+  color: #94a3b8;
+
+  font-size: 1rem;
+  line-height: 1.8;
 }
 
-/* Botões do Painel Principal */
-.btn-primary {
-  @apply relative px-7 py-4 font-mono text-sm text-tech-cyan border border-tech-cyan rounded hover:bg-tech-cyan/10 transition-all duration-300 shadow-[0_0_15px_rgba(0,240,255,0.1)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] cursor-pointer;
+.hero-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-.btn-secondary {
-  @apply flex items-center gap-2 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer transition-colors;
+.hero-actions__main {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
 }
 
+.btn-primary,
+.btn-secondary,
 .btn-cv {
-  @apply flex items-center gap-3 px-7 py-4 font-mono text-sm bg-slate-800 text-slate-100 rounded hover:bg-slate-700 transition-all duration-300 border border-slate-700 cursor-pointer transition-colors;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  min-height: 52px;
+  padding: 0 26px;
+
+  border-radius: 4px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
 }
 
-/* Área da Imagem / Memoji */
+.btn-primary {
+  border: 1px solid #00e5ff;
+
+  color: #00e5ff;
+  background: transparent;
+}
+
+.btn-primary:hover {
+  background: rgba(0, 229, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.btn-secondary,
+.btn-cv {
+  border: 1px solid #334155;
+
+  color: #f1f5f9;
+  background: #1e293b;
+}
+
+.btn-secondary:hover,
+.btn-cv:hover {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
 .hero-image-container {
-  @apply lg:col-span-5 flex justify-center relative;
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 460px;
 }
 
 .hero-glow-effect {
-  @apply absolute inset-0 bg-tech-cyan/20 rounded-full blur-[100px] transform scale-75 group-hover:scale-110 group-hover:bg-tech-cyan/30 transition-all duration-500 pointer-events-none;
+  position: absolute;
+  width: 80%;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+  background: rgba(0, 229, 255, 0.2);
+  filter: blur(100px);
+
+  transition:
+    transform 0.5s ease,
+    background-color 0.5s ease;
+}
+
+.hero-image-container:hover .hero-glow-effect {
+  transform: scale(1.1);
+  background: rgba(0, 229, 255, 0.3);
 }
 
 .hero-avatar-wrapper {
-  @apply relative w-80 h-80 lg:w-[460px] lg:h-[460px] flex items-center justify-center select-none;
+  position: relative;
+
+  width: min(460px, 100%);
+  aspect-ratio: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  user-select: none;
 }
 
 .hero-avatar-img {
-  @apply w-full h-full object-contain filter drop-shadow-[0_0_20px_rgba(0,240,255,0.15)] group-hover:drop-shadow-[0_0_35px_rgba(0,240,255,0.35)] transition-all duration-500;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 0 20px rgba(0, 229, 255, 0.15)
+  );
+
+  transition: filter 0.5s ease;
 }
 
-/* Modais Estrutura Geral */
-.modal-overlay-fixed {
-  @apply fixed inset-0 w-screen h-screen flex items-center justify-center p-4;
+.hero-image-container:hover .hero-avatar-img {
+  filter: drop-shadow(
+    0 0 35px rgba(0, 229, 255, 0.35)
+  );
 }
 
-.modal-backdrop-dark {
-  @apply absolute inset-0 bg-slate-950/60 backdrop-blur-xl;
+.hero-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
 }
 
-.modal-backdrop-blur {
-  @apply absolute inset-0 bg-slate-950/40 backdrop-blur-xl;
+.hero-modal__backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(16px);
 }
 
-/* Modal de Contato */
-.modal-contact-card {
-  @apply bg-slate-900 border border-tech-cyan/20 rounded-2xl p-6 w-full max-w-sm relative z-10 shadow-2xl transition-colors duration-500;
+.hero-modal__backdrop--blur {
+  background: rgba(2, 6, 23, 0.45);
+  backdrop-filter: blur(18px);
 }
 
-.modal-contact-title {
-  @apply text-xl font-bold text-slate-100 mb-2 transition-colors duration-500;
+.contact-modal {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 390px;
+
+  padding: 28px;
+
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 16px;
+
+  background: #0f172a;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45);
 }
 
-.btn-close-modal {
-  @apply absolute top-4 right-4 text-slate-400 hover:text-tech-cyan transition-colors cursor-pointer;
+.modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  background: transparent;
+
+  color: #94a3b8;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
 }
 
-.btn-modal-whatsapp {
-  @apply flex items-center justify-center gap-3 w-full py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-sm rounded-xl transition-all cursor-pointer font-bold;
+.modal-close:hover {
+  color: #00e5ff;
 }
 
-.btn-modal-gmail {
-  @apply flex items-center justify-center gap-3 w-full py-4 bg-slate-800 hover:bg-slate-700 text-slate-100 font-mono text-sm rounded-xl border border-slate-700 transition-all cursor-pointer font-bold transition-colors;
+.contact-modal > .modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
 }
 
-/* Modal do Currículo */
-.modal-cv-container {
-  @apply relative w-full max-w-4xl h-[80vh] bg-[#0b1221] flex flex-col overflow-hidden shadow-2xl rounded-2xl border border-tech-cyan/20 mt-16 lg:mt-0 transition-colors duration-500;
+.contact-modal__title {
+  margin: 0;
+  padding-right: 25px;
+
+  color: #f1f5f9;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
-.modal-cv-header {
-  @apply w-full bg-[#0f172a] px-6 py-5 flex items-center justify-between border-b border-tech-cyan/10 transition-colors duration-500;
+.contact-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  margin-top: 26px;
+}
+
+.contact-modal__whatsapp,
+.contact-modal__gmail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 52px;
+
+  border-radius: 10px;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.contact-modal__whatsapp {
+  background: #059669;
+  color: #fff;
+}
+
+.contact-modal__whatsapp:hover {
+  background: #10b981;
+  transform: translateY(-2px);
+}
+
+.contact-modal__gmail {
+  border: 1px solid #334155;
+
+  background: #1e293b;
+  color: #f1f5f9;
+}
+
+.contact-modal__gmail:hover {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
+.cv-modal {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 1000px;
+  height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 0;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(0, 229, 255, 0.2);
+  border-radius: 16px;
+
+  background: #0b1221;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+.cv-modal__header {
+  width: 100%;
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 16px 24px;
+
+  border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+
+  background: #0f172a;
+}
+
+.cv-modal__header h3 {
+  margin: 0;
+
+  color: #00e5ff;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+.cv-modal__actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
 }
 
 .btn-cv-download {
-  @apply relative px-5 py-2.5 font-mono text-xs md:text-sm text-tech-cyan border border-tech-cyan/50 rounded hover:bg-tech-cyan hover:text-slate-950 transition-all duration-300 flex items-center gap-2 cursor-pointer font-bold shadow-[0_0_10px_rgba(0,240,255,0.1)] hover:shadow-[0_0_20px_rgba(0,240,255,0.3)];
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 40px;
+  padding: 0 18px;
+
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  border-radius: 4px;
+
+  color: #00e5ff;
+  background: transparent;
+
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.btn-close-cv-modal {
-  @apply text-slate-400 hover:text-tech-cyan transition-colors cursor-pointer;
+.btn-cv-download:hover {
+  background: #00e5ff;
+  color: #020617;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
 }
 
 .iframe-wrapper {
-  @apply flex-1 w-full bg-[#0b1221] overflow-hidden transition-colors duration-500;
+  flex: 1;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #0b1221;
 }
 
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
 
-/* ==========================================================================
-   MODO LIGHT REFINADO (HERO INDUSTRIAL PALETTE)
-   ========================================================================== */
-.hero-section.light-mode .hero-title {
-  @apply text-slate-900;
+  border: 0;
+
+  opacity: 0.95;
 }
 
-.hero-section.light-mode .hero-heading {
-  @apply text-slate-500;
+.hero-section--light .hero-title {
+  color: #0f172a;
 }
 
-.hero-section.light-mode .hero-description {
-  @apply text-slate-600;
+.hero-section--light .hero-heading {
+  color: #64748b;
 }
 
-/* Botões Invertidos no Modo Claro para Alto Contraste */
-.hero-section.light-mode .btn-secondary {
-  @apply bg-slate-200 text-slate-800 border-slate-300/80 hover:bg-slate-300/60;
+.hero-section--light .hero-description {
+  color: #475569;
 }
 
-.hero-section.light-mode .btn-cv {
-  @apply bg-slate-200 text-slate-800 border-slate-300/80 hover:bg-slate-300/60;
+.hero-section--light .btn-secondary,
+.hero-section--light .btn-cv {
+  border-color: #cbd5e1;
+  background: #e2e8f0;
+  color: #1e293b;
 }
 
-/* Modais Claros */
-.hero-section.light-mode .modal-contact-card {
-  @apply bg-white border-slate-200 shadow-2xl;
+.hero-section--light .btn-secondary:hover,
+.hero-section--light .btn-cv:hover {
+  background: #cbd5e1;
 }
 
-.hero-section.light-mode .modal-contact-title {
-  @apply text-slate-900;
+.contact-modal--light {
+  border-color: #e2e8f0;
+  background: #ffffff;
 }
 
-.hero-section.light-mode .btn-modal-gmail {
-  @apply bg-slate-100 text-slate-800 border-slate-200 hover:bg-slate-200;
+.contact-modal--light .contact-modal__title {
+  color: #0f172a;
 }
 
-.hero-section.light-mode .modal-cv-container {
-  @apply bg-slate-50 border-slate-200;
+.contact-modal--light .contact-modal__gmail {
+  border-color: #e2e8f0;
+  background: #f1f5f9;
+  color: #1e293b;
 }
 
-.hero-section.light-mode .modal-cv-header {
-  @apply bg-white border-slate-200;
+.contact-modal--light .contact-modal__gmail:hover {
+  background: #e2e8f0;
 }
 
-.hero-section.light-mode .iframe-wrapper {
-  @apply bg-slate-200;
+.cv-modal--light {
+  border-color: #e2e8f0;
+  background: #f8fafc;
 }
 
-.hero-section.light-mode .hero-glow-effect {
-  @apply bg-tech-cyan/10 blur-[130px]; /* Brilho mais sutil no fundo claro */
+.cv-modal--light .cv-modal__header {
+  border-color: #e2e8f0;
+  background: #ffffff;
+}
+
+.cv-modal--light .iframe-wrapper {
+  background: #e2e8f0;
+}
+
+@media (max-width: 1000px) {
+  .hero-section {
+    padding-top: 130px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero-content {
+    max-width: 800px;
+  }
+
+  .hero-image-container {
+    min-height: 360px;
+  }
+
+  .hero-avatar-wrapper {
+    width: min(380px, 80vw);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    min-height: auto;
+    padding: 120px 5vw 70px;
+  }
+
+  .hero-grid {
+    gap: 30px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.8rem, 14vw, 4rem);
+  }
+
+  .hero-heading {
+    font-size: 1.7rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .hero-actions__main {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-cv {
+    width: 100%;
+  }
+
+  .hero-image-container {
+    min-height: 300px;
+  }
+
+  .hero-avatar-wrapper {
+    width: min(320px, 85vw);
+  }
+
+  .cv-modal {
+    height: 85vh;
+    border-radius: 12px;
+  }
+
+  .cv-modal__header {
+    padding: 14px 16px;
+  }
+
+  .cv-modal__header h3 {
+    font-size: 0.8rem;
+  }
+
+  .cv-modal__actions {
+    gap: 10px;
+  }
+
+  .btn-cv-download {
+    padding: 0 10px;
+    font-size: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-avatar-wrapper {
+    animation: none;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .btn-cv,
+  .hero-avatar-img {
+    transition: none;
+  }
 }

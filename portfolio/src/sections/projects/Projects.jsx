@@ -1,178 +1,311 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FaGithub } from 'react-icons/fa'
+import { FaArrowUpRightFromSquare, FaGithub } from 'react-icons/fa6'
 
-export default function Projects({ theme, language }) {
-  const projectsData = [
+import fluxoDashboard from '../../assets/images/fluxoDashboard.PNG'
+import ADL from '../../assets/images/ADL.PNG'
+import seakalmDashboard from '../../assets/images/seakalmDashboard.PNG'
+
+import './Projects.css'
+
+const PROJECT_IMAGES = {
+  fluxo: fluxoDashboard,
+  adventure: ADL,
+  seakalm: seakalmDashboard,
+}
+
+const getProjectsData = (language) => {
+  const isPt = language === 'pt'
+
+  return [
     {
       id: 1,
-      title: language === 'pt' ? "FLUXO — GERENCIAMENTO FINANCEIRO" : "FLUXO — FINANCIAL MANAGEMENT",
-      status: "ACTIVE_PRODUCTION",
-      description: language === 'pt'
-        ? "Plataforma inteligente de controladoria residencial desenvolvida sob medida para substituir planilhas complexas. Possui fluxos ágeis para lançamento de entradas e saídas, arquitetura baseada em Context API para persistência leve e uma interface projetada com foco em usabilidade doméstica de alta fidelidade."
-        : "Intelligent residential financial control platform tailored to replace complex spreadsheets. It features agile streams for income and expense entries, lightweight persistence architecture built on Context API, and a interface designed focused on high-fidelity household usability.",
-      tags: ["React", "JavaScript", "Tailwind CSS", "Bootstrap", "Context API", "Python", "Flask" ],
-      githubLink: "https://github.com/Dudu-Medeiros?tab=repositories"
+      code: 'FLX_01',
+      slug: 'fluxo',
+      title: isPt
+        ? 'FLUXO — GERENCIAMENTO FINANCEIRO'
+        : 'FLUXO — FINANCIAL MANAGEMENT',
+      status: 'ACTIVE_PRODUCTION',
+      image: PROJECT_IMAGES.fluxo,
+      description: isPt
+        ? 'Plataforma de controladoria financeira residencial desenvolvida para substituir planilhas complexas. Possui fluxos para lançamento de entradas e saídas, persistência com Context API e uma interface desenvolvida com foco em usabilidade e organização.'
+        : 'Residential financial management platform designed to replace complex spreadsheets. It features income and expense workflows, Context API persistence, and an interface focused on usability and organization.',
+      tags: [
+        'React',
+        'JavaScript',
+        'Tailwind CSS',
+        'Bootstrap',
+        'Context API',
+        'Python',
+        'Flask',
+      ],
+      githubLink: 'https://github.com/Dudu-Medeiros?tab=repositories',
     },
     {
       id: 2,
-      title: language === 'pt' ? "PHYSICOLOG — ANÁLISES DIÁRIAS" : "PHYSICOLOG — DAILY ANALYSIS",
-      status: "CORE_STABLE",
-      description: language === 'pt'
-        ? "Sistema web voltado ao acompanhamento cognitivo e organização de rotinas diárias. Integra uma interface minimalista de diário conectada a uma estrutura lógica no backend para indexação de entradas, tratamento de sessões seguras e análise cronológica de dados do usuário."
-        : "Web system geared towards cognitive tracking and daily routine organization. It integrates a minimalist diary interface connected to a backend logical structure for entry indexing, secure session handling, and chronological user data analysis.",
-      tags: ["Javascript","HTML", "CSS", "Python", "Flask", "MySQL"],
-      githubLink: "https://github.com/Dudu-Medeiros/PhysicoLog"
+      code: 'PHY_02',
+      slug: 'physicolog',
+      title: isPt
+        ? 'PHYSICOLOG — ANÁLISES DIÁRIAS'
+        : 'PHYSICOLOG — DAILY ANALYSIS',
+      status: 'CORE_STABLE',
+      image: null,
+      description: isPt
+        ? 'Sistema web voltado ao acompanhamento cognitivo e à organização de rotinas diárias. Integra uma interface minimalista de diário a uma estrutura de backend responsável por indexação de entradas, sessões seguras e análise cronológica dos dados do usuário.'
+        : 'Web system focused on cognitive tracking and daily routine organization. It combines a minimalist diary interface with a backend structure responsible for entry indexing, secure sessions, and chronological analysis of user data.',
+      tags: [
+        'JavaScript',
+        'HTML',
+        'CSS',
+        'Python',
+        'Flask',
+        'MySQL',
+      ],
+      githubLink: 'https://github.com/Dudu-Medeiros/PhysicoLog',
     },
     {
       id: 3,
-      title: language === 'pt' ? "SEAKALM — SAÚDE MENTAL INFANTIL" : "SEAKALM — CHILD MENTAL HEALTH",
-      status: "ECO_SYSTEM",
-      description: language === 'pt'
-        ? "Aplicação voltada para o gerenciamento de saúde mental, controle de estresse e monitoramento de bem-estar para tripulações marítimas. Desenvolvido com foco em interfaces de alta legibilidade para condições críticas de navegação, utilizando roteamento dinâmico e consumo otimizado de estados."
-        : "Application focused on mental health management, stress control, and well-being monitoring for maritime crews. Developed with a high-readability UI tailored for critical navigation environments, utilizing dynamic routing and optimized state consumption.",
-      tags: ["Javascript", "HTML", "CSS", "Java", "Springboot", "MySQL", "APIs RESTful"],
-      githubLink: "https://github.com/Dudu-Medeiros/SeaKalm"
+      code: 'SEA_03',
+      slug: 'seakalm',
+      title: isPt
+        ? 'SEAKALM — SAÚDE MENTAL INFANTIL'
+        : 'SEAKALM — CHILD MENTAL HEALTH',
+      status: 'ECOSYSTEM',
+      image: PROJECT_IMAGES.seakalm,
+      description: isPt
+        ? 'Aplicação voltada ao gerenciamento de saúde mental, controle de estresse e monitoramento de bem-estar. Desenvolvida com foco em alta legibilidade, navegação estruturada e organização de estados para uma experiência digital clara e acessível.'
+        : 'Application focused on mental health management, stress control, and well-being monitoring. Developed with an emphasis on readability, structured navigation, and organized state management for a clear and accessible digital experience.',
+      tags: [
+        'JavaScript',
+        'HTML',
+        'CSS',
+        'Java',
+        'Spring Boot',
+        'MySQL',
+        'REST APIs',
+      ],
+      githubLink: 'https://github.com/Dudu-Medeiros/SeaKalm',
     },
     {
       id: 4,
-      title: language === 'pt' ? "AVENTURA DAS LETRAS — SISTEMA HOSPITALAR ACADÊMICO" : "AVENTURA DAS LETRAS — ACADEMIC HOSPITAL SYSTEM",
-      status: "SYSTEM_INTEGRATION",
-      description: language === 'pt'
-        ? "Desenvolvimento e integração de módulos funcionais para a plataforma institutional do IMIP. Focado na otimização de fluxos de dados internos, tratamento de regras de negócio complexas para ambientes acadêmicos/médicos e refinamento de interfaces operacionais para manipulação de registros estruturados."
-        : "Development and integration of functional modules for IMIP's institutional platform. Focused on optimizing internal data flows, handling complex business logic for academic/medical environments, and refining operational interfaces for structured record manipulation.",
-      tags: ["React", "JavaScript", "Tailwind CSS", "Python", "Flask", "API Integration", "Git / Agile"],
-      githubLink: "https://github.com/Dudu-Medeiros/Aventura_das_letras"
-    }
+      code: 'ADL_04',
+      slug: 'aventura',
+      title: isPt
+        ? 'AVENTURA DAS LETRAS — SISTEMA HOSPITALAR ACADÊMICO'
+        : 'AVENTURA DAS LETRAS — ACADEMIC HOSPITAL SYSTEM',
+      status: 'SYSTEM_INTEGRATION',
+      image: PROJECT_IMAGES.adventure,
+      description: isPt
+        ? 'Desenvolvimento e integração de módulos funcionais para uma plataforma institucional. O projeto envolve otimização de fluxos internos, aplicação de regras de negócio e refinamento de interfaces para manipulação de registros estruturados.'
+        : 'Development and integration of functional modules for an institutional platform. The project involves optimizing internal workflows, applying business rules, and refining interfaces for structured record management.',
+      tags: [
+        'React',
+        'JavaScript',
+        'Tailwind CSS',
+        'Python',
+        'Flask',
+        'API Integration',
+        'Git',
+        'Agile',
+      ],
+      githubLink: 'https://github.com/Dudu-Medeiros/Aventura_das_letras',
+    },
   ]
+}
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    whileInView: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2 }
-    }
-  }
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.14,
+    },
+  },
+}
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    whileInView: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  }
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: 'easeOut',
+    },
+  },
+}
 
-  const isLight = theme === 'light';
+export default function Projects({ theme, language }) {
+  const isLight = theme === 'light'
+  const isPt = language === 'pt'
+  const projects = getProjectsData(language)
 
   return (
-    <section id="projects" className={`py-16 md:py-24 lg:py-28 border-t relative transition-colors duration-500 ${isLight ? 'border-slate-200' : 'border-slate-900/60'}`}>
-      
-      {/* Cabeçalho Técnico HUD */}
-      <div className={`mb-12 md:mb-16 lg:mb-20 text-left relative pl-4 border-l transition-colors duration-500 ${isLight ? 'border-tech-cyan/60' : 'border-tech-cyan/30'}`}>
-        <span className="text-tech-cyan font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase block mb-2">
-          // MAIN_REPOSITORY_LOG
-        </span>
-        <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase transition-colors duration-500 ${isLight ? 'text-slate-900' : 'text-slate-100'}`}>
-          {language === 'pt' ? 'PROJETOS ' : 'EXECUTED '}
-          <span className={`font-light transition-colors duration-500 ${isLight ? 'text-slate-400' : 'text-slate-500'}`}>
-            {language === 'pt' ? 'EXECUTADOS' : 'PROJECTS'}
-          </span>
-        </h2>
-      </div>
+    <section
+      id="projects"
+      className={`projects-section ${isLight ? 'light-mode' : ''}`}
+    >
+      <div className="projects-container">
+        <header className="projects-header">
+          <div className="projects-header__line" />
 
-      {/* Container Principal */}
-      <motion.div 
-        className="flex flex-col gap-6 md:gap-10 lg:gap-12 w-full"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="whileInView"
-        viewport={{ once: true, margin: "-80px" }}
-      >
-        {projectsData.map((project) => (
-          <motion.div
-            key={project.id}
-            variants={cardVariants}
-            className={`relative rounded-xl p-5 sm:p-6 md:p-8 flex flex-col justify-between group transition-all duration-500 overflow-hidden border ${
-              isLight 
-                ? 'bg-white border-slate-200 shadow-md hover:border-tech-cyan/50 hover:shadow-lg' 
-                : 'bg-[#070b14]/90 border-slate-900 hover:border-tech-cyan/30'
-            }`}
-          >
-            {/* Miras Angulares de Interface nos Cantos */}
-            <div className={`absolute top-0 left-0 w-3 h-3 border-t border-l group-hover:border-tech-cyan transition-colors duration-500 ${isLight ? 'border-slate-300' : 'border-slate-800'}`} />
-            <div className={`absolute top-0 right-0 w-3 h-3 border-t border-r group-hover:border-tech-cyan transition-colors duration-500 ${isLight ? 'border-slate-300' : 'border-slate-800'}`} />
-            <div className={`absolute bottom-0 left-0 w-3 h-3 border-b border-l group-hover:border-tech-cyan transition-colors duration-500 ${isLight ? 'border-slate-300' : 'border-slate-800'}`} />
-            <div className={`absolute bottom-0 right-0 w-3 h-3 border-b border-r group-hover:border-tech-cyan transition-colors duration-500 ${isLight ? 'border-slate-300' : 'border-slate-800'}`} />
+          <div>
+            <span className="projects-header__eyebrow">
+              // MAIN_REPOSITORY_LOG
+            </span>
 
-            {/* Linha de Varredura Laser de Fundo */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_95%,rgba(0,240,255,0.03)_98%,transparent)] bg-[size:100%_400%] animate-[scan_6s_linear_infinite] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-            <div className="w-full">
-              {/* Metadados Superiores e Botão de Ação - Responsivo para Mobile */}
-              <div className={`flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 border-b pb-4 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/60'}`}>
-                <div className="flex flex-wrap items-center gap-2 sm:gap-3 font-mono text-[10px] tracking-wider">
-                  <span className={isLight ? 'text-slate-400' : 'text-slate-600'}>ID: 00{project.id}</span>
-                  <span className={isLight ? 'text-slate-300' : 'text-slate-700'}>//</span>
-                  <span className={`px-2 py-0.5 rounded border whitespace-nowrap ${isLight ? 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/20 font-medium' : 'text-tech-cyan bg-tech-cyan/5 border-tech-cyan/10'}`}>
-                    STATUS: {project.status}
-                  </span>
-                </div>
-                
-                {/* Botão de Acesso Direto com Internacionalização */}
-                <a 
-                  href={project.githubLink} 
-                  target="_blank" 
-                  rel="noreferrer"
-                  className={`flex items-center justify-center gap-2 px-3 sm:px-4 py-2 sm:py-1.5 rounded-md border font-mono text-xs transition-all duration-300 shadow-sm w-full sm:w-auto ${
-                    isLight 
-                      ? 'border-slate-200 bg-slate-50 text-slate-500 group-hover:text-tech-cyan group-hover:border-tech-cyan/40 hover:bg-tech-cyan/5' 
-                      : 'border-slate-800 bg-slate-950/40 text-slate-400 group-hover:text-tech-cyan group-hover:border-tech-cyan/40 hover:bg-tech-cyan/5'
-                  }`}
-                  title={language === 'pt' ? "Acessar código-fonte no GitHub" : "Access source code on GitHub"}
-                >
-                  <FaGithub className="text-sm" />
-                  <span className="tracking-wider text-[10px] font-bold">
-                    {language === 'pt' ? 'VER_REPOSITORIO' : 'VIEW_REPOSITORY'}
-                  </span>
-                  <span className={`w-1.5 h-1.5 rounded-full group-hover:bg-tech-cyan animate-pulse transition-colors ${isLight ? 'bg-slate-300' : 'bg-slate-700'}`} />
-                </a>
-              </div>
-
-              {/* Título e escopo descritivo */}
-              <h3 className={`text-lg sm:text-xl md:text-2xl font-mono font-black tracking-wide group-hover:text-tech-cyan transition-colors duration-300 uppercase ${isLight ? 'text-slate-800' : 'text-slate-200'}`}>
-                {project.title}
-              </h3>
-              
-              <p className={`text-xs sm:text-sm leading-relaxed mt-4 font-sans font-light max-w-4xl text-justify sm:text-left transition-colors duration-500 ${isLight ? 'text-slate-600' : 'text-slate-400'}`}>
-                {project.description}
-              </p>
-            </div>
-
-            {/* Rodapé: Arquitetura e Stack Utilizada */}
-            <div className={`mt-6 sm:mt-8 pt-4 border-t flex flex-wrap items-center gap-2 transition-colors duration-500 ${isLight ? 'border-slate-100' : 'border-slate-900/40'}`}>
-              <span className={`font-mono text-[10px] mr-1 sm:mr-2 uppercase tracking-widest block w-full sm:w-auto mb-1 sm:mb-0 ${isLight ? 'text-slate-400' : 'text-slate-600'}`}>
-                {language === 'pt' ? 'ARQUITETURA:' : 'STACK:'}
+            <h2 className="projects-header__title">
+              {isPt ? 'PROJETOS' : 'EXECUTED'}
+              <span>
+                {isPt ? ' EXECUTADOS' : ' PROJECTS'}
               </span>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                {project.tags.map((tag, idx) => (
-                  <span 
-                    key={idx} 
-                    className={`text-[9px] sm:text-[10px] font-mono border px-2 py-0.5 sm:px-2.5 sm:py-1 rounded transition-all duration-300 ${
-                      isLight
-                        ? 'text-slate-500 bg-slate-50 border-slate-200 group-hover:border-slate-300 group-hover:text-slate-700'
-                        : 'text-slate-500 bg-slate-950/50 border-slate-900/80 group-hover:border-slate-800 group-hover:text-slate-400'
-                    }`}
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </h2>
 
-          </motion.div>
-        ))}
-      </motion.div>
+            <p className="projects-header__description">
+              {isPt
+                ? 'Uma seleção de sistemas, interfaces e soluções desenvolvidas ao longo da minha trajetória.'
+                : 'A selection of systems, interfaces, and solutions developed throughout my journey.'}
+            </p>
+          </div>
+        </header>
+
+        <motion.div
+          className="projects-list"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-80px' }}
+        >
+          {projects.map((project) => (
+            <motion.article
+              key={project.id}
+              variants={cardVariants}
+              className="project-card"
+            >
+              <div className="project-card__corner project-card__corner--top-left" />
+              <div className="project-card__corner project-card__corner--top-right" />
+              <div className="project-card__corner project-card__corner--bottom-left" />
+              <div className="project-card__corner project-card__corner--bottom-right" />
+
+              <div className="project-card__scanline" />
+
+              <div className="project-card__visual">
+                {project.image ? (
+                  <div className="project-preview">
+                    <div className="project-preview__header">
+                      <span>{project.code}</span>
+
+                      <div className="project-preview__lights">
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                    </div>
+
+                    <div className="project-preview__screen">
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        loading="lazy"
+                        decoding="async"
+                      />
+
+                      <div className="project-preview__overlay">
+                        <span>
+                          {isPt ? 'VISUALIZAÇÃO DO SISTEMA' : 'SYSTEM PREVIEW'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="project-preview project-preview--empty">
+                    <span className="project-preview__empty-code">
+                      {project.code}
+                    </span>
+
+                    <strong>
+                      {isPt ? 'PREVIEW INDISPONÍVEL' : 'PREVIEW UNAVAILABLE'}
+                    </strong>
+
+                    <small>
+                      {isPt
+                        ? '// SYSTEM_INTERFACE'
+                        : '// SYSTEM_INTERFACE'}
+                    </small>
+                  </div>
+                )}
+              </div>
+
+              <div className="project-card__content">
+                <div className="project-card__top">
+                  <div className="project-card__meta">
+                    <span className="project-card__id">
+                      ID: 00{project.id}
+                    </span>
+
+                    <span className="project-card__separator">//</span>
+
+                    <span className="project-card__status">
+                      <span className="project-card__status-dot" />
+                      {project.status}
+                    </span>
+                  </div>
+
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__github"
+                    aria-label={
+                      isPt
+                        ? `Abrir repositório de ${project.title}`
+                        : `Open repository for ${project.title}`
+                    }
+                  >
+                    <FaGithub />
+
+                    <span>
+                      {isPt ? 'VER_REPOSITÓRIO' : 'VIEW_REPOSITORY'}
+                    </span>
+
+                    <FaArrowUpRightFromSquare />
+                  </a>
+                </div>
+
+                <div className="project-card__body">
+                  <span className="project-card__index">
+                    / 0{project.id}
+                  </span>
+
+                  <h3 className="project-card__title">
+                    {project.title}
+                  </h3>
+
+                  <p className="project-card__description">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div className="project-card__footer">
+                  <span className="project-card__stack-label">
+                    {isPt ? 'ARQUITETURA' : 'STACK'}
+                  </span>
+
+                  <div className="project-card__tags">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="project-card__tag">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </motion.div>
+      </div>
     </section>
   )
 }

@@ -1,149 +1,253 @@
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { FaWhatsapp, FaEnvelope, FaTimes, FaFileDownload, FaEye } from 'react-icons/fa'
-import memojiImg from '../assets/memoji.png'
-import './Hero.css' 
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  FaWhatsapp,
+  FaEnvelope,
+  FaTimes,
+  FaFileDownload,
+  FaEye,
+} from "react-icons/fa";
+
+import memojiImg from "../../assets/images/memoji.png";
+import "./Hero.css";
 
 export default function Hero({ theme, language }) {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [isCvModalOpen, setIsCvModalOpen] = useState(false)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isCvModalOpen, setIsCvModalOpen] = useState(false);
+
+  const isLight = theme === "light";
+
+  const texts = {
+    role:
+      language === "pt"
+        ? "<DESENVOLVEDOR FRONT-END />"
+        : "<FRONT-END DEVELOPER />",
+
+    heading:
+      language === "pt"
+        ? "Construindo o futuro da web."
+        : "Building the future of the web.",
+
+    description:
+      language === "pt"
+        ? "Especialista em interfaces de alta performance e experiências digitais interativas. Focado em transformar conceitos complexos em código limpo."
+        : "Specialist in high-performance interfaces and interactive digital experiences. Focused on turning complex concepts into clean code.",
+
+    btnProjects:
+      language === "pt" ? "VER PROJETOS_" : "VIEW PROJECTS_",
+
+    btnContact:
+      language === "pt" ? "ENTRAR EM CONTATO" : "GET IN TOUCH",
+
+    btnCv:
+      language === "pt" ? "VER CURRÍCULO" : "VIEW RESUME",
+
+    modalContactTitle:
+      language === "pt"
+        ? "DESEJA CONTATO? SELECIONE A MELHOR OPÇÃO!"
+        : "WANT TO CONNECT? CHOOSE AN OPTION!",
+
+    modalCvTitle:
+      language === "pt" ? "CURRÍCULO" : "RESUME",
+
+    btnDownload:
+      language === "pt" ? "BAIXAR O PDF" : "DOWNLOAD PDF",
+  };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
-  }
-
-  // Dicionário de Traduções da Hero
-  const texts = {
-    role: language === 'pt' ? '<DESENVOLVEDOR FRONT-END />' : '<FRONT-END DEVELOPER />',
-    heading: language === 'pt' ? 'Construindo o futuro da web.' : 'Building the future of the web.',
-    description: language === 'pt' 
-      ? 'Especialista em interfaces de alta performance e experiências digitais interativas. Focado em transformar conceitos complexos em código limpo.'
-      : 'Specialist in high-performance interfaces and interactive digital experiences. Focused on turning complex concepts into clean code.',
-    btnProjects: language === 'pt' ? 'VER PROJETOS_' : 'VIEW PROJECTS_',
-    btnContact: language === 'pt' ? 'ENTRAR EM CONTATO' : 'GET IN TOUCH',
-    btnCv: language === 'pt' ? 'VER CURRÍCULO' : 'VIEW RESUME',
-    modalContactTitle: language === 'pt' ? 'DESEJA CONTATO? SELECIONE A MELHOR OPÇÃO!' : 'WANT TO CONNECT? CHOOSE AN OPTION!',
-    modalCvTitle: language === 'pt' ? 'CURRICULO' : 'RESUME',
-    btnDownload: language === 'pt' ? 'BAIXAR O PDF' : 'DOWNLOAD PDF'
-  }
+    hidden: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
 
   return (
-    <section id="home" className={`hero-section ${theme === 'light' ? 'light-mode' : ''}`}>
-      
+    <section
+      id="home"
+      className={`hero-section ${
+        isLight ? "hero-section--light" : "hero-section--dark"
+      }`}
+    >
       <div className="hero-grid">
-        
         <motion.div
+          className="hero-content"
           initial="hidden"
           animate="visible"
-          transition={{ staggerChildren: 0.15 }}
-          className="lg:col-span-7"
+          transition={{
+            staggerChildren: 0.15,
+          }}
         >
-          <motion.p variants={itemVariants} className="hero-subtitle">
+          <motion.p
+            variants={itemVariants}
+            className="hero-subtitle"
+          >
             {texts.role}
           </motion.p>
 
-          <motion.h1 variants={itemVariants} className="hero-title">
-            Eduardo <span className="text-tech-cyan">Guilherme</span>
+          <motion.h1
+            variants={itemVariants}
+            className="hero-title"
+          >
+            Eduardo <span>Guilherme</span>
           </motion.h1>
 
-          <motion.h2 
-            variants={itemVariants} 
+          <motion.h2
+            variants={itemVariants}
             className="hero-heading"
           >
             {texts.heading}
           </motion.h2>
 
-          <motion.p variants={itemVariants} className="hero-description">
+          <motion.p
+            variants={itemVariants}
+            className="hero-description"
+          >
             {texts.description}
           </motion.p>
 
-          <motion.div variants={itemVariants} className="flex flex-col gap-4 items-start">
-            <div className="flex flex-wrap gap-4 items-center">
-              <a href="#projects" className="group btn-primary">
+          <motion.div
+            variants={itemVariants}
+            className="hero-actions"
+          >
+            <div className="hero-actions__main">
+              <a
+                href="#projects"
+                className="btn-primary"
+              >
                 {texts.btnProjects}
               </a>
 
-              <button onClick={() => setIsContactModalOpen(true)} className="btn-secondary">
-                <FaEnvelope /> {texts.btnContact}
+              <button
+                type="button"
+                onClick={() => setIsContactModalOpen(true)}
+                className="btn-secondary"
+              >
+                <FaEnvelope />
+                {texts.btnContact}
               </button>
             </div>
 
-            <button onClick={() => setIsCvModalOpen(true)} className="btn-cv">
-              <FaEye /> {texts.btnCv}
+            <button
+              type="button"
+              onClick={() => setIsCvModalOpen(true)}
+              className="btn-cv"
+            >
+              <FaEye />
+              {texts.btnCv}
             </button>
           </motion.div>
         </motion.div>
 
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="group hero-image-container"
+        <motion.div
+          className="hero-image-container"
+          initial={{
+            opacity: 0,
+            scale: 0.9,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.8,
+            delay: 0.6,
+          }}
         >
-          <div className="hero-glow-effect"></div>
+          <div className="hero-glow-effect" />
 
           <motion.div
-            animate={{ y: [0, -20, 0] }}
-            whileHover={{ scale: 1.08 }}
-            transition={{
-              y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
-              scale: { duration: 0.3, ease: "easeOut" }
-            }}
             className="hero-avatar-wrapper"
+            animate={{
+              y: [0, -20, 0],
+            }}
+            whileHover={{
+              scale: 1.08,
+            }}
+            transition={{
+              y: {
+                duration: 4.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
+              scale: {
+                duration: 0.3,
+                ease: "easeOut",
+              },
+            }}
           >
-            <img 
-              src={memojiImg} 
-              alt="Eduardo Guilherme Visual" 
+            <img
+              src={memojiImg}
+              alt="Eduardo Guilherme"
               className="hero-avatar-img"
             />
           </motion.div>
         </motion.div>
-
       </div>
 
-      {/* MODAL DE CONTATO */}
       <AnimatePresence>
         {isContactModalOpen && (
-          <div className="modal-overlay-fixed z-modal">
-            <motion.div 
+          <div className="hero-modal">
+            <motion.div
+              className="hero-modal__backdrop"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsContactModalOpen(false)}
-              className="modal-backdrop-dark"
             />
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="modal-contact-card"
+
+            <motion.div
+              className={`contact-modal ${
+                isLight ? "contact-modal--light" : ""
+              }`}
+              initial={{
+                opacity: 0,
+                scale: 0.9,
+              }}
+              animate={{
+                opacity: 1,
+                scale: 1,
+              }}
+              exit={{
+                opacity: 0,
+                scale: 0.9,
+              }}
             >
-              <button onClick={() => setIsContactModalOpen(false)} className="btn-close-modal">
+              <button
+                type="button"
+                className="modal-close"
+                onClick={() => setIsContactModalOpen(false)}
+                aria-label="Fechar"
+              >
                 <FaTimes size={18} />
               </button>
-              
-              <h3 className="modal-contact-title font-mono tracking-tighter">
+
+              <h3 className="contact-modal__title">
                 {texts.modalContactTitle}
               </h3>
-              
-              <div className="flex flex-col gap-3 mt-6">
-                <a 
-                  href="https://wa.me/5581994304742" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-modal-whatsapp"
+
+              <div className="contact-modal__actions">
+                <a
+                  href="https://wa.me/5581994304742"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-modal__whatsapp"
                 >
-                  <FaWhatsapp size={20} /> WHATSAPP
+                  <FaWhatsapp size={20} />
+                  WHATSAPP
                 </a>
-                
-                <a 
+
+                <a
                   href="https://mail.google.com/mail/?view=cm&fs=1&to=eduardoguilhermedem987@gmail.com"
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn-modal-gmail"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contact-modal__gmail"
                 >
-                  <FaEnvelope size={18} /> GMAIL
+                  <FaEnvelope size={18} />
+                  GMAIL
                 </a>
               </div>
             </motion.div>
@@ -151,56 +255,68 @@ export default function Hero({ theme, language }) {
         )}
       </AnimatePresence>
 
-      {/* MODAL DO CURRÍCULO */}
       <AnimatePresence>
         {isCvModalOpen && (
-          <div className="fixed inset-0 w-screen h-screen z-99999 flex items-center justify-center p-4 md:p-6">
-            <motion.div 
+          <div className="hero-modal">
+            <motion.div
+              className="hero-modal__backdrop hero-modal__backdrop--blur"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsCvModalOpen(false)}
-              className="modal-backdrop-blur" 
             />
 
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              className="modal-cv-container"
+            <motion.div
+              className={`cv-modal ${
+                isLight ? "cv-modal--light" : ""
+              }`}
+              initial={{
+                opacity: 0,
+                y: 30,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+              }}
+              exit={{
+                opacity: 0,
+                y: 30,
+              }}
             >
-              <div className="modal-cv-header">
-                <h3 className="text-tech-cyan font-mono font-black tracking-[0.15em] text-base md:text-lg">
-                  {texts.modalCvTitle}
-                </h3>
-                
-                <div className="flex items-center gap-4">
-                  <a 
-                    href="/curriculo.pdf" 
-                    download="Eduardo_Guilherme_Curriculo.pdf" 
-                    className="group btn-cv-download"
+              <div className="cv-modal__header">
+                <h3>{texts.modalCvTitle}</h3>
+
+                <div className="cv-modal__actions">
+                  <a
+                    href="/curriculo.pdf"
+                    download="Eduardo_Guilherme_Curriculo.pdf"
+                    className="btn-cv-download"
                   >
-                    {texts.btnDownload} <FaFileDownload size={14} />
+                    {texts.btnDownload}
+                    <FaFileDownload size={14} />
                   </a>
-                  <button onClick={() => setIsCvModalOpen(false)} className="btn-close-cv-modal">
+
+                  <button
+                    type="button"
+                    className="modal-close"
+                    onClick={() => setIsCvModalOpen(false)}
+                    aria-label="Fechar currículo"
+                  >
                     <FaTimes size={24} />
                   </button>
                 </div>
               </div>
 
               <div className="iframe-wrapper">
-                <iframe 
-                  src="/curriculo.pdf#toolbar=0&navpanes=0&view=FitH" 
+                <iframe
+                  src="/curriculo.pdf#toolbar=0&navpanes=0&view=FitH"
                   title="Currículo Eduardo Guilherme"
-                  className="w-full h-full border-none opacity-95"
                 />
               </div>
-
             </motion.div>
           </div>
         )}
       </AnimatePresence>
-
     </section>
-  )
+  );
 }

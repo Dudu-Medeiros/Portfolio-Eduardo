@@ -1,0 +1,365 @@
+@reference "../../styles/global.css";
+
+.projects-section {
+  @apply w-full py-16 md:py-24 lg:py-28 border-t border-slate-900/60 transition-colors duration-500;
+}
+
+.projects-container {
+  @apply w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8;
+}
+
+.projects-header {
+  @apply flex gap-4 md:gap-5 mb-12 md:mb-16 lg:mb-20;
+}
+
+.projects-header__line {
+  @apply w-px bg-tech-cyan/30 shrink-0;
+}
+
+.projects-header__eyebrow {
+  @apply block text-tech-cyan font-mono text-[10px] sm:text-xs tracking-[0.25em] uppercase mb-2;
+}
+
+.projects-header__title {
+  @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight uppercase text-slate-100 transition-colors duration-500;
+}
+
+.projects-header__title span {
+  @apply text-slate-500 font-light transition-colors duration-500;
+}
+
+.projects-header__description {
+  @apply max-w-2xl mt-4 text-xs sm:text-sm md:text-base text-slate-500 leading-relaxed transition-colors duration-500;
+}
+
+.projects-list {
+  @apply flex flex-col gap-7 md:gap-9;
+}
+
+.project-card {
+  @apply relative grid grid-cols-1 lg:grid-cols-[minmax(260px,0.8fr)_minmax(0,1.4fr)] overflow-hidden rounded-2xl border border-slate-900 bg-[#070b14]/90 transition-all duration-500;
+}
+
+.project-card:hover {
+  @apply border-tech-cyan/30;
+  transform: translateY(-4px);
+  box-shadow: 0 18px 55px rgba(0, 240, 255, 0.06);
+}
+
+.project-card__corner {
+  @apply absolute w-4 h-4 pointer-events-none z-20 transition-colors duration-500;
+}
+
+.project-card__corner--top-left {
+  @apply top-0 left-0 border-t border-l border-slate-800;
+}
+
+.project-card__corner--top-right {
+  @apply top-0 right-0 border-t border-r border-slate-800;
+}
+
+.project-card__corner--bottom-left {
+  @apply bottom-0 left-0 border-b border-l border-slate-800;
+}
+
+.project-card__corner--bottom-right {
+  @apply bottom-0 right-0 border-b border-r border-slate-800;
+}
+
+.project-card:hover .project-card__corner {
+  @apply border-tech-cyan/70;
+}
+
+.project-card__scanline {
+  @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 82%,
+    rgba(0, 240, 255, 0.05) 94%,
+    transparent 100%
+  );
+  background-size: 100% 300%;
+  animation: project-scan 5s linear infinite;
+}
+
+.project-card:hover .project-card__scanline {
+  @apply opacity-100;
+}
+
+.project-card__visual {
+  @apply relative min-h-[230px] sm:min-h-[280px] lg:min-h-full p-4 sm:p-5 bg-[#050914] border-b lg:border-b-0 lg:border-r border-slate-900 flex items-center justify-center transition-colors duration-500;
+}
+
+.project-preview {
+  @apply relative w-full h-full min-h-[200px] sm:min-h-[250px] rounded-xl overflow-hidden border border-slate-800 bg-[#080d17];
+}
+
+.project-preview__header {
+  @apply h-9 px-3 flex items-center justify-between border-b border-slate-800 bg-[#0b111d] font-mono text-[9px] tracking-[0.16em] text-slate-500;
+}
+
+.project-preview__lights {
+  @apply flex items-center gap-1.5;
+}
+
+.project-preview__lights span {
+  @apply w-1.5 h-1.5 rounded-full bg-slate-700;
+}
+
+.project-preview__lights span:first-child {
+  @apply bg-tech-cyan/50;
+}
+
+.project-preview__screen {
+  @apply relative h-[calc(100%-2.25rem)] overflow-hidden bg-slate-950;
+}
+
+.project-preview__screen img {
+  @apply w-full h-full object-contain p-2 transition-transform duration-700;
+}
+
+.project-card:hover .project-preview__screen img {
+  transform: scale(1.03);
+}
+
+.project-preview__overlay {
+  @apply absolute inset-0 flex items-end p-3 opacity-0 transition-opacity duration-500;
+  background: linear-gradient(
+    to top,
+    rgba(5, 9, 20, 0.85),
+    transparent 45%
+  );
+}
+
+.project-card:hover .project-preview__overlay {
+  @apply opacity-100;
+}
+
+.project-preview__overlay span {
+  @apply font-mono text-[9px] tracking-[0.16em] text-tech-cyan;
+}
+
+.project-preview--empty {
+  @apply flex flex-col items-center justify-center text-center px-6 gap-2;
+}
+
+.project-preview__empty-code {
+  @apply font-mono text-[10px] tracking-[0.25em] text-tech-cyan;
+}
+
+.project-preview--empty strong {
+  @apply text-sm md:text-base text-slate-500 font-mono tracking-wider;
+}
+
+.project-preview--empty small {
+  @apply font-mono text-[9px] tracking-[0.15em] text-slate-700;
+}
+
+.project-card__content {
+  @apply relative z-20 flex flex-col justify-between p-5 sm:p-6 md:p-8;
+}
+
+.project-card__top {
+  @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-slate-900/80;
+}
+
+.project-card__meta {
+  @apply flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-wider;
+}
+
+.project-card__id {
+  @apply text-slate-600;
+}
+
+.project-card__separator {
+  @apply text-slate-700;
+}
+
+.project-card__status {
+  @apply inline-flex items-center gap-2 px-2 py-1 rounded border border-tech-cyan/10 bg-tech-cyan/5 text-tech-cyan;
+}
+
+.project-card__status-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-tech-cyan animate-pulse;
+}
+
+.project-card__github {
+  @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border border-slate-800 bg-slate-950/40 text-slate-400 font-mono text-[9px] tracking-wider transition-all duration-300;
+}
+
+.project-card__github:hover {
+  @apply border-tech-cyan/40 text-tech-cyan bg-tech-cyan/5;
+}
+
+.project-card__github svg:last-child {
+  @apply text-[8px];
+}
+
+.project-card__body {
+  @apply relative py-7 md:py-8;
+}
+
+.project-card__index {
+  @apply block font-mono text-[10px] text-slate-700 tracking-[0.2em] mb-2;
+}
+
+.project-card__title {
+  @apply text-base sm:text-lg md:text-2xl font-black font-mono tracking-wide uppercase text-slate-200 leading-tight transition-colors duration-300;
+}
+
+.project-card:hover .project-card__title {
+  @apply text-tech-cyan;
+}
+
+.project-card__description {
+  @apply mt-4 max-w-3xl text-xs sm:text-sm leading-relaxed text-slate-400 font-sans transition-colors duration-500;
+}
+
+.project-card__footer {
+  @apply pt-5 border-t border-slate-900/70;
+}
+
+.project-card__stack-label {
+  @apply block mb-3 font-mono text-[9px] tracking-[0.2em] text-slate-600 uppercase;
+}
+
+.project-card__tags {
+  @apply flex flex-wrap gap-1.5 sm:gap-2;
+}
+
+.project-card__tag {
+  @apply px-2 py-1 rounded border border-slate-900 bg-slate-950/60 text-slate-500 font-mono text-[9px] sm:text-[10px] transition-all duration-300;
+}
+
+.project-card__tag:hover {
+  @apply border-tech-cyan/30 text-tech-cyan bg-tech-cyan/5;
+}
+
+.projects-section.light-mode {
+  @apply border-slate-200;
+}
+
+.projects-section.light-mode .projects-header__title {
+  @apply text-slate-900;
+}
+
+.projects-section.light-mode .projects-header__title span {
+  @apply text-slate-400;
+}
+
+.projects-section.light-mode .projects-header__description {
+  @apply text-slate-500;
+}
+
+.projects-section.light-mode .project-card {
+  @apply bg-white border-slate-200 shadow-sm;
+}
+
+.projects-section.light-mode .project-card:hover {
+  @apply border-tech-cyan/40;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.projects-section.light-mode .project-card__corner--top-left,
+.projects-section.light-mode .project-card__corner--top-right,
+.projects-section.light-mode .project-card__corner--bottom-left,
+.projects-section.light-mode .project-card__corner--bottom-right {
+  @apply border-slate-300;
+}
+
+.projects-section.light-mode .project-card:hover .project-card__corner {
+  @apply border-tech-cyan/60;
+}
+
+.projects-section.light-mode .project-card__visual {
+  @apply bg-slate-50 border-slate-200;
+}
+
+.projects-section.light-mode .project-preview {
+  @apply bg-white border-slate-200;
+}
+
+.projects-section.light-mode .project-preview__header {
+  @apply bg-slate-50 border-slate-200;
+}
+
+.projects-section.light-mode .project-preview__screen {
+  @apply bg-slate-100;
+}
+
+.projects-section.light-mode .project-preview--empty {
+  @apply bg-slate-50;
+}
+
+.projects-section.light-mode .project-card__top {
+  @apply border-slate-200;
+}
+
+.projects-section.light-mode .project-card__id {
+  @apply text-slate-400;
+}
+
+.projects-section.light-mode .project-card__separator {
+  @apply text-slate-300;
+}
+
+.projects-section.light-mode .project-card__github {
+  @apply bg-slate-50 border-slate-200 text-slate-500;
+}
+
+.projects-section.light-mode .project-card__body {
+  @apply border-slate-200;
+}
+
+.projects-section.light-mode .project-card__title {
+  @apply text-slate-800;
+}
+
+.projects-section.light-mode .project-card__description {
+  @apply text-slate-600;
+}
+
+.projects-section.light-mode .project-card__footer {
+  @apply border-slate-200;
+}
+
+.projects-section.light-mode .project-card__tag {
+  @apply bg-slate-50 border-slate-200 text-slate-500;
+}
+
+.projects-section.light-mode .project-card__tag:hover {
+  @apply bg-tech-cyan/5 border-tech-cyan/30 text-tech-cyan;
+}
+
+@keyframes project-scan {
+  0% {
+    background-position: 0 -100%;
+  }
+
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .projects-section {
+    @apply py-16;
+  }
+
+  .projects-header {
+    @apply mb-10;
+  }
+
+  .project-card__visual {
+    min-height: 210px;
+  }
+
+  .project-preview {
+    min-height: 180px;
+  }
+
+  .project-card__content {
+    @apply p-5;
+  }
+}
