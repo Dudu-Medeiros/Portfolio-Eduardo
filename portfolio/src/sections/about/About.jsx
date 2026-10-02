@@ -62,23 +62,29 @@ export default function About({ theme, language }) {
 
   const texts = {
     title1:
-      language === "pt" ? "TRANSFORME" : "TRANSFORM",
+      language === "pt"
+        ? "TRANSFORME"
+        : "TRANSFORM",
 
     title2:
-      language === "pt" ? "IDEIA" : "IDEAS",
+      language === "pt"
+        ? "IDEIA"
+        : "IDEAS",
 
     title3:
-      language === "pt" ? "EM CÓDIGO" : "INTO CODE",
+      language === "pt"
+        ? "EM CÓDIGO"
+        : "INTO CODE",
 
     desc:
       language === "pt"
-        ? "Desenvolvedor Front-End com trajetória sólida no desenvolvimento de aplicações escaláveis e sistemas complexos nas áreas financeira e de educação. Especialista na evolução e manutenção de arquiteturas SPA utilizando o ecossistema JavaScript (React, Angular), com histórico na entrega de módulos funcionais críticos."
-        : "Front-End Developer with a solid track record in creating scalable applications and complex systems in the financial and education fields. Expert in evolving and maintaining SPA architectures using the JavaScript ecosystem (React, Angular), with a history of delivering critical core modules.",
+        ? "Desenvolvedor Front-End com experiência prática na criação de aplicações web modernas e responsivas. Trabalho com React, JavaScript, HTML e CSS, buscando transformar ideias e necessidades de negócio em interfaces funcionais, organizadas e focadas na experiência do usuário."
+        : "Front-End Developer with hands-on experience building modern and responsive web applications. I work with React, JavaScript, HTML, and CSS, focusing on turning ideas and business needs into functional, well-structured interfaces centered on user experience.",
 
     manifesto:
       language === "pt"
-        ? "“Acredito que um bom software vai além de funcionar corretamente: ele precisa ser intuitivo, eficiente e proporcionar uma excelente experiência ao usuário. Por isso, combino atenção aos detalhes, boas práticas de desenvolvimento e aprendizado contínuo para criar soluções modernas, escaláveis e de alta qualidade.”"
-        : "“I believe that good software goes beyond working correctly: it needs to be intuitive, efficient, and provide an excellent user experience. Therefore, I combine attention to detail, development best practices, and continuous learning to create modern, scalable, and high-quality solutions.”",
+        ? "“Ainda estou construindo minha experiência, e é justamente isso que me motiva. Gosto de aprender na prática, enfrentar problemas novos e transformar cada projeto em uma oportunidade para melhorar meu código, minhas ideias e minha forma de desenvolver.”"
+        : "“I am still building my experience, and that is exactly what motivates me. I enjoy learning through practice, facing new challenges, and turning every project into an opportunity to improve my code, my ideas, and the way I develop.”",
 
     nextSquadTitle:
       language === "pt"
@@ -87,8 +93,36 @@ export default function About({ theme, language }) {
 
     nextSquadDesc:
       language === "pt"
-        ? "Pronto para integrar squads de alta performance, aplicando rigor técnico e arquitetura limpa para escalar seu produto digital."
-        : "Ready to join high-performance squads, applying technical rigor and clean architecture to scale your digital product.",
+        ? "Busco novas oportunidades para continuar aprendendo, contribuir com minhas habilidades e evoluir junto com novos desafios."
+        : "I am looking for new opportunities to keep learning, contribute with my skills, and grow through new challenges.",
+
+    corenDate:
+      language === "pt"
+        ? "ATUALMENTE"
+        : "CURRENT",
+
+    corenTitle:
+      language === "pt"
+        ? "COREN-PE — CONSELHO REGIONAL DE ENFERMAGEM DE PERNAMBUCO"
+        : "COREN-PE — REGIONAL NURSING COUNCIL OF PERNAMBUCO",
+
+    corenRole:
+      language === "pt"
+        ? "Estagiário // Help Desk N1"
+        : "Intern // Help Desk N1",
+
+    corenDesc:
+      language === "pt"
+        ? "Atuação em suporte técnico de primeiro nível, auxiliando usuários na resolução de demandas de TI e no atendimento de chamados."
+        : "Working in first-level technical support, assisting users with IT requests and handling support tickets.",
+
+    fluxoDate:
+      language === "pt"
+        ? "MAIO 2026 — JUNHO 2026"
+        : "MAY 2026 — JUNE 2026",
+
+    fluxoTitle:
+      "Fluxo — Gerenciamento Financeiro",
 
     fluxoRole:
       language === "pt"
@@ -97,18 +131,31 @@ export default function About({ theme, language }) {
 
     fluxoDesc:
       language === "pt"
-        ? "Desenvolvimento de interfaces modernas de sistema financeiro robusto, integração de APIs e automação de documentos críticos como PDFs e XMLs."
-        : "Development of modern interfaces for robust financial systems, API integrations, and automation of critical documents like PDFs and XMLs.",
+        ? "Desenvolvimento de interfaces para um sistema financeiro, integração de APIs e automação de documentos como PDFs e XMLs."
+        : "Development of interfaces for a financial system, API integration, and document automation such as PDFs and XMLs.",
 
     eduTitle:
       language === "pt"
         ? "FORMAÇÃO ACADÊMICA"
         : "ACADEMIC BACKGROUND",
 
+    eduStatus:
+      language === "pt"
+        ? "EM ANDAMENTO"
+        : "IN PROGRESS",
+
+    eduInstitution:
+      "UNINASSAU",
+
+    eduCourse:
+      language === "pt"
+        ? "Sistemas de Informação - Bacharelado"
+        : "Information Systems - Bachelor's Degree",
+
     eduDesc:
       language === "pt"
-        ? "Graduando focado em evolução contínua para engenharia de software, banco de dados e performance web. Previsão de Formação: 2028."
-        : "Undergraduate student focused on continuous growth in software engineering, databases, and web performance. Graduation expected: 2028.",
+        ? "Graduação voltada ao desenvolvimento de conhecimentos em programação, banco de dados, engenharia de software e desenvolvimento web. Previsão de formação: 2028."
+        : "Degree focused on programming, databases, software engineering, and web development. Expected graduation: 2028.",
 
     previousSlide:
       language === "pt"
@@ -160,7 +207,9 @@ export default function About({ theme, language }) {
     <section
       id="about"
       className={`about-section ${
-        isLight ? "about-section--light" : "about-section--dark"
+        isLight
+          ? "about-section--light"
+          : "about-section--dark"
       }`}
     >
       <div
@@ -216,6 +265,45 @@ export default function About({ theme, language }) {
               </div>
             </div>
           </div>
+
+          <motion.div
+            className="about-education"
+            {...scrollAnimation}
+            transition={{
+              ...scrollAnimation.transition,
+              delay: 0.35,
+            }}
+          >
+            <div className="about-education__header">
+              <div>
+                <span className="about-education__code">
+                  EDUCAÇÃO
+                </span>
+
+                <span className="about-education__label">
+                  {texts.eduTitle}
+                </span>
+              </div>
+
+              <span className="about-education__status">
+                {texts.eduStatus}
+              </span>
+            </div>
+
+            <div className="about-education__body">
+              <h4 className="about-education__institution">
+                {texts.eduInstitution}
+              </h4>
+
+              <span className="about-education__course">
+                {texts.eduCourse}
+              </span>
+
+              <p className="about-education__description">
+                {texts.eduDesc}
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
 
         <div className="about-right">
@@ -313,32 +401,30 @@ export default function About({ theme, language }) {
             </motion.div>
 
             <motion.div
-              className="timeline-item"
+              className="timeline-item timeline-item--current"
               {...scrollAnimation}
               transition={{
                 ...scrollAnimation.transition,
                 delay: 0.4,
               }}
             >
-              <div className="timeline-node" />
+              <div className="timeline-node timeline-node--current" />
 
               <div className="timeline-content">
-                <span className="timeline-date">
-                  {language === "pt"
-                    ? "MAIO 2026 — JUNHO 2026"
-                    : "MAY 2026 — JUNE 2026"}
+                <span className="timeline-date timeline-date--current">
+                  {texts.corenDate}
                 </span>
 
                 <h4 className="timeline-title">
-                  Fluxo — Gerenciamento Financeiro
+                  {texts.corenTitle}
                 </h4>
 
                 <span className="timeline-role">
-                  {texts.fluxoRole}
+                  {texts.corenRole}
                 </span>
 
                 <p className="timeline-text">
-                  {texts.fluxoDesc}
+                  {texts.corenDesc}
                 </p>
               </div>
             </motion.div>
@@ -355,21 +441,19 @@ export default function About({ theme, language }) {
 
               <div className="timeline-content">
                 <span className="timeline-date">
-                  {texts.eduTitle}
+                  {texts.fluxoDate}
                 </span>
 
                 <h4 className="timeline-title">
-                  UNINASSAU
+                  {texts.fluxoTitle}
                 </h4>
 
                 <span className="timeline-role">
-                  {language === "pt"
-                    ? "Sistemas de Informação // Bacharelado"
-                    : "Information Systems // Bachelor's Degree"}
+                  {texts.fluxoRole}
                 </span>
 
                 <p className="timeline-text">
-                  {texts.eduDesc}
+                  {texts.fluxoDesc}
                 </p>
               </div>
             </motion.div>

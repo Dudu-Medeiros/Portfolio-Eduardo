@@ -43,8 +43,8 @@ const getProjectsData = (language) => {
     },
     {
       id: 2,
-      code: 'PHY_02',
-      slug: 'physicolog',
+      code: 'CVFLW_02',
+      slug: 'cvflow',
       title: isPt
         ? 'PHYSICOLOG — ANÁLISES DIÁRIAS'
         : 'PHYSICOLOG — DAILY ANALYSIS',
@@ -55,13 +55,14 @@ const getProjectsData = (language) => {
         : 'Web system focused on cognitive tracking and daily routine organization. It combines a minimalist diary interface with a backend structure responsible for entry indexing, secure sessions, and chronological analysis of user data.',
       tags: [
         'JavaScript',
+        'React',
         'HTML',
         'CSS',
         'Python',
         'Flask',
-        'MySQL',
+        'PostegreSQL',
       ],
-      githubLink: 'https://github.com/Dudu-Medeiros/PhysicoLog',
+      githubLink: 'https://github.com/Dudu-Medeiros/CVFlow',
     },
     {
       id: 3,
@@ -70,7 +71,7 @@ const getProjectsData = (language) => {
       title: isPt
         ? 'SEAKALM — SAÚDE MENTAL INFANTIL'
         : 'SEAKALM — CHILD MENTAL HEALTH',
-      status: 'ECOSYSTEM',
+      status: 'HEALTY_SYSTEM',
       image: PROJECT_IMAGES.seakalm,
       description: isPt
         ? 'Aplicação voltada ao gerenciamento de saúde mental, controle de estresse e monitoramento de bem-estar. Desenvolvida com foco em alta legibilidade, navegação estruturada e organização de estados para uma experiência digital clara e acessível.'
@@ -91,13 +92,13 @@ const getProjectsData = (language) => {
       code: 'ADL_04',
       slug: 'aventura',
       title: isPt
-        ? 'AVENTURA DAS LETRAS — SISTEMA HOSPITALAR ACADÊMICO'
-        : 'AVENTURA DAS LETRAS — ACADEMIC HOSPITAL SYSTEM',
+        ? 'AVENTURA DAS LETRAS — SISTEMA EDUCACIONAL PARA CRINÇAS DO IMIP'
+        : 'ADVENTURE OF LETTERS — EDUCATIONAL SYSTEM FOR CHILDREN AT IMIP',
       status: 'SYSTEM_INTEGRATION',
       image: PROJECT_IMAGES.adventure,
       description: isPt
-        ? 'Desenvolvimento e integração de módulos funcionais para uma plataforma institucional. O projeto envolve otimização de fluxos internos, aplicação de regras de negócio e refinamento de interfaces para manipulação de registros estruturados.'
-        : 'Development and integration of functional modules for an institutional platform. The project involves optimizing internal workflows, applying business rules, and refining interfaces for structured record management.',
+        ? 'Desenvolvimento e integração de módulos funcionais para uma plataforma educacional voltada ao IMIP. O projeto envolve otimização de fluxos internos, aplicação de regras de negócio e refinamento de interfaces para manipulação de registros estruturados.'
+        : 'Development and integration of functional modules for an educational platform designed for IMIP. The project involves optimizing internal workflows, applying business rules, and refining interfaces for managing structured records.',
       tags: [
         'React',
         'JavaScript',

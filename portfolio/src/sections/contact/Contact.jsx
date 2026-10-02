@@ -313,7 +313,7 @@ export default function Contact({ theme, language }) {
                 </div>
 
                 <span className="contact-form__indicator">
-                  {isPt ? 'SECURE_CHANNEL' : 'SECURE_CHANNEL'}
+                  SECURE_CHANNEL
                 </span>
               </div>
 

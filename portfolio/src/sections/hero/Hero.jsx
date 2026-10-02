@@ -30,8 +30,8 @@ export default function Hero({ theme, language }) {
 
     description:
       language === "pt"
-        ? "Especialista em interfaces de alta performance e experiências digitais interativas. Focado em transformar conceitos complexos em código limpo."
-        : "Specialist in high-performance interfaces and interactive digital experiences. Focused on turning complex concepts into clean code.",
+        ? "Desenvolvedor Front-End com experiência prática em aplicações web modernas e responsivas. Trabalho com React, JavaScript, HTML e CSS, buscando transformar regras de negócio em interfaces funcionais, organizadas e focadas na experiência do usuário."
+        : "Front-End Developer with hands-on experience building modern and responsive web applications. I work with React, JavaScript, HTML, and CSS, focusing on turning business requirements into functional, well-structured interfaces centered on user experience.",
 
     btnProjects:
       language === "pt" ? "VER PROJETOS_" : "VIEW PROJECTS_",
