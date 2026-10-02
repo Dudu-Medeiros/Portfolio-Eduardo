@@ -1,0 +1,141 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at center, rgba(0, 229, 255, 0.07), transparent 35%),
+    #05070a;
+  color: #ffffff;
+}
+
+.preloader__content {
+  position: relative;
+  z-index: 2;
+  width: min(90%, 520px);
+}
+
+.preloader__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.preloader__brand-symbol {
+  font-size: 26px;
+  font-weight: 700;
+  color: #00e5ff;
+}
+
+.preloader__brand-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.preloader__terminal {
+  margin-bottom: 24px;
+}
+
+.preloader__terminal-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: #b8c4ce;
+}
+
+.preloader__terminal-prefix {
+  color: #00e5ff;
+  font-weight: 700;
+}
+
+.preloader__progress {
+  width: 100%;
+}
+
+.preloader__progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #697681;
+}
+
+.preloader__progress-track {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.preloader__progress-bar {
+  width: 0;
+  height: 100%;
+  background: #00e5ff;
+  box-shadow: 0 0 14px rgba(0, 229, 255, 0.8);
+}
+
+.preloader__footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #4e5962;
+}
+
+.preloader__grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(circle, black 20%, transparent 80%);
+}
+
+.preloader__scanline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.025) 50%,
+    transparent 100%
+  );
+  background-size: 100% 6px;
+}
+
+@media (max-width: 600px) {
+  .preloader__content {
+    width: 85%;
+  }
+
+  .preloader__brand-name {
+    font-size: 22px;
+  }
+
+  .preloader__brand-symbol {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader__scanline {
+    display: none;
+  }
+}
