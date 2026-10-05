@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
 @theme {
   --color-tech-bg: #0a0f1d;
   --color-tech-card: #131c31;
@@ -9,44 +14,40 @@
   --z-index-modal: 9999;
 }
 
-/* Scrollbar adaptável de acordo com a preferência do sistema/tema básico */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: transparent; /* Remove a cor escura fixa para casar com qualquer modo */
+  background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #131c3140;
+  background: #131c31;
   border-radius: 4px;
 }
-.dark ::-webkit-scrollbar-thumb, 
-body:not(.light-mode) ::-webkit-scrollbar-thumb {
-  background: #131c31;
-}
+
 ::-webkit-scrollbar-thumb:hover {
   background: #00f0ff;
 }
 
-/* ================= DIVISOR CONTÍNUO INTER-SEÇÕES REVISADO ================= */
 .section-divider-marquee {
-  /* scale-105 adicionado para expandir as pontas rotacionadas e não quebrar a lateral da tela */
-  @apply w-full overflow-hidden bg-slate-950/40 border-y border-slate-900/80 py-4 md:py-5 my-8 md:my-10 relative flex items-center select-none scale-105;
+  @apply relative flex w-full items-center select-none overflow-hidden border-y border-slate-900/80 bg-slate-950/40 py-4 my-8 scale-105 md:py-5 md:my-10;
   transform: rotate(-1deg);
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
 
 .divider-marquee-track {
-  @apply flex w-max gap-6 md:gap-8 items-center;
+  @apply flex w-max items-center gap-6 md:gap-8;
 }
 
 .divider-marquee-group {
-  @apply flex shrink-0 items-center justify-around gap-6 md:gap-8 w-max;
+  @apply flex w-max shrink-0 items-center justify-around gap-6 md:gap-8;
   animation: scroll-divider 30s linear infinite;
 }
 
 .ticker-item {
-  @apply text-xs md:text-sm lg:text-base font-mono font-black tracking-widest text-slate-500 transition-colors duration-300;
+  @apply text-xs font-mono font-black tracking-widest text-slate-500 transition-colors duration-300 md:text-sm lg:text-base;
 }
 
 .section-divider-marquee:hover .ticker-item {
@@ -54,14 +55,31 @@ body:not(.light-mode) ::-webkit-scrollbar-thumb {
 }
 
 .ticker-separator {
-  @apply text-tech-cyan text-xs font-mono font-bold opacity-60;
+  @apply text-xs font-mono font-bold text-tech-cyan opacity-60;
 }
 
 @keyframes scroll-divider {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
+
   100% {
     transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 78px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .divider-marquee-group {
+    animation: none;
   }
 }

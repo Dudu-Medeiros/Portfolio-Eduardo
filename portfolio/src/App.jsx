@@ -42,7 +42,7 @@ const STATS = [
   },
   {
     code: "PRJ_02",
-    number: "5+",
+    number: "4+",
     label: {
       pt: "Projetos em Destaque",
       en: "Featured Projects",

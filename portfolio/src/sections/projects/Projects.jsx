@@ -46,13 +46,13 @@ const getProjectsData = (language) => {
       code: 'CVFLW_02',
       slug: 'cvflow',
       title: isPt
-        ? 'PHYSICOLOG — ANÁLISES DIÁRIAS'
-        : 'PHYSICOLOG — DAILY ANALYSIS',
-      status: 'CORE_STABLE',
+        ? 'CVFLOW — GERADOR DE CURRÍCULOS'
+        : 'CVFLOW — RESUME BUILDER',
+      status: 'STABLE',
       image: null,
       description: isPt
-        ? 'Sistema web voltado ao acompanhamento cognitivo e à organização de rotinas diárias. Integra uma interface minimalista de diário a uma estrutura de backend responsável por indexação de entradas, sessões seguras e análise cronológica dos dados do usuário.'
-        : 'Web system focused on cognitive tracking and daily routine organization. It combines a minimalist diary interface with a backend structure responsible for entry indexing, secure sessions, and chronological analysis of user data.',
+        ? 'Sistema web voltado a geração de currículos com visualização em tempo normal. Salvamento, gerenciamento, edição e modelos (ATS, MODERNO, EXECUTIVO) são opções de dinâmicas do usuário no sistema.'
+        : 'A web-based system for generating resumes with real-time preview. Users can save, manage, and edit resumes, as well as choose from various templates (ATS, Modern, Executive).',
       tags: [
         'JavaScript',
         'React',
