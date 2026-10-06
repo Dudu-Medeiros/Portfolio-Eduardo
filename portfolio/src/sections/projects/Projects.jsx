@@ -1,6 +1,11 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { FaArrowUpRightFromSquare, FaGithub } from 'react-icons/fa6'
+import React, { useState, useMemo } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import {
+  FaArrowUpRightFromSquare,
+  FaGithub,
+  FaChevronLeft,
+  FaChevronRight,
+} from 'react-icons/fa6'
 
 import fluxoDashboard from '../../assets/images/fluxoDashboard.PNG'
 import ADL from '../../assets/images/ADL.PNG'
@@ -51,7 +56,7 @@ const getProjectsData = (language) => {
       status: 'STABLE',
       image: null,
       description: isPt
-        ? 'Sistema web voltado a geração de currículos com visualização em tempo normal. Salvamento, gerenciamento, edição e modelos (ATS, MODERNO, EXECUTIVO) são opções de dinâmicas do usuário no sistema.'
+        ? 'Sistema web voltado a geração de currículos com visualização em tempo real. Salvamento, gerenciamento, edição e modelos (ATS, MODERNO, EXECUTIVO) são opções de dinâmicas do usuário no sistema.'
         : 'A web-based system for generating resumes with real-time preview. Users can save, manage, and edit resumes, as well as choose from various templates (ATS, Modern, Executive).',
       tags: [
         'JavaScript',
@@ -60,7 +65,7 @@ const getProjectsData = (language) => {
         'CSS',
         'Python',
         'Flask',
-        'PostegreSQL',
+        'PostgreSQL',
       ],
       githubLink: 'https://github.com/Dudu-Medeiros/CVFlow',
     },
@@ -71,7 +76,7 @@ const getProjectsData = (language) => {
       title: isPt
         ? 'SEAKALM — SAÚDE MENTAL INFANTIL'
         : 'SEAKALM — CHILD MENTAL HEALTH',
-      status: 'HEALTY_SYSTEM',
+      status: 'HEALTHY_SYSTEM',
       image: PROJECT_IMAGES.seakalm,
       description: isPt
         ? 'Aplicação voltada ao gerenciamento de saúde mental, controle de estresse e monitoramento de bem-estar. Desenvolvida com foco em alta legibilidade, navegação estruturada e organização de estados para uma experiência digital clara e acessível.'
@@ -92,7 +97,7 @@ const getProjectsData = (language) => {
       code: 'ADL_04',
       slug: 'aventura',
       title: isPt
-        ? 'AVENTURA DAS LETRAS — SISTEMA EDUCACIONAL PARA CRINÇAS DO IMIP'
+        ? 'AVENTURA DAS LETRAS — SISTEMA EDUCACIONAL PARA CRIANÇAS DO IMIP'
         : 'ADVENTURE OF LETTERS — EDUCATIONAL SYSTEM FOR CHILDREN AT IMIP',
       status: 'SYSTEM_INTEGRATION',
       image: PROJECT_IMAGES.adventure,
@@ -114,16 +119,8 @@ const getProjectsData = (language) => {
   ]
 }
 
-const containerVariants = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.14,
-    },
-  },
-}
-
-const cardVariants = {
+// variantes de entrada da seção
+const sectionVariants = {
   hidden: {
     opacity: 0,
     y: 40,
@@ -132,24 +129,89 @@ const cardVariants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.55,
+      duration: 0.6,
+      ease: [0.16, 1, 0.3, 1],
+      staggerChildren: 0.12,
+    },
+  },
+}
+
+const itemFadeVariants = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
       ease: 'easeOut',
     },
   },
 }
 
+// variantes do slider
+const slideVariants = {
+  enter: (direction) => ({
+    x: direction > 0 ? 80 : -80,
+    opacity: 0,
+    scale: 0.98,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.45,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+  exit: (direction) => ({
+    x: direction < 0 ? 80 : -80,
+    opacity: 0,
+    scale: 0.98,
+    transition: {
+      duration: 0.25,
+      ease: 'easeIn',
+    },
+  }),
+}
+
 export default function Projects({ theme, language }) {
   const isLight = theme === 'light'
   const isPt = language === 'pt'
-  const projects = getProjectsData(language)
+  const projects = useMemo(() => getProjectsData(language), [language])
+
+  const [[currentIndex, direction], setPage] = useState([0, 0])
+
+  const paginate = (newDirection) => {
+    let nextIndex = currentIndex + newDirection
+    if (nextIndex < 0) nextIndex = projects.length - 1
+    if (nextIndex >= projects.length) nextIndex = 0
+    setPage([nextIndex, newDirection])
+  }
+
+  const selectProject = (idx) => {
+    if (idx === currentIndex) return
+    setPage([idx, idx > currentIndex ? 1 : -1])
+  }
+
+  const activeProject = projects[currentIndex]
 
   return (
     <section
       id="projects"
       className={`projects-section ${isLight ? 'light-mode' : ''}`}
     >
-      <div className="projects-container">
-        <header className="projects-header">
+      <motion.div
+        className="projects-container"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-80px' }}
+      >
+        <motion.header className="projects-header" variants={itemFadeVariants}>
           <div className="projects-header__line" />
 
           <div>
@@ -159,9 +221,7 @@ export default function Projects({ theme, language }) {
 
             <h2 className="projects-header__title">
               {isPt ? 'PROJETOS' : 'EXECUTED'}
-              <span>
-                {isPt ? ' EXECUTADOS' : ' PROJECTS'}
-              </span>
+              <span>{isPt ? ' EXECUTADOS' : ' PROJECTS'}</span>
             </h2>
 
             <p className="projects-header__description">
@@ -170,20 +230,61 @@ export default function Projects({ theme, language }) {
                 : 'A selection of systems, interfaces, and solutions developed throughout my journey.'}
             </p>
           </div>
-        </header>
+        </motion.header>
 
-        <motion.div
-          className="projects-list"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-        >
-          {projects.map((project) => (
+        <motion.div className="showcase-nav-bar" variants={itemFadeVariants}>
+          <div className="showcase-nav-bar__tabs">
+            {projects.map((project, idx) => (
+              <button
+                key={project.id}
+                type="button"
+                onClick={() => selectProject(idx)}
+                className={`showcase-nav-bar__tab ${
+                  idx === currentIndex ? 'active' : ''
+                }`}
+              >
+                <span>0{idx + 1}</span>
+                <strong>{project.code}</strong>
+              </button>
+            ))}
+          </div>
+
+          <div className="showcase-nav-bar__controls">
+            <span className="showcase-counter">
+              [{String(currentIndex + 1).padStart(2, '0')} /{' '}
+              {String(projects.length).padStart(2, '0')}]
+            </span>
+
+            <button
+              type="button"
+              onClick={() => paginate(-1)}
+              className="showcase-control-btn"
+              aria-label="Previous Project"
+            >
+              <FaChevronLeft />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => paginate(1)}
+              className="showcase-control-btn"
+              aria-label="Next Project"
+            >
+              <FaChevronRight />
+            </button>
+          </div>
+        </motion.div>
+
+        <motion.div className="showcase-stage" variants={itemFadeVariants}>
+          <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.article
-              key={project.id}
-              variants={cardVariants}
-              className="project-card"
+              key={activeProject.id}
+              custom={direction}
+              variants={slideVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="project-card showcase-card"
             >
               <div className="project-card__corner project-card__corner--top-left" />
               <div className="project-card__corner project-card__corner--top-right" />
@@ -193,10 +294,10 @@ export default function Projects({ theme, language }) {
               <div className="project-card__scanline" />
 
               <div className="project-card__visual">
-                {project.image ? (
+                {activeProject.image ? (
                   <div className="project-preview">
                     <div className="project-preview__header">
-                      <span>{project.code}</span>
+                      <span>{activeProject.code}</span>
 
                       <div className="project-preview__lights">
                         <span />
@@ -207,15 +308,17 @@ export default function Projects({ theme, language }) {
 
                     <div className="project-preview__screen">
                       <img
-                        src={project.image}
-                        alt={`${project.title} preview`}
+                        src={activeProject.image}
+                        alt={`${activeProject.title} preview`}
                         loading="lazy"
                         decoding="async"
                       />
 
                       <div className="project-preview__overlay">
                         <span>
-                          {isPt ? 'VISUALIZAÇÃO DO SISTEMA' : 'SYSTEM PREVIEW'}
+                          {isPt
+                            ? 'VISUALIZAÇÃO DO SISTEMA'
+                            : 'SYSTEM PREVIEW'}
                         </span>
                       </div>
                     </div>
@@ -223,18 +326,14 @@ export default function Projects({ theme, language }) {
                 ) : (
                   <div className="project-preview project-preview--empty">
                     <span className="project-preview__empty-code">
-                      {project.code}
+                      {activeProject.code}
                     </span>
 
                     <strong>
                       {isPt ? 'PREVIEW INDISPONÍVEL' : 'PREVIEW UNAVAILABLE'}
                     </strong>
 
-                    <small>
-                      {isPt
-                        ? '// SYSTEM_INTERFACE'
-                        : '// SYSTEM_INTERFACE'}
-                    </small>
+                    <small>// SYSTEM_INTERFACE</small>
                   </div>
                 )}
               </div>
@@ -243,26 +342,26 @@ export default function Projects({ theme, language }) {
                 <div className="project-card__top">
                   <div className="project-card__meta">
                     <span className="project-card__id">
-                      ID: 00{project.id}
+                      ID: 00{activeProject.id}
                     </span>
 
                     <span className="project-card__separator">//</span>
 
                     <span className="project-card__status">
                       <span className="project-card__status-dot" />
-                      {project.status}
+                      {activeProject.status}
                     </span>
                   </div>
 
                   <a
-                    href={project.githubLink}
+                    href={activeProject.githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="project-card__github"
                     aria-label={
                       isPt
-                        ? `Abrir repositório de ${project.title}`
-                        : `Open repository for ${project.title}`
+                        ? `Abrir repositório de ${activeProject.title}`
+                        : `Open repository for ${activeProject.title}`
                     }
                   >
                     <FaGithub />
@@ -277,15 +376,15 @@ export default function Projects({ theme, language }) {
 
                 <div className="project-card__body">
                   <span className="project-card__index">
-                    / 0{project.id}
+                    / 0{activeProject.id}
                   </span>
 
                   <h3 className="project-card__title">
-                    {project.title}
+                    {activeProject.title}
                   </h3>
 
                   <p className="project-card__description">
-                    {project.description}
+                    {activeProject.description}
                   </p>
                 </div>
 
@@ -295,7 +394,7 @@ export default function Projects({ theme, language }) {
                   </span>
 
                   <div className="project-card__tags">
-                    {project.tags.map((tag) => (
+                    {activeProject.tags.map((tag) => (
                       <span key={tag} className="project-card__tag">
                         {tag}
                       </span>
@@ -304,9 +403,37 @@ export default function Projects({ theme, language }) {
                 </div>
               </div>
             </motion.article>
+          </AnimatePresence>
+        </motion.div>
+
+        <motion.div className="showcase-dock" variants={itemFadeVariants}>
+          {projects.map((project, idx) => (
+            <button
+              key={project.id}
+              type="button"
+              onClick={() => selectProject(idx)}
+              className={`showcase-dock__item ${
+                idx === currentIndex ? 'active' : ''
+              }`}
+            >
+              <div className="showcase-dock__thumb">
+                {project.image ? (
+                  <img src={project.image} alt={project.title} />
+                ) : (
+                  <span className="showcase-dock__empty-thumb">
+                    {project.code}
+                  </span>
+                )}
+              </div>
+
+              <div className="showcase-dock__info">
+                <span className="showcase-dock__code">{project.code}</span>
+                <span className="showcase-dock__title">{project.title}</span>
+              </div>
+            </button>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
