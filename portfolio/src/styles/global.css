@@ -1,40 +1,72 @@
 @import "tailwindcss";
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 90px;
+/* 1. VARIÁVEIS GLOBAIS DE TEMA */
+:root {
+  /* Cores padrão (Dark Mode) */
+  --accent-primary: #00f0ff; /* Ciano Neon */
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #131c31;
+  --marquee-bg: rgba(2, 6, 23, 0.4); /* slate-950/40 */
+  --marquee-border: rgba(15, 23, 42, 0.8); /* slate-900/80 */
+  --marquee-text: #64748b; /* slate-500 */
 }
 
+/* 2. OVERRIDE PARA O LIGHT MODE */
+/* Quando a classe .light-mode estiver presente, essas cores assumem */
+:root:has(.light-mode),
+body.light-mode,
+.light-mode {
+  /* Azul elétrico (Sky 600 do Tailwind): Mantém a pegada tech com contraste perfeito no branco */
+  --accent-primary: #0284c7; 
+  --scrollbar-track: #f8fafc;
+  --scrollbar-thumb: #cbd5e1;
+  --marquee-bg: #f8fafc;
+  --marquee-border: #e2e8f0;
+  --marquee-text: #94a3b8;
+}
+
+/* 3. CONFIGURAÇÃO DO TAILWIND V4 */
 @theme {
   --color-tech-bg: #0a0f1d;
   --color-tech-card: #131c31;
-  --color-tech-cyan: #00f0ff;
+  /* A mágica acontece aqui: o tech-cyan agora puxa a variável dinâmica */
+  --color-tech-cyan: var(--accent-primary); 
   --color-tech-purple: #9d4edd;
 
   --z-index-modal: 9999;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* 4. SCROLLBAR DINÂMICA */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #131c31;
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f0ff;
+  background: var(--accent-primary);
 }
 
+/* 5. MARQUEE (LETREIRO ANIMADO) DINÂMICO */
 .section-divider-marquee {
-  @apply relative flex w-full items-center select-none overflow-hidden border-y border-slate-900/80 bg-slate-950/40 py-4 my-8 scale-105 md:py-5 md:my-10;
+  @apply relative flex w-full items-center select-none overflow-hidden py-4 my-8 scale-105 md:py-5 md:my-10;
   transform: rotate(-1deg);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+  background-color: var(--marquee-bg);
+  border-top: 1px solid var(--marquee-border);
+  border-bottom: 1px solid var(--marquee-border);
 }
 
 .divider-marquee-track {
@@ -47,22 +79,23 @@ html {
 }
 
 .ticker-item {
-  @apply text-xs font-mono font-black tracking-widest text-slate-500 transition-colors duration-300 md:text-sm lg:text-base;
+  @apply text-xs font-mono font-black tracking-widest transition-colors duration-300 md:text-sm lg:text-base;
+  color: var(--marquee-text);
 }
 
 .section-divider-marquee:hover .ticker-item {
-  @apply text-slate-400;
+  color: var(--accent-primary);
 }
 
 .ticker-separator {
-  @apply text-xs font-mono font-bold text-tech-cyan opacity-60;
+  @apply text-xs font-mono font-bold opacity-60;
+  color: var(--accent-primary);
 }
 
 @keyframes scroll-divider {
   0% {
     transform: translateX(0);
   }
-
   100% {
     transform: translateX(-50%);
   }
@@ -78,7 +111,6 @@ html {
   html {
     scroll-behavior: auto;
   }
-
   .divider-marquee-group {
     animation: none;
   }

@@ -29,7 +29,7 @@
 }
 
 .hero-separator {
-  @apply text-slate-700 font-mono;
+  @apply text-slate-700 font-mono transition-colors duration-500;
 }
 
 .hero-role {
@@ -88,13 +88,14 @@
   @apply border-tech-cyan/40 text-slate-100 bg-[#070b14] -translate-y-0.5;
 }
 
-/* Área e escala do memoji */
+/* Memoji */
 .hero-avatar-area {
   @apply relative flex items-center justify-center w-full select-none min-h-[380px] sm:min-h-[440px] lg:min-h-[520px];
 }
 
+/* Fundo irradiando (Modo Escuro) */
 .hero-glow-layer {
-  @apply absolute w-[80%] max-w-[500px] aspect-square rounded-full bg-tech-cyan/20 blur-[110px] pointer-events-none transition-all duration-700;
+  @apply absolute w-[80%] max-w-[500px] aspect-square rounded-full bg-tech-cyan/20 blur-[100px] pointer-events-none transition-all duration-700;
 }
 
 .hero-avatar-area:hover .hero-glow-layer {
@@ -113,21 +114,21 @@
   @apply drop-shadow-[0_25px_60px_rgba(0,240,255,0.45)] scale-[1.04];
 }
 
-/* Modais */
+/* Modais globais */
 .hero-modal-root {
   @apply fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6;
 }
 
 .hero-modal-backdrop {
-  @apply absolute inset-0 bg-[#020617]/75 backdrop-blur-md;
+  @apply absolute inset-0 bg-[#020617]/75 backdrop-blur-md transition-colors duration-500;
 }
 
 .hero-modal {
-  @apply relative z-10 w-full overflow-hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-2xl;
+  @apply relative z-10 w-full overflow-hidden rounded-2xl border border-slate-800 bg-[#070b14] shadow-2xl transition-all duration-500;
 }
 
 .hero-modal__header {
-  @apply flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-900;
+  @apply flex items-start justify-between gap-4 p-5 sm:p-6 border-b border-slate-900 transition-colors duration-500;
 }
 
 .hero-modal__eyebrow {
@@ -135,11 +136,11 @@
 }
 
 .hero-modal__title {
-  @apply font-mono text-sm sm:text-base font-bold text-slate-100 uppercase tracking-wider;
+  @apply font-mono text-sm sm:text-base font-bold text-slate-100 uppercase tracking-wider transition-colors duration-500;
 }
 
 .hero-modal__close-btn {
-  @apply flex items-center justify-center w-8 h-8 rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 text-xs transition-colors duration-200 cursor-pointer;
+  @apply flex items-center justify-center w-8 h-8 rounded-lg border border-slate-800 bg-slate-950/60 text-slate-400 text-xs transition-colors duration-300 cursor-pointer;
 }
 
 .hero-modal__close-btn:hover {
@@ -152,7 +153,7 @@
 }
 
 .contact-modal__subtitle {
-  @apply px-5 sm:px-6 pt-4 text-xs sm:text-sm text-slate-400 leading-relaxed font-sans;
+  @apply px-5 sm:px-6 pt-4 text-xs sm:text-sm text-slate-400 leading-relaxed font-sans transition-colors duration-500;
 }
 
 .contact-modal__options {
@@ -184,11 +185,11 @@
 }
 
 .contact-card-btn__info strong {
-  @apply font-mono text-xs uppercase tracking-wider text-slate-200;
+  @apply font-mono text-xs uppercase tracking-wider text-slate-200 transition-colors duration-500;
 }
 
 .contact-card-btn__info span {
-  @apply text-xs text-slate-400 truncate mt-0.5;
+  @apply text-xs text-slate-400 truncate mt-0.5 transition-colors duration-500;
 }
 
 .contact-card-btn__arrow {
@@ -205,7 +206,7 @@
 }
 
 .cv-modal__bar {
-  @apply flex items-center justify-between gap-4 px-4 py-3 bg-[#0a101d] border-b border-slate-800 font-mono;
+  @apply flex items-center justify-between gap-4 px-4 py-3 bg-[#0a101d] border-b border-slate-800 font-mono transition-colors duration-500;
 }
 
 .cv-modal__bar-left {
@@ -217,7 +218,7 @@
 }
 
 .cv-modal__lights span {
-  @apply w-2 h-2 rounded-full bg-slate-700;
+  @apply w-2 h-2 rounded-full bg-slate-700 transition-colors duration-500;
 }
 
 .cv-modal__lights span:first-child {
@@ -225,7 +226,7 @@
 }
 
 .cv-modal__bar-title {
-  @apply text-[11px] sm:text-xs tracking-wider text-slate-400;
+  @apply text-[11px] sm:text-xs tracking-wider text-slate-400 transition-colors duration-500;
 }
 
 .cv-modal__bar-actions {
@@ -241,24 +242,24 @@
 }
 
 .cv-modal__viewport {
-  @apply flex-1 w-full bg-slate-950 overflow-hidden;
+  @apply flex-1 w-full bg-slate-950 overflow-hidden transition-colors duration-500;
 }
 
 .cv-modal__iframe {
   @apply w-full h-full border-0;
 }
 
-/* Light mode */
+/* Tema Claro */
 .hero-section.light-mode {
-  @apply border-slate-200;
+  @apply border-slate-200 bg-slate-50;
 }
 
 .hero-section.light-mode .hero-separator {
-  @apply text-slate-300;
+  @apply text-slate-400;
 }
 
 .hero-section.light-mode .hero-title {
-  @apply text-slate-900;
+  @apply text-slate-800;
 }
 
 .hero-section.light-mode .hero-heading {
@@ -270,47 +271,64 @@
 }
 
 .hero-section.light-mode .hero-btn--secondary {
-  @apply border-slate-300 bg-white text-slate-700;
+  @apply border-slate-300 bg-white text-slate-700 shadow-sm;
 }
 
 .hero-section.light-mode .hero-btn--secondary:hover {
-  @apply border-tech-cyan/60 bg-slate-50 text-slate-900;
+  @apply border-tech-cyan/50 bg-slate-50 text-tech-cyan;
 }
 
 .hero-section.light-mode .hero-btn--cv {
-  @apply border-slate-300 bg-slate-50 text-slate-600;
+  @apply border-slate-200 bg-slate-50 text-slate-600 shadow-sm;
 }
 
 .hero-section.light-mode .hero-btn--cv:hover {
-  @apply border-slate-400 bg-white text-slate-900;
+  @apply border-slate-300 bg-white text-slate-900;
+}
+
+/* Fundo irradiando suave e agradável no modo claro */
+.hero-section.light-mode .hero-glow-layer {
+  @apply bg-sky-400/10 blur-[100px];
+}
+
+.hero-section.light-mode .hero-avatar-area:hover .hero-glow-layer {
+  @apply bg-sky-400/20 scale-110;
+}
+
+.hero-section.light-mode .hero-modal-backdrop {
+  @apply bg-slate-900/20 backdrop-blur-md;
 }
 
 .hero-section.light-mode .hero-modal {
-  @apply bg-white border-slate-200 shadow-xl;
+  @apply bg-white border-slate-200 shadow-[0_20px_60px_rgba(15,23,42,0.1)];
 }
 
 .hero-section.light-mode .hero-modal__header {
-  @apply border-slate-200;
+  @apply border-slate-100;
 }
 
 .hero-section.light-mode .hero-modal__title {
-  @apply text-slate-900;
+  @apply text-slate-800;
 }
 
 .hero-section.light-mode .hero-modal__close-btn {
-  @apply border-slate-200 bg-slate-50 text-slate-600;
+  @apply border-slate-200 bg-slate-50 text-slate-500;
 }
 
 .hero-section.light-mode .hero-modal__close-btn:hover {
-  @apply border-slate-300 bg-slate-100 text-slate-900;
+  @apply border-tech-cyan/40 bg-tech-cyan/5 text-tech-cyan;
+}
+
+.hero-section.light-mode .contact-modal__subtitle {
+  @apply text-slate-500;
 }
 
 .hero-section.light-mode .contact-card-btn {
-  @apply border-slate-200 bg-slate-50 text-slate-700;
+  @apply border-slate-200 bg-white text-slate-700 shadow-sm;
 }
 
 .hero-section.light-mode .contact-card-btn:hover {
-  @apply border-tech-cyan/50 bg-white text-slate-900;
+  @apply border-tech-cyan/40 bg-slate-50 text-slate-900;
 }
 
 .hero-section.light-mode .contact-card-btn__info strong {
@@ -321,12 +339,28 @@
   @apply text-slate-500;
 }
 
+.hero-section.light-mode .contact-card-btn__arrow {
+  @apply text-slate-400;
+}
+
 .hero-section.light-mode .cv-modal__bar {
-  @apply bg-slate-100 border-slate-200;
+  @apply bg-slate-50 border-slate-200;
 }
 
 .hero-section.light-mode .cv-modal__bar-title {
-  @apply text-slate-700;
+  @apply text-slate-500 font-bold;
+}
+
+.hero-section.light-mode .cv-modal__lights span {
+  @apply bg-slate-300;
+}
+
+.hero-section.light-mode .cv-modal__lights span:first-child {
+  @apply bg-tech-cyan;
+}
+
+.hero-section.light-mode .cv-modal__viewport {
+  @apply bg-slate-200;
 }
 
 @media (max-width: 640px) {
@@ -334,7 +368,6 @@
   .hero-actions__main {
     @apply w-full;
   }
-
   .hero-btn {
     @apply w-full;
   }

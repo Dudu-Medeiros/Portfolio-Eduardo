@@ -3,88 +3,55 @@
 .about-section {
   @apply relative w-full min-h-screen flex items-center justify-center py-20 md:py-28 overflow-hidden transition-colors duration-500 border-b border-slate-900/60;
 }
-
 .about-section--dark {
   @apply text-slate-100 bg-[#020617];
 }
 
-.about-section--light {
-  @apply text-slate-900 bg-slate-50 border-slate-200;
-}
-
 .about-grid-overlay {
-  @apply absolute inset-0 pointer-events-none opacity-30;
+  @apply absolute inset-0 pointer-events-none opacity-30 transition-opacity duration-500;
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 70px 70px;
 }
 
-.about-section--light .about-grid-overlay {
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
-}
-
 .about-container {
   @apply relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start;
 }
-
 .about-left {
   @apply flex flex-col items-start w-full;
 }
-
 .about-title {
   @apply m-0 font-black text-4xl sm:text-5xl md:text-6xl tracking-tight leading-[0.95] uppercase text-slate-100 transition-colors duration-500;
 }
-
 .about-title span {
   @apply text-tech-cyan font-light;
 }
-
-.about-section--light .about-title {
-  @apply text-slate-900;
-}
-
 .about-description {
   @apply max-w-xl mt-6 text-sm sm:text-base leading-relaxed text-slate-400 transition-colors duration-500;
 }
-
-.about-section--light .about-description {
-  @apply text-slate-600;
-}
-
 .about-manifesto {
   @apply max-w-xl mt-6 p-4 border-l-2 border-tech-cyan/40 rounded-r-lg bg-slate-900/40 text-slate-300 text-sm font-serif italic leading-relaxed transition-colors duration-500;
-}
-
-.about-section--light .about-manifesto {
-  @apply border-tech-cyan/60 bg-white/60 text-slate-700 shadow-sm;
 }
 
 /* Painel Tecnológico Reutilizável (Para capabilities, education e slider) */
 .tech-panel {
   @apply relative overflow-hidden rounded-xl border border-slate-800 bg-[#070b14]/80 transition-all duration-500;
 }
-
 .tech-panel:hover {
   @apply border-tech-cyan/30;
   box-shadow: 0 15px 40px rgba(0, 240, 255, 0.05);
 }
-
 .tech-panel__corner {
   @apply absolute w-3 h-3 pointer-events-none z-20 transition-colors duration-500;
 }
-
 .tech-panel__corner--top-left { @apply top-0 left-0 border-t border-l border-slate-700; }
 .tech-panel__corner--top-right { @apply top-0 right-0 border-t border-r border-slate-700; }
 .tech-panel__corner--bottom-left { @apply bottom-0 left-0 border-b border-l border-slate-700; }
 .tech-panel__corner--bottom-right { @apply bottom-0 right-0 border-b border-r border-slate-700; }
-
 .tech-panel:hover .tech-panel__corner {
   @apply border-tech-cyan/60;
 }
-
 .tech-panel__scanline {
   @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 z-10;
   background: linear-gradient(
@@ -97,7 +64,6 @@
   background-size: 100% 300%;
   animation: project-scan 5s linear infinite;
 }
-
 .tech-panel:hover .tech-panel__scanline {
   @apply opacity-100;
 }
@@ -108,23 +74,18 @@
   mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
 }
-
 .about-marquee {
   @apply flex w-max py-4 gap-3;
 }
-
 .about-marquee__group {
   @apply flex shrink-0 items-center gap-3 animate-[about-marquee_25s_linear_infinite];
 }
-
 .about-capabilities:hover .about-marquee__group {
   animation-play-state: paused;
 }
-
 .capability-tag {
   @apply inline-flex items-center px-3.5 py-2 rounded-lg border border-slate-800 bg-slate-950/60 font-mono text-[10px] text-slate-400 whitespace-nowrap transition-all duration-300;
 }
-
 .capability-tag:hover {
   @apply border-tech-cyan/40 bg-tech-cyan/10 text-tech-cyan;
 }
@@ -133,199 +94,227 @@
 .about-education {
   @apply w-full max-w-xl mt-8;
 }
-
 .about-education__header {
-  @apply flex items-center justify-between gap-4 p-4 sm:p-5 border-b border-slate-800/80 bg-[#0b111d];
+  @apply flex items-center justify-between gap-4 p-4 sm:p-5 border-b border-slate-800/80 bg-[#0b111d] transition-colors duration-500;
 }
-
 .about-education__code {
   @apply block font-mono text-[9px] tracking-[0.2em] text-tech-cyan uppercase mb-1;
 }
-
 .about-education__label {
-  @apply block font-mono text-[10px] sm:text-xs font-bold tracking-wider text-slate-400 uppercase;
+  @apply block font-mono text-[10px] sm:text-xs font-bold tracking-wider text-slate-400 uppercase transition-colors duration-500;
 }
-
 .about-education__status {
   @apply inline-flex items-center gap-2 px-2.5 py-1 rounded border border-tech-cyan/20 bg-tech-cyan/5 text-tech-cyan font-mono text-[9px] tracking-wider shrink-0;
 }
-
 .status-pulse {
   @apply w-1.5 h-1.5 rounded-full bg-tech-cyan animate-pulse;
 }
-
 .about-education__body {
   @apply p-5 sm:p-6 relative z-20;
 }
-
 .about-education__institution {
   @apply m-0 text-base sm:text-lg font-black tracking-wide uppercase text-slate-100 transition-colors duration-300;
 }
-
 .about-education:hover .about-education__institution {
   @apply text-tech-cyan;
 }
-
 .about-education__course {
   @apply block mt-1.5 font-mono text-[10px] sm:text-xs tracking-wider text-tech-cyan/80;
 }
-
 .about-education__description {
-  @apply mt-3 text-xs sm:text-sm leading-relaxed text-slate-400;
+  @apply mt-3 text-xs sm:text-sm leading-relaxed text-slate-400 transition-colors duration-500;
 }
 
 /* Right Side & Slider */
 .about-right {
   @apply flex flex-col gap-12 pt-2 w-full;
 }
-
 .project-slider-wrapper {
   @apply w-full flex flex-col items-center gap-6;
 }
-
 .slider-window {
   @apply relative w-full max-w-[460px] h-[260px] sm:h-[300px] flex items-center justify-center mx-auto;
   perspective: 1000px;
 }
-
 .slider-card {
   @apply absolute flex flex-col w-full h-full shadow-2xl;
 }
-
 .slider-card--active {
   @apply z-30 opacity-100 transform-none border-tech-cyan/40 shadow-[0_15px_40px_rgba(0,240,255,0.15)];
 }
-
 .slider-card--next {
   @apply z-20 opacity-40 translate-x-6 translate-y-4 rotate-3 pointer-events-none;
 }
-
 .slider-card--hidden {
   @apply z-10 opacity-0 -translate-x-6 translate-y-2 -rotate-3 pointer-events-none;
 }
-
 .system-screenshot {
-  @apply w-full h-[calc(100%-2.5rem)] object-cover bg-slate-950 p-1 rounded-t-xl select-none;
+  @apply w-full h-[calc(100%-2.5rem)] object-cover bg-slate-950 p-1 rounded-t-xl select-none transition-colors duration-500;
 }
-
 .slider-card__badge {
-  @apply w-full h-10 flex items-center gap-3 px-4 border-t border-slate-800 bg-[#0b111d] rounded-b-xl font-mono text-[9px] sm:text-[10px] tracking-wider text-slate-400 uppercase truncate;
+  @apply w-full h-10 flex items-center gap-3 px-4 border-t border-slate-800 bg-[#0b111d] rounded-b-xl font-mono text-[9px] sm:text-[10px] tracking-wider text-slate-400 uppercase truncate transition-colors duration-500;
 }
-
 .slider-card__lights {
   @apply flex items-center gap-1.5 shrink-0;
 }
-
 .slider-card__lights span {
-  @apply w-1.5 h-1.5 rounded-full bg-slate-700;
+  @apply w-1.5 h-1.5 rounded-full bg-slate-700 transition-colors duration-500;
 }
-
 .slider-card__lights span:first-child {
   @apply bg-tech-cyan/60;
 }
-
 .slider-controls {
-  @apply flex items-center gap-6 px-4 py-1.5 rounded-full border border-slate-800 bg-[#070b14]/90 backdrop-blur-sm shadow-lg;
+  @apply flex items-center gap-6 px-4 py-1.5 rounded-full border border-slate-800 bg-[#070b14]/90 backdrop-blur-sm shadow-lg transition-colors duration-500;
 }
-
 .slider-arrow {
   @apply flex items-center justify-center w-8 h-8 rounded text-slate-500 hover:text-tech-cyan hover:bg-tech-cyan/10 transition-all duration-300;
 }
-
 .slider-counter {
-  @apply font-mono text-[10px] sm:text-xs tracking-[0.15em] text-slate-400;
+  @apply font-mono text-[10px] sm:text-xs tracking-[0.15em] text-slate-400 transition-colors duration-500;
 }
 
 /* Timeline */
 .editorial-timeline {
-  @apply relative flex flex-col gap-10 w-full ml-2 pl-6 sm:pl-8 border-l border-slate-800 text-left;
+  @apply relative flex flex-col gap-10 w-full ml-2 pl-6 sm:pl-8 border-l border-slate-800 text-left transition-colors duration-500;
 }
-
 .timeline-item {
   @apply relative;
 }
-
 .timeline-node {
   @apply absolute top-1.5 -left-[31px] sm:-left-[39px] w-3 h-3 rounded-full border-2 border-[#020617] bg-slate-700 transition-all duration-300;
 }
-
 .timeline-node--active {
   @apply bg-tech-cyan border-[#020617];
   box-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
 }
-
 .timeline-node--current {
   @apply bg-tech-cyan border-[#020617];
 }
-
 .timeline-content {
   @apply max-w-xl;
 }
-
 .timeline-date {
-  @apply block mb-1 font-mono text-[9px] sm:text-[10px] tracking-wider font-bold text-slate-500;
+  @apply block mb-1 font-mono text-[9px] sm:text-[10px] tracking-wider font-bold text-slate-500 transition-colors duration-500;
 }
-
 .timeline-date--active, .timeline-date--current {
   @apply text-tech-cyan;
 }
-
 .timeline-title {
   @apply m-0 text-sm sm:text-base font-bold text-slate-200 uppercase leading-snug transition-colors duration-300;
 }
-
 .timeline-title--active, .timeline-item--current:hover .timeline-title {
   @apply text-tech-cyan;
 }
-
 .timeline-role {
   @apply block mt-1 font-mono text-[10px] sm:text-xs tracking-wider text-tech-cyan/80;
 }
-
 .timeline-text {
-  @apply mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed;
+  @apply mt-2 text-xs sm:text-sm text-slate-400 leading-relaxed transition-colors duration-500;
 }
 
-/* Light mode overrides */
-.about-section--light .tech-panel {
+/* ==========================================
+   LIGHT MODE OVERRIDES - ABOUT
+========================================== */
+.about-section.light-mode {
+  @apply text-slate-900 bg-slate-50 border-slate-200;
+}
+
+.about-section.light-mode .about-grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
+}
+
+.about-section.light-mode .about-title {
+  @apply text-slate-900;
+}
+.about-section.light-mode .about-description {
+  @apply text-slate-600;
+}
+.about-section.light-mode .about-manifesto {
+  @apply border-tech-cyan/80 bg-white text-slate-700 shadow-sm;
+}
+
+.about-section.light-mode .tech-panel {
   @apply bg-white border-slate-200 shadow-sm;
 }
-
-.about-section--light .tech-panel:hover {
-  @apply border-tech-cyan/40;
-  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.06);
+.about-section.light-mode .tech-panel:hover {
+  @apply border-tech-cyan/40 shadow-lg;
+}
+.about-section.light-mode .tech-panel__corner {
+  @apply border-slate-300;
+}
+.about-section.light-mode .tech-panel:hover .tech-panel__corner {
+  @apply border-tech-cyan/80;
 }
 
-.about-section--light .tech-panel__corner { @apply border-slate-300; }
-.about-section--light .tech-panel:hover .tech-panel__corner { @apply border-tech-cyan/60; }
+.about-section.light-mode .capability-tag {
+  @apply bg-white border-slate-200 text-slate-600 shadow-sm;
+}
+.about-section.light-mode .capability-tag:hover {
+  @apply border-tech-cyan/50 bg-tech-cyan/5 text-tech-cyan;
+}
 
-.about-section--light .capability-tag {
+.about-section.light-mode .about-education__header {
+  @apply bg-slate-50 border-slate-200;
+}
+.about-section.light-mode .about-education__label {
+  @apply text-slate-500;
+}
+.about-section.light-mode .about-education__institution {
+  @apply text-slate-800;
+}
+.about-section.light-mode .about-education__description {
+  @apply text-slate-600;
+}
+
+.about-section.light-mode .system-screenshot {
+  @apply bg-slate-100;
+}
+.about-section.light-mode .slider-card__badge {
   @apply bg-slate-50 border-slate-200 text-slate-600;
 }
-
-.about-section--light .capability-tag:hover {
-  @apply bg-tech-cyan/10 border-tech-cyan/40 text-tech-cyan;
+.about-section.light-mode .slider-card__lights span {
+  @apply bg-slate-300;
+}
+.about-section.light-mode .slider-card__lights span:first-child {
+  @apply bg-tech-cyan;
 }
 
-.about-section--light .about-education__header { @apply bg-slate-50 border-slate-200; }
-.about-section--light .about-education__institution { @apply text-slate-800; }
-.about-section--light .about-education__description { @apply text-slate-600; }
+.about-section.light-mode .slider-controls {
+  @apply bg-white border-slate-200 shadow-md;
+}
+.about-section.light-mode .slider-arrow {
+  @apply text-slate-500 hover:text-tech-cyan hover:bg-tech-cyan/10;
+}
+.about-section.light-mode .slider-counter {
+  @apply text-slate-600 font-bold;
+}
 
-.about-section--light .system-screenshot { @apply bg-slate-100; }
-.about-section--light .slider-card__badge { @apply bg-slate-50 border-slate-200 text-slate-600; }
-.about-section--light .slider-controls { @apply bg-white border-slate-200 shadow-sm; }
-.about-section--light .slider-counter { @apply text-slate-500; }
-
-.about-section--light .editorial-timeline { @apply border-slate-300; }
-.about-section--light .timeline-node { @apply border-slate-50 bg-slate-300; }
-.about-section--light .timeline-title { @apply text-slate-800; }
-.about-section--light .timeline-text { @apply text-slate-600; }
+.about-section.light-mode .editorial-timeline {
+  @apply border-slate-200;
+}
+.about-section.light-mode .timeline-node {
+  @apply border-white bg-slate-300;
+}
+.about-section.light-mode .timeline-title {
+  @apply text-slate-800;
+}
+.about-section.light-mode .timeline-text {
+  @apply text-slate-600;
+}
+.about-section.light-mode .timeline-date {
+  @apply text-slate-500;
+}
+.about-section.light-mode .timeline-date--active, 
+.about-section.light-mode .timeline-date--current {
+  @apply text-tech-cyan;
+}
 
 @keyframes about-marquee {
   from { transform: translateX(0); }
   to { transform: translateX(calc(-100% - 12px)); }
 }
-
 @keyframes project-scan {
   0% { background-position: 0 -100%; }
   100% { background-position: 0 100%; }
@@ -336,7 +325,6 @@
   .about-container { @apply flex flex-col gap-14; }
   .about-right { @apply gap-10 pt-0; }
 }
-
 @media (max-width: 639px) {
   .slider-window { @apply h-[220px]; }
   .slider-card--next { @apply translate-x-4 translate-y-3 rotate-2; }

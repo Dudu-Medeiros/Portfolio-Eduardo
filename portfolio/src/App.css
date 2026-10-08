@@ -1,564 +1,242 @@
-/* =========================================================
-   APP SHELL
-========================================================= */
+@reference "./styles/global.css";
 
+/* App Shell */
 .app-shell {
-  position: relative;
-  min-height: 100vh;
-  overflow-x: hidden;
-  isolation: isolate;
-  transition:
-    background-color 0.35s ease,
-    color 0.35s ease;
+  @apply relative min-h-screen overflow-x-hidden transition-colors duration-500 isolate;
 }
-
 .app-shell--dark {
-  background: #050505;
-  color: #f5f5f5;
+  @apply bg-[#020617] text-slate-100;
 }
-
 .app-shell--light {
-  background: #f4f4f5;
-  color: #111111;
+  @apply bg-slate-50 text-slate-900;
 }
 
 .app-content {
-  position: relative;
-  z-index: 2;
+  @apply relative z-10;
 }
 
-
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
+/* Background e Grid */
 .app-background {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
+  @apply fixed inset-0 z-0 pointer-events-none overflow-hidden;
 }
-
 .app-background__grid {
-  position: absolute;
-  inset: 0;
-
+  @apply absolute inset-0 opacity-30 transition-opacity duration-500;
   background-image:
-    linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
   background-size: 50px 50px;
-
-  mask-image: linear-gradient(
-    to bottom,
-    black 0%,
-    rgba(0, 0, 0, 0.75) 45%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.75) 45%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0, 0, 0, 0.75) 45%, transparent 100%);
 }
-
 .app-shell--light .app-background__grid {
+  @apply opacity-100;
   background-image:
-    linear-gradient(
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.035) 1px,
-      transparent 1px
-    );
+    linear-gradient(rgba(0, 0, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.035) 1px, transparent 1px);
 }
-
 .app-background__glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.12;
+  @apply absolute w-[500px] h-[500px] rounded-full blur-[120px] opacity-10 transition-colors duration-500;
 }
-
 .app-background__glow--cyan {
   top: 5%;
   left: -15%;
-  background: #00e5ff;
+  background: var(--accent-primary);
 }
-
 .app-background__glow--purple {
   top: 35%;
   right: -15%;
   background: #8b5cf6;
 }
-
 .app-shell--light .app-background__glow {
-  opacity: 0.07;
+  @apply opacity-[0.05];
 }
 
-
-/* =========================================================
-   TECH TICKER
-========================================================= */
-
+/* Tech Ticker */
 .tech-ticker {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  padding: 18px 0;
+  @apply relative w-full overflow-hidden border-y py-4 transition-colors duration-500;
 }
-
 .tech-ticker--dark {
-  border-color: rgba(255, 255, 255, 0.08);
-  background: rgba(255, 255, 255, 0.015);
+  @apply border-slate-900/80 bg-slate-950/40;
 }
-
 .tech-ticker--light {
-  border-color: rgba(0, 0, 0, 0.08);
-  background: rgba(0, 0, 0, 0.015);
+  @apply border-slate-200 bg-white;
 }
-
 .tech-ticker__track {
-  display: flex;
-  width: max-content;
-  animation: ticker-scroll 35s linear infinite;
+  @apply flex w-max animate-[ticker-scroll_35s_linear_infinite];
 }
-
 .tech-ticker__group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  @apply flex items-center shrink-0;
 }
-
 .tech-ticker__item {
-  display: inline-flex;
-  align-items: center;
-  gap: 30px;
-
-  padding-right: 30px;
-
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  white-space: nowrap;
+  @apply inline-flex items-center gap-6 md:gap-8 pr-6 md:pr-8 font-mono text-[11px] sm:text-xs font-bold tracking-[0.16em] whitespace-nowrap transition-colors duration-500;
 }
-
 .tech-ticker--dark .tech-ticker__item {
-  color: rgba(255, 255, 255, 0.62);
+  @apply text-slate-500;
 }
-
 .tech-ticker--light .tech-ticker__item {
-  color: rgba(0, 0, 0, 0.62);
+  @apply text-slate-400;
 }
-
 .tech-ticker__separator {
-  color: #00e5ff;
-  font-weight: 700;
+  @apply font-bold transition-colors duration-500;
+  color: var(--accent-primary);
 }
 
 @keyframes ticker-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-
-/* =========================================================
-   STATS
-========================================================= */
-
+/* Stats */
 .stats-section {
-  position: relative;
-  width: 100%;
-  padding: 90px 6vw;
+  @apply relative w-full py-16 md:py-24 px-4 sm:px-6 md:px-8;
 }
-
 .stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  max-width: 1400px;
-  margin: 0 auto;
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto;
 }
 
-
-/* =========================================================
-   STAT CARD
-========================================================= */
-
+/* Stat Card */
 .stat-card {
-  position: relative;
-  min-height: 190px;
-  padding: 28px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  border: 1px solid;
-  overflow: hidden;
-
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease,
-    background-color 0.3s ease;
+  @apply relative flex flex-col justify-between min-h-[180px] p-6 sm:p-7 border rounded-xl overflow-hidden transition-all duration-300;
 }
-
 .stat-card--dark {
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.025);
+  @apply border-slate-800 bg-[#070b14]/70;
 }
-
-.stat-card--light {
-  border-color: rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.55);
-}
-
-.stat-card:hover {
-  transform: translateY(-4px);
-}
-
 .stat-card--dark:hover {
-  border-color: rgba(0, 229, 255, 0.35);
+  @apply border-tech-cyan/40 bg-[#090f1d] shadow-[0_15px_30px_rgba(0,240,255,0.06)] -translate-y-1;
 }
-
+.stat-card--light {
+  @apply border-slate-200 bg-white shadow-sm;
+}
 .stat-card--light:hover {
-  border-color: rgba(0, 150, 180, 0.35);
+  @apply border-tech-cyan/40 bg-slate-50 shadow-md -translate-y-1;
 }
 
-
-/* =========================================================
-   CORNERS
-========================================================= */
-
+/* Corners */
 .stat-card__corner {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
+  @apply absolute w-3.5 h-3.5 pointer-events-none transition-colors duration-500;
 }
-
 .stat-card__corner--top {
   top: -1px;
   left: -1px;
-  border-top: 2px solid #00e5ff;
-  border-left: 2px solid #00e5ff;
+  border-top: 2px solid var(--accent-primary);
+  border-left: 2px solid var(--accent-primary);
 }
-
 .stat-card__corner--bottom {
   right: -1px;
   bottom: -1px;
   border-right: 2px solid #8b5cf6;
   border-bottom: 2px solid #8b5cf6;
 }
+.stat-card--light .stat-card__corner--bottom {
+  border-right-color: #a855f7;
+  border-bottom-color: #a855f7;
+}
 
-
-/* =========================================================
-   CARD HEADER
-========================================================= */
-
+/* Card Header */
 .stat-card__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @apply flex items-center justify-between;
 }
-
 .stat-card__code {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
-  opacity: 0.45;
+  @apply font-mono text-[10px] tracking-[0.12em] text-slate-500 transition-colors duration-500;
 }
-
+.stat-card--light .stat-card__code {
+  @apply text-slate-400;
+}
 .stat-card__status {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #00e5ff;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+  @apply w-1.5 h-1.5 rounded-full transition-colors duration-500;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+}
+.stat-card--light .stat-card__status {
+  box-shadow: 0 0 8px var(--accent-primary);
 }
 
-
-/* =========================================================
-   CARD VALUE
-========================================================= */
-
+/* Card Value */
 .stat-card__value {
-  display: flex;
-  align-items: baseline;
-  gap: 3px;
-
-  margin-top: 20px;
-
-  font-family: "JetBrains Mono", monospace;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.06em;
+  @apply flex items-baseline gap-1 mt-6 font-mono text-4xl lg:text-5xl font-bold leading-none tracking-tight transition-colors duration-500;
 }
-
 .stat-card__plus {
-  color: #00e5ff;
-  font-size: 0.55em;
+  @apply text-[0.55em] transition-colors duration-500;
+  color: var(--accent-primary);
 }
-
 .stat-card__text {
-  color: #00e5ff;
+  @apply transition-colors duration-500;
+  color: var(--accent-primary);
+}
+.stat-card--light .stat-card__value {
+  @apply text-slate-800;
 }
 
-
-/* =========================================================
-   CARD LABEL
-========================================================= */
-
+/* Card Label */
 .stat-card__label {
-  max-width: 180px;
-
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.68rem;
-  line-height: 1.5;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.5;
+  @apply max-w-[180px] mt-2 font-mono text-[10px] sm:text-[11px] leading-relaxed tracking-wider uppercase text-slate-400 transition-colors duration-500;
+}
+.stat-card--light .stat-card__label {
+  @apply text-slate-500;
 }
 
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
+/* Footer */
 .app-footer {
-  position: relative;
-  z-index: 2;
-
-  border-top: 1px solid;
-  padding: 30px 6vw;
+  @apply relative z-20 border-t py-8 px-4 sm:px-6 md:px-8 transition-colors duration-500;
 }
-
 .app-footer--dark {
-  border-color: rgba(255, 255, 255, 0.08);
+  @apply border-slate-900/80 bg-[#020617];
 }
-
 .app-footer--light {
-  border-color: rgba(0, 0, 0, 0.08);
+  @apply border-slate-200 bg-white;
 }
-
 .app-footer__inner {
-  max-width: 1400px;
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 30px;
+  @apply max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6;
 }
-
 .app-footer__status {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @apply flex items-center gap-2.5;
 }
-
 .app-footer__status p,
 .app-footer__copyright {
-  margin: 0;
-
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
+  @apply m-0 font-mono text-[10px] sm:text-xs tracking-wider text-slate-500 transition-colors duration-500;
 }
-
-.app-footer__status p {
-  opacity: 0.55;
+.app-footer--light .app-footer__status p,
+.app-footer--light .app-footer__copyright {
+  @apply text-slate-500;
 }
-
 .app-footer__status strong {
-  color: #00e5ff;
-  font-weight: 600;
+  @apply font-bold transition-colors duration-500;
+  color: var(--accent-primary);
 }
-
 .app-footer__indicator {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 8px;
-  height: 8px;
+  @apply flex items-center justify-center w-2 h-2;
 }
-
 .app-footer__indicator span {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-
-  background: #00e5ff;
-  box-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
-
-  animation: status-pulse 2s ease-in-out infinite;
+  @apply w-1.5 h-1.5 rounded-full animate-pulse transition-colors duration-500;
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
 }
-
-@keyframes status-pulse {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.45;
-    transform: scale(0.75);
-  }
+.app-footer--light .app-footer__indicator span {
+  box-shadow: 0 0 8px var(--accent-primary);
 }
-
 .app-footer__copyright {
-  text-align: center;
-  opacity: 0.4;
+  @apply text-center;
 }
-
 .app-footer__copyright strong {
-  opacity: 1;
+  @apply font-bold text-slate-400 transition-colors duration-500;
 }
-
+.app-footer--light .app-footer__copyright strong {
+  @apply text-slate-700;
+}
 .app-footer__top-button {
-  justify-self: end;
-
-  padding: 8px 0;
-
-  border: 0;
-  background: transparent;
-
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-
-  cursor: pointer;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
+  @apply py-2 border-0 bg-transparent font-mono text-[10px] sm:text-xs tracking-wider cursor-pointer transition-all duration-300 text-slate-500;
 }
-
-.app-footer--dark .app-footer__top-button {
-  color: rgba(255, 255, 255, 0.5);
-}
-
 .app-footer--light .app-footer__top-button {
-  color: rgba(0, 0, 0, 0.5);
+  @apply text-slate-500;
 }
-
 .app-footer__top-button:hover {
-  color: #00e5ff;
-  transform: translateY(-2px);
+  @apply -translate-y-0.5;
+  color: var(--accent-primary);
 }
 
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media (max-width: 1000px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .app-footer__inner {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .app-footer__copyright {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    order: 3;
-  }
-
-  .app-footer__top-button {
-    grid-column: 2;
-    grid-row: 1;
-  }
-}
-
-
-@media (max-width: 600px) {
-  .stats-section {
-    padding: 65px 5vw;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stat-card {
-    min-height: 170px;
-    padding: 24px;
-  }
-
-  .tech-ticker {
-    padding: 15px 0;
-  }
-
-  .tech-ticker__item {
-    gap: 20px;
-    padding-right: 20px;
-    font-size: 0.62rem;
-  }
-
-  .app-footer {
-    padding: 25px 5vw;
-  }
-
-  .app-footer__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 18px;
-  }
-
-  .app-footer__status,
-  .app-footer__top-button {
-    align-self: center;
-  }
-
-  .app-footer__copyright {
-    order: initial;
-    text-align: center;
-    line-height: 1.7;
-  }
-
-  .app-footer__top-button {
-    justify-self: auto;
-  }
-}
-
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
+/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
-  .tech-ticker__track {
-    animation: none;
-  }
-
-  .app-footer__indicator span {
-    animation: none;
-  }
-
-  .stat-card,
-  .app-footer__top-button {
-    transition: none;
-  }
+  .tech-ticker__track { animation: none; }
+  .app-footer__indicator span { animation: none; }
+  .stat-card, .app-footer__top-button { transition: none; }
 }
