@@ -6,10 +6,10 @@ import Preloader from "./components/common/Preloader";
 import AnimatedCounter from "./components/common/AnimatedCounter";
 import DecryptText from "./components/common/DecryptText";
 
-import Hero from "./sections/Hero/Hero";
-import About from "./sections/About/About";
-import Projects from "./sections/Projects/Projects";
-import Contact from "./sections/Contact/Contact";
+import Hero from "./sections/hero/Hero.jsx";
+import About from "./sections/about/About.jsx";
+import Projects from "./sections/projects/Projects.jsx";
+import Contact from "./sections/contact/Contact.jsx";
 
 import "./styles/global.css";
 import "./App.css";
