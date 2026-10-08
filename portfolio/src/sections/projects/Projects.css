@@ -82,15 +82,16 @@
 }
 
 .showcase-stage {
-  @apply relative w-full overflow-hidden min-h-[500px];
+  @apply relative w-full overflow-hidden;
 }
 
 .showcase-card {
   @apply w-full;
 }
 
+/* Novo layout empilhado (stacked) */
 .project-card {
-  @apply relative grid grid-cols-1 lg:grid-cols-[minmax(320px,1fr)_minmax(0,1.2fr)] overflow-hidden rounded-2xl border border-slate-900 bg-[#070b14]/90 transition-all duration-500;
+  @apply relative flex flex-col overflow-hidden rounded-2xl border border-slate-900 bg-[#070b14]/90 transition-all duration-500;
 }
 
 .project-card:hover {
@@ -140,15 +141,23 @@
 }
 
 .project-card__visual {
-  @apply relative min-h-[260px] sm:min-h-[340px] lg:min-h-[460px] p-4 sm:p-6 bg-[#050914] border-b lg:border-b-0 lg:border-r border-slate-900 flex items-center justify-center transition-colors duration-500;
+  @apply relative w-full h-[320px] sm:h-[480px] lg:h-[580px] p-4 sm:p-6 lg:p-8 bg-[#050914] border-b border-slate-900 flex items-center justify-center transition-colors duration-500;
 }
 
 .project-preview {
-  @apply relative w-full h-full min-h-[240px] sm:min-h-[300px] rounded-xl overflow-hidden border border-slate-800 bg-[#080d17];
+  @apply relative w-full h-full rounded-xl overflow-hidden border border-slate-800 bg-[#080d17] shadow-2xl;
 }
 
 .project-preview__header {
-  @apply h-9 px-3 flex items-center justify-between border-b border-slate-800 bg-[#0b111d] font-mono text-[9px] tracking-[0.16em] text-slate-500;
+  @apply h-9 px-4 flex items-center justify-between border-b border-slate-800 bg-[#0b111d] font-mono text-[9px] sm:text-[10px] tracking-[0.16em] text-slate-500;
+}
+
+.project-preview__header-info {
+  @apply flex items-center gap-3;
+}
+
+.project-preview__counter {
+  @apply text-tech-cyan/80 text-[9px] tracking-wider px-1.5 py-0.5 rounded bg-tech-cyan/10 border border-tech-cyan/20;
 }
 
 .project-preview__lights {
@@ -156,7 +165,7 @@
 }
 
 .project-preview__lights span {
-  @apply w-1.5 h-1.5 rounded-full bg-slate-700;
+  @apply w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-slate-700;
 }
 
 .project-preview__lights span:first-child {
@@ -168,18 +177,38 @@
 }
 
 .project-preview__screen img {
-  @apply w-full h-full object-contain p-3 transition-transform duration-700 select-none;
+  @apply absolute w-full h-full object-contain p-2 sm:p-4 transition-transform duration-700 select-none;
 }
 
 .project-card:hover .project-preview__screen img {
-  transform: scale(1.03);
+  transform: scale(1.02);
+}
+
+.inner-carousel-btn {
+  @apply absolute top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded border border-slate-800 bg-[#070b14]/90 text-slate-400 text-[10px] sm:text-xs backdrop-blur-sm opacity-0 transition-all duration-300 pointer-events-none;
+}
+
+.project-preview__screen:hover .inner-carousel-btn {
+  @apply opacity-100 pointer-events-auto;
+}
+
+.inner-carousel-btn:hover {
+  @apply border-tech-cyan/60 text-tech-cyan bg-tech-cyan/10;
+}
+
+.inner-carousel-btn--prev {
+  @apply left-3 sm:left-4;
+}
+
+.inner-carousel-btn--next {
+  @apply right-3 sm:right-4;
 }
 
 .project-preview__overlay {
-  @apply absolute inset-0 flex items-end p-3 opacity-0 transition-opacity duration-500 pointer-events-none;
+  @apply absolute inset-0 flex items-end justify-between p-4 opacity-0 transition-opacity duration-500;
   background: linear-gradient(
     to top,
-    rgba(5, 9, 20, 0.85),
+    rgba(5, 9, 20, 0.9),
     transparent 45%
   );
 }
@@ -189,7 +218,15 @@
 }
 
 .project-preview__overlay span {
-  @apply font-mono text-[9px] tracking-[0.16em] text-tech-cyan;
+  @apply font-mono text-[9px] sm:text-[10px] tracking-[0.16em] text-tech-cyan;
+}
+
+.project-preview__expand-btn {
+  @apply flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded border border-tech-cyan/40 bg-tech-cyan/10 text-tech-cyan cursor-pointer transition-all duration-300;
+}
+
+.project-preview__expand-btn:hover {
+  @apply bg-tech-cyan text-slate-950 border-tech-cyan shadow-[0_0_15px_rgba(0,240,255,0.3)];
 }
 
 .project-preview--empty {
@@ -209,15 +246,19 @@
 }
 
 .project-card__content {
-  @apply relative z-20 flex flex-col justify-between p-5 sm:p-6 md:p-8;
+  @apply relative z-20 flex flex-col p-6 sm:p-8 lg:p-10;
 }
 
-.project-card__top {
-  @apply flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-5 border-b border-slate-900/80;
+.project-card__header {
+  @apply flex flex-col sm:flex-row sm:items-start sm:justify-between gap-5 pb-6 border-b border-slate-900/80;
 }
 
 .project-card__meta {
-  @apply flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-wider;
+  @apply flex flex-wrap items-center gap-2 font-mono text-[9px] sm:text-[10px] tracking-wider mb-3;
+}
+
+.project-card__index {
+  @apply text-slate-500 tracking-[0.2em];
 }
 
 .project-card__id {
@@ -236,64 +277,57 @@
   @apply w-1.5 h-1.5 rounded-full bg-tech-cyan animate-pulse;
 }
 
-.project-card__github {
-  @apply inline-flex items-center justify-center gap-2 px-3 py-2 rounded-md border border-slate-800 bg-slate-950/40 text-slate-400 font-mono text-[9px] tracking-wider transition-all duration-300;
-}
-
-.project-card__github:hover {
-  @apply border-tech-cyan/40 text-tech-cyan bg-tech-cyan/5;
-}
-
-.project-card__github svg:last-child {
-  @apply text-[8px];
-}
-
-.project-card__body {
-  @apply relative py-6 md:py-8;
-}
-
-.project-card__index {
-  @apply block font-mono text-[10px] text-slate-700 tracking-[0.2em] mb-2;
-}
-
 .project-card__title {
-  @apply text-base sm:text-lg md:text-2xl font-black font-mono tracking-wide uppercase text-slate-200 leading-tight transition-colors duration-300;
+  @apply text-xl sm:text-2xl md:text-3xl font-black font-mono tracking-wide uppercase text-slate-200 leading-tight transition-colors duration-300;
 }
 
 .project-card:hover .project-card__title {
   @apply text-tech-cyan;
 }
 
+.project-card__github {
+  @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-md border border-slate-800 bg-slate-950/40 text-slate-400 font-mono text-[10px] tracking-wider transition-all duration-300 shrink-0 mt-2 sm:mt-0;
+}
+
+.project-card__github:hover {
+  @apply border-tech-cyan/40 text-tech-cyan bg-tech-cyan/5;
+}
+
+.project-card__body {
+  @apply relative py-6 md:py-8;
+}
+
 .project-card__description {
-  @apply mt-4 max-w-2xl text-xs sm:text-sm leading-relaxed text-slate-400 font-sans transition-colors duration-500;
+  @apply max-w-4xl text-sm sm:text-base leading-relaxed text-slate-400 font-sans transition-colors duration-500;
 }
 
 .project-card__footer {
-  @apply pt-5 border-t border-slate-900/70;
+  @apply pt-6 border-t border-slate-900/70;
 }
 
 .project-card__stack-label {
-  @apply block mb-3 font-mono text-[9px] tracking-[0.2em] text-slate-600 uppercase;
+  @apply block mb-3 font-mono text-[10px] tracking-[0.2em] text-slate-600 uppercase;
 }
 
 .project-card__tags {
-  @apply flex flex-wrap gap-1.5 sm:gap-2;
+  @apply flex flex-wrap gap-2;
 }
 
 .project-card__tag {
-  @apply px-2 py-1 rounded border border-slate-900 bg-slate-950/60 text-slate-500 font-mono text-[9px] sm:text-[10px] transition-all duration-300;
+  @apply px-2.5 py-1.5 rounded border border-slate-900 bg-slate-950/60 text-slate-500 font-mono text-[10px] sm:text-xs transition-all duration-300;
 }
 
 .project-card__tag:hover {
   @apply border-tech-cyan/30 text-tech-cyan bg-tech-cyan/5;
 }
 
+/* Dock/Miniaturas Inferiores */
 .showcase-dock {
-  @apply grid grid-cols-2 md:grid-cols-4 gap-3 mt-6;
+  @apply grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8;
 }
 
 .showcase-dock__item {
-  @apply flex items-center gap-3 p-2.5 rounded-xl border border-slate-900 bg-[#070b14]/70 transition-all duration-300 cursor-pointer text-left overflow-hidden;
+  @apply flex items-center gap-3 p-3 rounded-xl border border-slate-900 bg-[#070b14]/70 transition-all duration-300 cursor-pointer text-left overflow-hidden;
 }
 
 .showcase-dock__item:hover {
@@ -305,11 +339,11 @@
 }
 
 .showcase-dock__thumb {
-  @apply w-12 h-10 rounded-lg overflow-hidden bg-slate-950 border border-slate-800 shrink-0 flex items-center justify-center;
+  @apply w-14 h-12 rounded-lg overflow-hidden bg-slate-950 border border-slate-800 shrink-0 flex items-center justify-center relative;
 }
 
 .showcase-dock__thumb img {
-  @apply w-full h-full object-cover;
+  @apply absolute inset-0 w-full h-full object-cover;
 }
 
 .showcase-dock__empty-thumb {
@@ -321,15 +355,36 @@
 }
 
 .showcase-dock__code {
-  @apply font-mono text-[9px] tracking-wider text-tech-cyan/90;
+  @apply font-mono text-[10px] tracking-wider text-tech-cyan/90;
 }
 
 .showcase-dock__title {
-  @apply font-mono text-[10px] text-slate-400 font-semibold truncate mt-0.5;
+  @apply font-mono text-[11px] text-slate-400 font-semibold truncate mt-0.5;
 }
 
 .showcase-dock__item.active .showcase-dock__title {
   @apply text-slate-200;
+}
+
+/* Lightbox Estilos */
+.lightbox-root {
+  @apply fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-8;
+}
+
+.lightbox-backdrop {
+  @apply absolute inset-0 bg-[#020617]/90 backdrop-blur-md;
+}
+
+.lightbox-content {
+  @apply relative z-10 w-full max-w-7xl max-h-[90vh] flex flex-col items-center justify-center;
+}
+
+.lightbox-img {
+  @apply max-w-full max-h-[85vh] object-contain rounded-lg shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-slate-800 bg-[#050914];
+}
+
+.lightbox-close {
+  @apply absolute top-0 right-0 sm:-top-10 sm:right-0 w-10 h-10 flex items-center justify-center text-slate-400 hover:text-white bg-[#070b14] sm:bg-transparent rounded-bl-lg sm:rounded-none text-2xl transition-colors cursor-pointer z-20;
 }
 
 /* Light mode */
@@ -398,7 +453,7 @@
 }
 
 .projects-section.light-mode .project-preview {
-  @apply bg-white border-slate-200;
+  @apply bg-white border-slate-200 shadow-lg;
 }
 
 .projects-section.light-mode .project-preview__header {
@@ -409,14 +464,23 @@
   @apply bg-slate-100;
 }
 
+.projects-section.light-mode .inner-carousel-btn {
+  @apply border-slate-300 bg-white/85 text-slate-600;
+}
+
+.projects-section.light-mode .inner-carousel-btn:hover {
+  @apply border-tech-cyan/50 text-tech-cyan bg-tech-cyan/5;
+}
+
 .projects-section.light-mode .project-preview--empty {
   @apply bg-slate-50;
 }
 
-.projects-section.light-mode .project-card__top {
+.projects-section.light-mode .project-card__header {
   @apply border-slate-200;
 }
 
+.projects-section.light-mode .project-card__index,
 .projects-section.light-mode .project-card__id {
   @apply text-slate-400;
 }
@@ -427,10 +491,6 @@
 
 .projects-section.light-mode .project-card__github {
   @apply bg-slate-50 border-slate-200 text-slate-500;
-}
-
-.projects-section.light-mode .project-card__body {
-  @apply border-slate-200;
 }
 
 .projects-section.light-mode .project-card__title {
@@ -477,11 +537,22 @@
   @apply text-slate-900;
 }
 
+.projects-section.light-mode .lightbox-backdrop {
+  @apply bg-white/90;
+}
+
+.projects-section.light-mode .lightbox-img {
+  @apply bg-white border-slate-200;
+}
+
+.projects-section.light-mode .lightbox-close {
+  @apply text-slate-500 hover:text-slate-900 sm:bg-transparent bg-slate-100;
+}
+
 @keyframes project-scan {
   0% {
     background-position: 0 -100%;
   }
-
   100% {
     background-position: 0 100%;
   }
@@ -491,23 +562,18 @@
   .projects-section {
     @apply py-16;
   }
-
   .projects-header {
     @apply mb-8;
   }
-
   .project-card__visual {
-    min-height: 220px;
+    @apply p-0;
   }
-
   .project-preview {
-    min-height: 190px;
+    @apply rounded-none border-x-0 border-t-0 shadow-none;
   }
-
   .project-card__content {
     @apply p-5;
   }
-
   .showcase-dock {
     @apply grid-cols-1;
   }
